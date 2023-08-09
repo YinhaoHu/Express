@@ -8,24 +8,26 @@ using namespace std;
 namespace utility::ipc
 {
     Message::Message(uint32_t communication_code)
-        : header_(new Header(communication_code)),
-          fields_(new remove_pointer_t<decltype(fields_)>),
-          delete_mode_(DeleteMode::kOneByOne)
+        : delete_mode_(DeleteMode::kOneByOne), 
+          header_(new Header(communication_code)),
+          fields_(new remove_pointer_t<decltype(fields_)>)
     {
     }
 
     Message::Message(const Header &header)
-        : header_(new Header(header)),
-          fields_(new remove_pointer_t<decltype(fields_)>),
-          delete_mode_(DeleteMode::kOneByOne)
+        : delete_mode_(DeleteMode::kOneByOne), 
+          header_(new Header(header)),
+          fields_(new remove_pointer_t<decltype(fields_)>)
     {
     }
 
     Message::Message(const void *rawdata)
-        : header_(new Header), fields_(new remove_pointer_t<decltype(fields_)>),
-          delete_mode_(DeleteMode::kIntegrally)
+        : delete_mode_(DeleteMode::kIntegrally), 
+            header_(new Header), 
+            fields_(new remove_pointer_t<decltype(fields_)>)
+          
     {
-        memcpy(header_, rawdata, Header::Size());
+        memcpy(static_cast<void*>(header_), rawdata, Header::Size());
         SetFields(static_cast<const char *>(rawdata) + Header::Size());
     }
 

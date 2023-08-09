@@ -1,37 +1,42 @@
 #include "rawdata.h"
-#include <cstring>
 
 _START_EXPRESS_NAMESPACE_
+using namespace std;
 
 namespace utility::data
 {
-    RawData::RawData() : bytes_(nullptr), size_(0)
+    RawData::RawData(size_t nbytes)
+        : pdata_( (nbytes == 0) ? (nullptr) : (new char[nbytes]{0}) ), size_(nbytes)
     {
     }
-
-    RawData::RawData(const char *bytes, size_t size)
-        : bytes_(bytes), size_(size)
-    {
-    }
-
     RawData::RawData(const RawData &other)
-        : bytes_(other.bytes_), size_(other.size_)
+        : pdata_(other.pdata_), size_(other.size_)
     {
     }
-
-    RawData::~RawData()
+    RawData::RawData(RawData &&other)
+        : pdata_(std::move(other.pdata_)), size_(other.size_)
     {
-        bytes_ = nullptr;
-        size_ = 0;
     }
+    RawData::~RawData() {}
 
-    RawData &RawData::operator=(RawData &rhs)
+    RawData &RawData::operator=(const RawData &rhs)
     {
-        size_ = rhs.size_;
-        bytes_ = rhs.bytes_;
+        if (this != (&rhs))
+        {
+            this->pdata_ = rhs.pdata_;
+            this->size_ = rhs.size_;
+        }
         return *this;
     }
-
+    RawData &RawData::operator=(RawData &&rhs)
+    {
+        if (this != (&rhs))
+        {
+            this->pdata_ = std::move(rhs.pdata_);
+            this->size_ = rhs.size_;
+        }
+        return *this;
+    }
 }
 
 _END_EXPRESS_NAMESPACE_

@@ -1,6 +1,6 @@
 CXX := g++
-INC_DIR := /home/hoo/project/express/src
-CFLAGS := -g -std=c++20 
+INC_DIR := ./src
+CFLAGS := -g -std=c++20 -Wall
 CPPFLAGS = $(addprefix -I ,$(INC_DIR)) 
 
 BIN_DIR := ./bin
@@ -48,15 +48,24 @@ $(UTIL_TEST_TARGET) : $(UTIL_TEST_OBJS)
 # Targets: test-log, log
 # =========================================================
 LOG_TEST_TARGET := test-log
-LOG_SRC_DIR := ./src/log
-ALL_TARGETS += $(LOG_TEST_TARGET)
+LOG_TEST_CLIENT_TARGET := test-log-client
 
+ALL_TARGETS += $(LOG_TEST_TARGET)
+ALL_TARGETS += $(LOG_TEST_CLIENT_TARGET)
+LOG_SRC_DIR := ./src/log/
 
 LOG_RELY_ON_UTIL = ipc/message.cc ipc/message_queue.cc ipc/signal.cc
-LOG_TEST_SRCS = $(shell find $(LOG_SRC_DIR) -name "*.cc") \
+
+LOG_TEST_SRC_FILES := test/server.cc
+LOG_TEST_SRCS = $(addprefix $(LOG_SRC_DIR),$(LOG_TEST_SRC_FILES)) \
 				$(addprefix $(UTIL_SRC_DIR),$(LOG_RELY_ON_UTIL))
 
+LOG_TEST_CLIENT_SRC_FILES := test/client.cc
+LOG_TEST_CLIENT_SRCS = $(addprefix $(LOG_SRC_DIR),$(LOG_TEST_CLIENT_SRC_FILES)) \
+						$(addprefix $(UTIL_SRC_DIR),$(LOG_RELY_ON_UTIL))
+
 LOG_TEST_OBJS := $(LOG_TEST_SRCS:%=$(BUILD_DIR)/%.o)
+LOG_TEST_CLIENT_OBJS := $(LOG_TEST_CLIENT_SRCS:%=$(BUILD_DIR)/%.o)
 
 .PHONY += $(LOG_TEST_TARGET)
 $(LOG_TEST_TARGET) : $(LOG_TEST_OBJS)
@@ -64,7 +73,11 @@ $(LOG_TEST_TARGET) : $(LOG_TEST_OBJS)
 	$(CXX) $(LOG_TEST_OBJS) -o $(BIN_DIR)/$@
 	@echo "\033[0;37mGenerated log test program $(BIN_DIR)/$@\033[0m"
 
-
+.PHONY += $(LOG_TEST_CLIENT_TARGET)
+$(LOG_TEST_CLIENT_TARGET): $(LOG_TEST_CLIENT_OBJS)
+	mkdir -p $(BIN_DIR)
+	$(CXX) $(LOG_TEST_CLIENT_OBJS) -o $(BIN_DIR)/$@
+	@echo "\033[0;37mGenerated log test program $(BIN_DIR)/$@\033[0m"
 
 
 # ==========================================================

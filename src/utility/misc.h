@@ -3,6 +3,7 @@
 
 #include "macro.h"
 #include <cstdio>
+#include <cstring>
 #include <string>
 #include <signal.h>
 
@@ -13,7 +14,7 @@ namespace utility
     namespace misc
     {
         template <typename... Ts>
-        std::string FormatString(const char *format, size_t maxlen, Ts &&...args)
+        static std::string FormatString(const char *format, size_t maxlen, Ts &&...args)
         {
             char *buf = new char[maxlen]{0};
             snprintf(buf, maxlen, format, std::forward<Ts>(args)...);
@@ -23,12 +24,12 @@ namespace utility
             return str;
         }
 
-        static void print(std::string &&format_str)
+        inline void print(std::string &&format_str)
         {
             printf("%s", format_str.c_str());
         }
 
-        std::string ErrorString(const char *where)
+        inline std::string ErrorString(const char *where)
         {
             return FormatString("%s: %s", 256, where, strerror(errno));
         }

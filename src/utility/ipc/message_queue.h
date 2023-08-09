@@ -85,16 +85,16 @@ namespace utility
             void SetAttribute(Attribute attr) noexcept;
 
             Attribute GetAttribute() const noexcept;
-
-            void CancelNotify() const noexcept;
+ 
+            void CancelNotify() noexcept;
 
             void SetSignalNotify(int signo);
 
             void SetThreadNotify(void (*function)(sigval_t), sigval_t arg, pthread_attr_t *attribute);
 
         private:
-            bool closed_;
             long msgsize_, maxmsg_;
+            bool closed_;
             mqd_t mqdes_;
             std::string name_;
         };

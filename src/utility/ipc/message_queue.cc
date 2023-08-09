@@ -119,7 +119,7 @@ namespace utility::ipc
         return Attribute::kDefault;
     }
 
-    void MessageQueue::CancelNotify() const noexcept
+    void MessageQueue::CancelNotify() noexcept
     {
         mq_notify(mqdes_, nullptr);
     }

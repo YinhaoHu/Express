@@ -45,7 +45,7 @@ static void test_msg()
 
     uint32_t comm_code = 32;
     string arg1("This is argument 1.");
-    int64_t arg2(32993);
+    uint64_t arg2(32993);
     size_t arg1_size = arg1.size() + 1, arg2_size = sizeof(int64_t);
     unique_ptr<char[]> buf;
 
@@ -119,13 +119,11 @@ static void test_mq()
         exit(EXIT_SUCCESS);
     }
     else
-    {
-        sigval_t sval;
+    { 
         mq = new MessageQueue(mqname, maxmsg, msgsize);
 
         auto buf = mq->Receive();
-        auto &msg = buf->message;
-        auto &prio = buf->priority;
+        auto &msg = buf->message; 
         auto body = msg.Body();
 
         child_return =

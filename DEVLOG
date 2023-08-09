@@ -2,13 +2,10 @@
                             DEVELOPMENT             LOG                      
 ===============================================================================
 
-
-WHOSE : Hoo
+* Member: Hoo
 
 // TODO 
 
 1. Learn Git on VSCode.
 
 2. Server closes the connection which has no client request for a long time.
-
-3. [EMERGENT] Raw data RAII optimization: consider replace void * with shared<char[]> .

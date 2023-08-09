@@ -11,7 +11,7 @@ using namespace std;
 namespace utility::ipc
 {
     TCPSocket::TCPSocket(InternetProtocol ip_version)
-        :socket_(0), closed_(false)
+        : socket_(0), closed_(false)
     {
         int domain;
         switch (ip_version)
@@ -32,8 +32,9 @@ namespace utility::ipc
     }
 
     TCPSocket::TCPSocket(Socket sockfd)
-        :socket_(sockfd), closed_(false)
-    {}
+        : socket_(sockfd), closed_(false)
+    {
+    }
 
     TCPSocket::~TCPSocket()
     {
@@ -82,24 +83,33 @@ namespace utility::ipc
         return len;
     }
 
-    inline Socket TCPSocket::GetSocket() const noexcept {
+    inline Socket TCPSocket::GetSocket() const noexcept
+    {
         return this->socket_;
     }
 
-    void TCPSocket::Connect(const sockaddr &addr, socklen_t addr_len) 
+    void TCPSocket::Connect(const sockaddr &addr, socklen_t addr_len)
     {
-        if(connect(socket_, &addr, addr_len) < 0)
-            throw runtime_error("TCPSocket::Connect");
+        if (connect(socket_, &addr, addr_len) < 0)
+            throw runtime_error(ErrorString("TCPSocket::Connect"));
     }
-    void TCPSocket::Bind(const sockaddr &addr, socklen_t addr_len) 
+    void TCPSocket::Bind(const sockaddr &addr, socklen_t addr_len)
     {
-        if(bind(socket_, &addr, addr_len) < 0)
-            throw runtime_error("TCPSocket::Bind");
+        if (bind(socket_, &addr, addr_len) < 0)
+            throw runtime_error(ErrorString("TCPSocket::Bind"));
     }
-    void TCPSocket::Listen(int backlog = SOMAXCONN) 
+    void TCPSocket::Listen(int backlog = SOMAXCONN)
     {
-        if(listen(socket_, backlog) < 0)
-            throw runtime_error("TCPSocket::Listen");
+        if (listen(socket_, backlog) < 0)
+            throw runtime_error(ErrorString("TCPSocket::Listen"));
+    }
+
+    Socket TCPSocket::Accept()
+    {
+        Socket conncection_sockfd = accept(socket_, nullptr, nullptr); 
+        if(conncection_sockfd < 0)
+            throw runtime_error(ErrorString("TCPSocket::Accept"));
+        return conncection_sockfd;
     }
 }
 

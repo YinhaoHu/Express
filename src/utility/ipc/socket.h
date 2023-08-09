@@ -21,6 +21,8 @@ _START_EXPRESS_NAMESPACE_
 namespace utility::ipc
 { 
     enum class InternetProtocol{ kAny, kIPv4,kIPv6};
+
+    int SystemIPConstant(InternetProtocol ip);
 }
 
 

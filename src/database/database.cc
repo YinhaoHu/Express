@@ -106,7 +106,7 @@ namespace database
             return tables_[table_name]->Create(data, size);
         }
 
-        utility::data::RawData Retrieve(const string &table_name, id_t id)
+        utility::data::RawData Retrieve(const string &table_name, id_t id)noexcept(true)
         {
             return tables_[table_name]->Retrieve(id);
         }
@@ -142,7 +142,7 @@ namespace database
         return pimpl_->Create(table_name, data, size);
     }
 
-    utility::data::RawData DataBase::Retrieve(const std::string &table_name, id_t id)
+    utility::data::RawData DataBase::Retrieve(const std::string &table_name, id_t id)noexcept
     {
         return pimpl_->Retrieve(table_name, id);
     }

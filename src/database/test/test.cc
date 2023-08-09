@@ -53,17 +53,16 @@ void test_create()
 {
     bool result = true;
 
-    for (int i = 0; i < nitems; ++i)
+    for (size_t i = 0; i < nitems; ++i)
     {
         db->Create(tablename, write_bufs[i].c_str(), write_bufs[i].size() + 1);
     }
 
-    for (int i = 0; i < nitems; ++i)
+    for (size_t i = 0; i < nitems; ++i)
     {
         auto data = db->Retrieve(tablename, i);
-        if (write_bufs[i].compare(data.Get()) != 0)
+        if (write_bufs[i].compare(data.Get().get()) != 0)
             result = false;
-        delete data.Get();
     }
 
     test("create", "compare", [&result]() -> bool
@@ -91,7 +90,7 @@ void test_update()
     {
         auto new_data = db->Retrieve(tablename, id);
 
-        if (update_data.compare(new_data.Get()) != 0)
+        if (update_data.compare(new_data.Get().get()) != 0)
             result = false;
     }
     test("udpate", "compare", [result]() -> bool
@@ -102,10 +101,10 @@ void test_retrieve()
 {
     bool found_wrong = false;
 
-    for (int i = 0; i < nitems; i += 3)
+    for (size_t i = 0; i < nitems; i += 3)
     {
         auto data = db->Retrieve(tablename, i);
-        if (write_bufs[i].compare(data.Get()) != 0)
+        if (write_bufs[i].compare(data.Get().get()) != 0)
             found_wrong = true;
     }
 
@@ -152,7 +151,7 @@ void thread_entry(int tid, mutex *iomutex, barrier<> *delete_barrier)
     string new_write_buf_2("second string");
 
     // Create
-    for (int i = 0; i < nitems; ++i)
+    for (size_t i = 0; i < nitems; ++i)
     {
         uint64_t newid = db->Create(tablename, write_bufs[i].c_str(), write_bufs[i].size() + 1);
         id_vec.push_back(newid);
@@ -163,7 +162,7 @@ void thread_entry(int tid, mutex *iomutex, barrier<> *delete_barrier)
     for (auto id : id_vec)
     {
         auto data = db->Retrieve(tablename, id);
-        if (write_bufs[i].compare(data.Get()) != 0)
+        if (write_bufs[i].compare(data.Get().get()) != 0)
             data_found_wrong = true;
         if ((write_bufs[i].size() + 1) != data.Size())
         {
@@ -188,11 +187,10 @@ void thread_entry(int tid, mutex *iomutex, barrier<> *delete_barrier)
     for (auto id : id_vec)
     {
         auto data = db->Retrieve(tablename, id);
-        if (tid == 1 && new_write_buf_1.compare(data.Get()))
+        if (tid == 1 && new_write_buf_1.compare(data.Get().get()))
             update_found_error = true;
-        else if (tid != 1 && new_write_buf_2.compare(data.Get()))
-            update_found_error = true;
-        delete[] data.Get();
+        else if (tid != 1 && new_write_buf_2.compare(data.Get().get()))
+            update_found_error = true; 
     }
 
     // Delete and check
@@ -291,7 +289,7 @@ int main(int argc, char *argv[])
 
     if (opt_count != 6)
     {
-        fprintf(stderr, "missing arguments.\n");
+        fprintf(stderr, "Missing arguments. Option -h is used to see help.\n");
         exit(EXIT_FAILURE);
     }
 

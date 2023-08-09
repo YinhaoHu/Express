@@ -51,14 +51,17 @@ namespace database
         {
             ElementType ret;
             lock_guard<mutex> lock(mutex_);
+            struct stat sbuf;
 
-            auto end = lseek(fd_, 0, SEEK_END);
-            if (end < sizeof(ElementType))
+            fstat(fd_, &sbuf);
+            auto filesize = sbuf.st_size;
+            auto element_size = static_cast<off_t>(sizeof(ElementType));
+            if (sbuf.st_size < element_size)
                 throw range_error("Free list is empty.");
 
-            lseek(fd_, end - sizeof(ElementType), SEEK_SET);
-            read(fd_, &ret, sizeof(ElementType));
-            ftruncate(fd_, end - sizeof(ElementType));
+            lseek(fd_, filesize - element_size, SEEK_SET);
+            read(fd_, &ret, element_size);
+            ftruncate(fd_, filesize - element_size);
 
             return ret;
         }
@@ -182,8 +185,8 @@ namespace database
         public:
             MetaData(pos_t start_pos, size_t once_alloc_num,
                      DataList::Impl *data_list)
-                : start_pos_(start_pos), once_alloc_num_(once_alloc_num),
-                  data_list_(data_list)
+                : data_list_(data_list),start_pos_(start_pos), 
+                once_alloc_num_(once_alloc_num) 
             {
             }
             /**
@@ -246,7 +249,7 @@ namespace database
              * @return Corresponding metadata unit if id is valid, otherwise,
              * zero unit(size = 0 && pos == 0) will be returend.
              */
-            Unit Retrieve(id_t id)
+            Unit Retrieve(id_t id) noexcept(true)
             {
                 auto pos = Position(id);
                 Unit res;
@@ -354,7 +357,7 @@ namespace database
 
         public:
             RealData(size_t unit_size, pos_t start_pos, DataList::Impl *data_list)
-                : unit_size_(unit_size), start_pos_(start_pos), data_list_(data_list)
+                :  start_pos_(start_pos),unit_size_(unit_size), data_list_(data_list)
             {
             }
 
@@ -385,7 +388,8 @@ namespace database
             utility::data::RawData Retrieve(pos_t start_pos, size_t size)
             {
                 size_t full_block_num, notfull_block_exist, notfull_unit_size;
-                char *buf = new char[size]{0};
+                utility::data::RawData res(size);
+                char *buf = res.Get().get();
                 off_t buf_off = 0;
                 pos_t pos = start_pos;
 
@@ -393,7 +397,7 @@ namespace database
                 notfull_block_exist = ((full_block_num * unit_size_) != size);
                 notfull_unit_size = size - full_block_num * unit_size_;
 
-                for (int i = 0; i < full_block_num; ++i)
+                for (size_t i = 0; i < full_block_num; ++i)
                 {
                     pread(data_list_->fd_, buf + buf_off, unit_size_, pos);
                     buf_off += unit_size_;
@@ -405,7 +409,7 @@ namespace database
                     pread(data_list_->fd_, buf + buf_off, notfull_unit_size, pos);
                 }
 
-                return utility::data::RawData(buf, size);
+                return res;
             }
             /**
              * @brief Update the data of the related region to be new data specified by raw_data.
@@ -417,13 +421,13 @@ namespace database
              * @warning Be careful to change the metadata information manually.
              * @throw std::runtime_error will be thrown if the raw_data.size is zero.
              */
-            void Update(pos_t start_pos, size_t original_size, utility::data::RawData &raw_data)
+            void Update(pos_t start_pos, size_t original_size, const char* new_data, size_t new_size)
             {
-                if (raw_data.Size() == 0)
+                if (new_size == 0)
                     throw runtime_error("Zero size update is not permitted");
 
                 size_t old_total_unit_size = RealUnitSize(original_size);
-                size_t new_total_unit_size = RealUnitSize(raw_data.Size());
+                size_t new_total_unit_size = RealUnitSize(new_size);
                 vector<pos_t> pos_vec;
 
                 pos_t walk_pos = start_pos;
@@ -454,8 +458,8 @@ namespace database
                 off_t data_off = 0;
                 for (auto pos : pos_vec)
                 {
-                    size_t nbytes = min(raw_data.Size() - data_off, unit_size_);
-                    pwrite(data_list_->fd_, raw_data.Get() + data_off, nbytes, pos);
+                    size_t nbytes = min(new_size - data_off, unit_size_);
+                    pwrite(data_list_->fd_, new_data + data_off, nbytes, pos);
                     data_off += nbytes;
                 }
             }
@@ -536,11 +540,11 @@ namespace database
             return id;
         }
 
-        utility::data::RawData Retrieve(id_t id)
+        utility::data::RawData Retrieve(id_t id) noexcept(true)
         {
             auto meta = meta_data_->Retrieve(id);
-            if (meta.pos == 0 || meta.size == 0)
-                return utility::data::RawData(nullptr, 0);
+            if (meta.pos == 0 || meta.size == 0) 
+                return utility::data::RawData(0); 
             else
                 return real_data_->Retrieve(meta.pos, meta.size);
         }
@@ -548,8 +552,7 @@ namespace database
         void Update(id_t id, const char *new_data, size_t new_size)
         {
             auto unit = meta_data_->Retrieve(id);
-            utility::data::RawData raw_data(new_data, new_size);
-            real_data_->Update(unit.pos, unit.size, raw_data);
+            real_data_->Update(unit.pos, unit.size, new_data, new_size);
             meta_data_->Update(id, new_size, unit.pos);
         }
 
@@ -588,7 +591,7 @@ namespace database
         return pImpl_->Create(data, size);
     }
 
-    utility::data::RawData DataList::Retrieve(id_t id)
+    utility::data::RawData DataList::Retrieve(id_t id) noexcept(true)
     {
         return pImpl_->Retrieve(id);
     }

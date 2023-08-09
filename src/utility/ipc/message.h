@@ -39,15 +39,16 @@ namespace utility
                 uint32_t communication_code;
                 uint64_t body_size;
 
-                Header() : communication_code(0), num_of_fields(0),
+                Header() : num_of_fields(0), communication_code(0),
                            body_size(0) {}
 
-                Header(uint32_t comm_code) : communication_code(comm_code),
-                                             num_of_fields(0), body_size(0) {}
+                Header(uint32_t comm_code) : num_of_fields(0), communication_code(comm_code), body_size(0) {}
 
-                Header(const Header &other) : communication_code(other.communication_code),
-                                              num_of_fields(other.num_of_fields),
-                                              body_size(other.body_size) {}
+                Header(const Header &other) : num_of_fields(other.num_of_fields), 
+                                            communication_code(other.communication_code), 
+                                              body_size(other.body_size)
+                {
+                }
 
                 static constexpr size_t Size() noexcept
                 {
