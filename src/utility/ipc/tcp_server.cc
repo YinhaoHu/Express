@@ -103,7 +103,6 @@ namespace utility::ipc
             throw runtime_error("Server is not running now.");
     }
 
-    // TODO Implement this function.
     std::unique_ptr<TCPSocket> TCPServer::NextPending()
     {
         if (status_ != Status::kRunning)

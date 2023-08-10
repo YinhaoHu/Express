@@ -18,8 +18,10 @@ namespace utility
          * @brief A IPC(Local and Net) message class.
          *
          * @warning `MEMORY MANAGEMENT`
-         * [Sender] needs to takes the responsibility for the data which is added into the message by calling Add().
-         * [Reiceiver] takest he responsibility for all data including header and body which are added.
+         * [Sender] needs to takes the responsibility for the data which is added into 
+         * the message by calling Add().
+         * [Reiceiver] takest he responsibility for all data including header and body 
+         * which are added.
          * [This class] will return the data it manages by returning smart pointer.
          */
         class Message

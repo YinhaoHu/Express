@@ -6,6 +6,11 @@
 
 // TODO 
 
-1. Learn Git on VSCode.
+1. Server closes the connection which has no client request for a long time.
 
-2. Server closes the connection which has no client request for a long time.
+2. class Message:
+    * Modify Add(): using memcpy to add data.
+    * Delete Delete(): This will not be used anymore in the new implementation.
+    * Constructor(): delete the communication_code initialization parameter for 
+                     removing ambiguous.
+    * Add SetCommunicationCode().
