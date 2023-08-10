@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     }
 
     MessageQueue mq(mqname, maxmsg, msgsize);
-    Message msg(1);
+    Message msg(static_cast<uint>(0));
     
     string data(argv[1]);
 

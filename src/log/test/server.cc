@@ -40,8 +40,7 @@ int main(int argc, char *argv[])
         {
             std::cerr << e.what() << '\n';
             break;
-        } 
-        msg.Delete();
+        }  
     }
 
     cout << "Server is cloed.\n";
