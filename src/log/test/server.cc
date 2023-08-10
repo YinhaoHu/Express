@@ -31,7 +31,10 @@ int main(int argc, char *argv[])
 
         try
         {
-            process_message(msg,prio);
+            if(msg.GetHeaderField(Message::HeaderField::kCommunicationCode) == 0)
+                process_message(msg,prio);
+            else 
+                continue;
         }
         catch(const std::exception& e)
         {
