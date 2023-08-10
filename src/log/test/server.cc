@@ -1,7 +1,7 @@
 #include "spec.h"
 
 
-static void process_message(Message& msg, auto prio)
+static void process_message(Message& msg, uint priority)
 {
     auto body = msg.Body();
     auto field_pointer = body->at(0).pointer;
@@ -9,8 +9,8 @@ static void process_message(Message& msg, auto prio)
  
     string str(static_cast<const char*>(field_pointer));
 
-    print(FormatString("Receive: %s (nbytes = %ld length = %ld)\n", 128,
-         str.c_str(), field_size, str.size()));
+    print(FormatString("Receive: %s (nbytes = %ld length = %ld priority = %d)\n", 128,
+         str.c_str(), field_size, str.size(), priority));
 
     if(str.compare("bye") == 0)
         throw std::runtime_error("Client wants to say bye!");

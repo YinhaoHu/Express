@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "cwchar": "cpp",
+        "string": "cpp",
+        "iosfwd": "cpp",
+        "type_traits": "cpp"
+    }
+}
