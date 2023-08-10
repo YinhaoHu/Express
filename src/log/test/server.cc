@@ -23,8 +23,7 @@ int main(int argc, char *argv[])
     MessageQueue mq(mqname, maxmsg, msgsize);
 
     cout << "Server is running now.\n";
-
-    while(1)
+    for( ; ;)
     {
         auto pmsg = mq.Receive();
         auto& msg = pmsg->message;
@@ -42,7 +41,7 @@ int main(int argc, char *argv[])
     }
 
     cout << "Server is cloed.\n";
-    mq.Unlink(); // Tell the kernel to delelte this message.
+    mq.Unlink();
     return 0;
 }
  

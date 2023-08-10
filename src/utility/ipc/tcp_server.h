@@ -3,8 +3,9 @@
 
 #include "utility/macro.h"
 #include "tcp_socket.h"
-#include <mutex>
+#include <shared_mutex>
 #include <thread>
+#include <memory>
 #include <queue>
 
 _START_EXPRESS_NAMESPACE_
@@ -33,12 +34,12 @@ namespace utility::ipc
         void Close() ;
 
         bool HasPendingConnections();
-        TCPSocket NextPending();
+        std::unique_ptr<TCPSocket> NextPending();
 
     private:
         std::thread* paccept_thread_;
-        std::mutex pending_connections_mutex_;
-        std::queue<TCPSocket> pending_connections_;
+        std::shared_mutex pending_connections_mutex_;
+        std::queue<TCPSocket*> pending_connections_;
         TCPSocket socket_;
         Status status_;
     };
