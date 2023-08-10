@@ -1,6 +1,7 @@
 #ifndef _EXPRESS_LOG_TEST_SPEC_H
 #define _EXPRESS_LOG_TEST_SPEC_H
 
+#include "utility/ipc/message.h"
 #include "utility/ipc/message_queue.h"
 #include "utility/misc.h"
 // This header file can be included in testing. 
