@@ -1,9 +1,0 @@
-digraph "utility/concurrency" {
-  compound=true
-  node [ fontsize="10", fontname="Helvetica"];
-  edge [ labelfontsize="10", labelfontname="Helvetica"];
-  subgraph clusterdir_64e73385a8b7738563c26ce10415b58d {
-    graph [ bgcolor="#ddddee", pencolor="black", label="utility" fontname="Helvetica", fontsize="10", URL="dir_64e73385a8b7738563c26ce10415b58d.html"]
-  dir_43ee1e9bfec08b2f17d1e44e64983de0 [shape=box, label="concurrency", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_43ee1e9bfec08b2f17d1e44e64983de0.html"];
-  }
-}
