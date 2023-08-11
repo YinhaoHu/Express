@@ -23,15 +23,16 @@ $(HELP_TARGET):
 
 
 # ==========================================================
-#						Utility
+#						Utility			
 # Targets: test-util, util
 # ==========================================================
+# TODO This target is deprecated and remaines to be updated.
 UTIL_TEST_TARGET := test-util
 UTIL_SRC_DIR := ./src/utility/
 
 ALL_TARGETS += $(UTIL_TEST_TARGET)
 
-UTIL_TEST_SRC := test/test.cc ipc/message.cc ipc/message_queue.cc ipc/signal.cc
+UTIL_TEST_SRC := test/test.cc ipc/message.cc 
 UTIL_TEST_SRCS := $(addprefix $(UTIL_SRC_DIR),$(UTIL_TEST_SRC))
 UTIL_TEST_OBJS = $(UTIL_TEST_SRCS:%=$(BUILD_DIR)/%.o)
 
@@ -41,7 +42,24 @@ $(UTIL_TEST_TARGET) : $(UTIL_TEST_OBJS)
 	$(CXX) $(UTIL_TEST_OBJS) -o $(BIN_DIR)/$@
 	@echo "\033[0;37mGenerated utility test program $(BIN_DIR)/$@\033[0m"
 
+# ==========================================================
+#						Utility-IPC			
+# Targets: test-util-ipc, ipc
+# ==========================================================
+UTIL_IPC_TEST_TARGET := test-util-ipc
+UTIL_IPC_SRC_DIR := ./src/utility/ipc/
 
+ALL_TARGETS += $(UTIL_IPC_TEST_TARGET)
+
+UTIL_IPC_TEST_SRC := test/test.cc
+UTIL_IPC_TEST_SRCS := $(addprefix $(UTIL_IPC_SRC_DIR),$(UTIL_IPC_TEST_SRC))
+UTIL_IPC_TEST_OBJS = $(UTIL_IPC_TEST_SRCS:%=$(BUILD_DIR)/%.o)
+
+.PHONY += UTIL_IPC_TEST_TARGET
+$(UTIL_IPC_TEST_TARGET) : $(UTIL_IPC_TEST_OBJS)
+	mkdir -p $(BIN_DIR)
+	$(CXX) $(UTIL_IPC_TEST_OBJS) -o $(BIN_DIR)/$@
+	@echo "\033[0;37mGenerated utility test program $(BIN_DIR)/$@\033[0m"
 
 # =========================================================
 #						Log

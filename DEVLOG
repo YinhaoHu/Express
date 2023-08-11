@@ -14,3 +14,10 @@
     * Constructor(): delete the communication_code initialization parameter for 
                      removing ambiguous.
     * Add SetCommunicationCode().
+    * If frequently transfer huge message in the future, consider SpeedSend.
+
+3.  class TCPSocket:
+    * Add Sendfile()
+
+4.  class  UnixSocket:
+    * Send file desciptor.
