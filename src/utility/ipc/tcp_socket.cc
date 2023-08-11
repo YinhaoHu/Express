@@ -11,7 +11,7 @@ using namespace std;
 namespace utility::ipc
 {
     TCPSocket::TCPSocket(InternetProtocol ip_version)
-        : socket_(0), closed_(false)
+        :  closed_(false), socket_(0)
     {
         int domain;
         switch (ip_version)
@@ -32,7 +32,7 @@ namespace utility::ipc
     }
 
     TCPSocket::TCPSocket(Socket sockfd)
-        : socket_(sockfd), closed_(false)
+        : closed_(false), socket_(sockfd)
     {
     }
 
@@ -47,7 +47,7 @@ namespace utility::ipc
         close(socket_);
     }
 
-    ssize_t TCPSocket::Send(const char *data, size_t size, int flag = 0)
+    ssize_t TCPSocket::Send(const char *data, size_t size, int flag)
     {
         ssize_t sent_bytes = send(socket_, data, size, flag);
 
@@ -55,12 +55,12 @@ namespace utility::ipc
             throw runtime_error(ErrorString("TCPSocket::Send"));
         return sent_bytes;
     }
-    ssize_t TCPSocket::Receive(void *buf, size_t size, int flag = 0)
+    ssize_t TCPSocket::Receive(void *buf, size_t size, int flag )
     {
         ssize_t recv_bytes = recv(socket_, buf, size, flag);
 
         if (recv_bytes < 0)
-            throw runtime_error(ErrorString("TCPSocket::Send"));
+            throw runtime_error(ErrorString("TCPSocket::Receive"));
         return recv_bytes;
     }
 
@@ -98,7 +98,7 @@ namespace utility::ipc
         if (bind(socket_, &addr, addr_len) < 0)
             throw runtime_error(ErrorString("TCPSocket::Bind"));
     }
-    void TCPSocket::Listen(int backlog = SOMAXCONN)
+    void TCPSocket::Listen(int backlog)
     {
         if (listen(socket_, backlog) < 0)
             throw runtime_error(ErrorString("TCPSocket::Listen"));

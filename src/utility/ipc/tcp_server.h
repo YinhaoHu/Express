@@ -27,7 +27,7 @@ namespace utility::ipc
          * @throw std::runtime_error will be thrown when system call set errno.
          */
         TCPServer(const char *port, InternetProtocol ip = InternetProtocol::kAny,
-                  int backlog = SOMAXCONN);
+                  int backlog = SOMAXCONN,int accept_timeout = 1);
         ~TCPServer();
 
         Status GetStatus() const noexcept;

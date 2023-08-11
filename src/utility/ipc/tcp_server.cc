@@ -9,23 +9,28 @@ _START_EXPRESS_NAMESPACE_
 
 namespace utility::ipc
 {
-    TCPServer::TCPServer(const char *port, InternetProtocol ip = InternetProtocol::kAny,
-                         int backlog = SOMAXCONN)
-        : status_(Status::kToBeStarted), socket_(ip)
+    TCPServer::TCPServer(const char *port, InternetProtocol ip ,
+                         int backlog, int accept_timeout)
+        :socket_(ip), status_(Status::kToBeStarted)
     {
         using namespace misc;
         int enable_reuseaddr = 1;
         struct addrinfo hint, *result, *p;
+        timeval timeout;
 
         memset(&hint, 0, sizeof(hint));
         hint.ai_family = SystemIPConstant(ip);
         hint.ai_socktype = SOCK_STREAM;
-        hint.ai_flags = AI_PASSIVE | AI_NUMERICSERV;
+        hint.ai_flags = AI_PASSIVE ;
         if (getaddrinfo(nullptr, port, &hint, &result) < 0)
             throw runtime_error(ErrorString("TCPServer::TCPServer"));
 
         for (p = result; p != nullptr; p = p->ai_next)
         {
+            timeout.tv_sec = accept_timeout;
+            timeout.tv_usec = 0;
+
+            socket_.SetOption(SO_RCVTIMEO, &timeout, sizeof(timeout));
             socket_.SetOption(SO_REUSEADDR, &enable_reuseaddr, sizeof(enable_reuseaddr));
 
             socket_.Bind(static_cast<sockaddr>(*(p->ai_addr)), p->ai_addrlen);
@@ -35,6 +40,7 @@ namespace utility::ipc
 
         socket_.Listen();
         freeaddrinfo(result);
+
         status_ = Status::kRunning;
 
         auto accept_entry = [this]()
@@ -50,8 +56,23 @@ namespace utility::ipc
             };
 
             for (;;)
-            {
-                auto new_con = new_connection();
+            { 
+                if(this->status_ != Status::kRunning)
+                    break;
+
+                TCPSocket* new_con;
+                try
+                {  
+                    new_con = new_connection();
+                }
+                catch(const std::runtime_error& e)
+                {
+                    if(errno == EAGAIN)
+                        continue;
+                    else 
+                        throw e;
+                }
+                 
                 if (this->status_ == Status::kRunning)
                 { 
                     unique_lock lock(this->pending_connections_mutex_);

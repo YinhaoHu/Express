@@ -2,7 +2,8 @@
 #define __EXPRESS_UTILITY_IPC_MESSAGE_QUEUE_H
 
 #include "utility/macro.h"
-#include "message.h"
+#include "utility/ipc/sent_message.h"
+#include "utility/ipc/received_boundary_message.h"
 #include <mqueue.h>
 #include <signal.h>
 #include <vector>
@@ -27,7 +28,7 @@ namespace utility
             };
             struct ReceiveReturnType
             {
-                Message message;
+                ReceivedBoundaryMessage message;
                 uint priority;
             };
 
@@ -58,7 +59,7 @@ namespace utility
              * @throw std::runtime_error will be thrown. The specific information
              * can be known in the chosen message queue manual.
              */
-            void Send(const Message &msg, uint priority);
+            void Send(const SentMessage &msg, uint priority);
 
             /**
              * @throw std::runtime_error will be thrown. The specific information

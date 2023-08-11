@@ -3,7 +3,8 @@
 
 #include "utility/macro.h"
 #include "utility/ipc/socket.h"
-#include "utility/ipc/message.h"
+#include "utility/ipc/sent_message.h"
+#include "utility/ipc/received_stream_message.h"
 #include "utility/ipc/tcp_socket.h"
 
 
@@ -23,13 +24,13 @@ namespace utility::ipc
          * @throw std::runtime_error will be thrown. The specific information
          * can be known in the chosen message queue manual.
          */
-        void Send(const Message &msg);
+        void Send(const SentMessage &msg);
 
         /**
          * @throw std::runtime_error will be thrown. The specific information
          * can be known in the chosen message queue manual.
          */
-        std::unique_ptr<Message> Receive();
+        std::unique_ptr<ReceivedStreamMessage> Receive();
         void Disconnect();
         Status GetStatus()const noexcept;
 

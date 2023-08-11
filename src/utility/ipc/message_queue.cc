@@ -61,9 +61,9 @@ namespace utility::ipc
         return res;
     }
 
-    void MessageQueue::Send(const Message &msg, uint priority)
+    void MessageQueue::Send(const SentMessage &msg, uint priority)
     {
-        auto msg_ptr = msg.Rawdata();
+        auto msg_ptr = msg.Data();
         if (mq_send(mqdes_, msg_ptr.get(), msg.Size(), priority) < 0)
             throw std::runtime_error(FormatString("MessageQueue-send: %s", 128,
                                                   strerror(errno)));
@@ -74,14 +74,16 @@ namespace utility::ipc
         using namespace std;
 
         uint prio;
-        unique_ptr<char[]> buf(new char[msgsize_]);
+        std::unique_ptr<char> buf(new char[msgsize_]);
         ssize_t recv_size;
+
         if ((recv_size = mq_receive(mqdes_, buf.get(), msgsize_, &prio)) < 0)
             throw runtime_error(FormatString("MessageQueue-reiceive: %s", 128,
                                              strerror(errno)));
 
-        unique_ptr<ReceiveReturnType> res =
-            make_unique<ReceiveReturnType>(static_cast<const void *>(buf.get()), prio);
+        ReceivedBoundaryMessage msg(std::move(buf));
+
+        unique_ptr<ReceiveReturnType> res = make_unique<ReceiveReturnType>(msg, prio);
         return res;
     }
 

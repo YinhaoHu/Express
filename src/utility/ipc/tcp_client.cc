@@ -24,7 +24,7 @@ namespace utility::ipc
 
         for (p = list; p != nullptr; p = p->ai_next)
         {
-            socket_.Connect(*(p->ai_addr), sizeof(p->ai_addrlen));
+            socket_.Connect(*(p->ai_addr), p->ai_addrlen);
             break;
         }
 
@@ -36,27 +36,23 @@ namespace utility::ipc
         Disconnect();
     }
  
-    void TCPClient::Send(const Message &msg)
-    {
-        auto size = msg.Size();
-        auto data = msg.Rawdata().get();
-        socket_.Send(data, size);
+    void TCPClient::Send(const SentMessage &msg)
+    { 
+        socket_.Send(msg.Data().get(), msg.Size());
     }
 
-    std::unique_ptr<Message> TCPClient::Receive()
+    std::unique_ptr<ReceivedStreamMessage> TCPClient::Receive()
     { 
-        auto header_size = Message::Header::Size();
-        char* header_buf = new char[header_size];
+        shared_ptr<ReceivedStreamMessage::Header> spHeader;
 
-        socket_.Receive(header_buf,header_size);
-        unique_ptr<Message> res(make_unique<Message>(header_buf));
+        socket_.Receive(spHeader->GetData(), spHeader->Size(), MSG_WAITALL);
 
-        auto body_size = res->GetHeaderField(Message::HeaderField::KBodySize);
+        ReceivedStreamMessage msg(spHeader);
 
-        char* body_buf = new char[body_size];
-        res->SetFields(body_buf);
+        socket_.Receive(msg.GetBodyHandler().get(), spHeader->body_size, MSG_WAITALL);
+        msg.ValidateBody();
 
-        return res;
+        return std::make_unique<ReceivedStreamMessage>(msg);
     }
 
     void TCPClient::Disconnect()
