@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/wait.h>
+#include <sys/mman.h>
 
 using namespace std;
 using namespace express::utility;
@@ -140,6 +141,17 @@ static void test_tcp()
 {  
     const char* ip_address = "127.0.0.1", *port = "32993";
 
+    // Synchronization preparation
+    const string shm_name("/test_tcp");
+    size_t sm_area_size = sizeof(uint64_t);
+    int sm_fd = shm_open(shm_name.c_str(), O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+    if(sm_fd < 0)
+    {
+        perror("test_tcp, shared memory");
+        exit(EXIT_FAILURE);
+    }
+    ftruncate(sm_fd, sm_area_size);   
+
     const string comm_data("Hello,Express!");
     const size_t comm_data_size = comm_data.size() +1;
     const uint32_t comm_code = 1234;
@@ -153,8 +165,12 @@ static void test_tcp()
         exit(EXIT_FAILURE);
     }
     else if(pid  == 0)  // Child.
-    { 
-        sleep(1);
+    {    
+        uint64_t* ptr = (uint64_t*)mmap(nullptr, sm_area_size, PROT_READ| PROT_WRITE,
+            MAP_SHARED, sm_fd, 0);
+
+        while(*ptr != 1);
+
         for(size_t count = 0; count < num_of_test; ++count )
         { 
             TCPClient client(InternetProtocol::kIPv4, ip_address, port);
@@ -165,15 +181,18 @@ static void test_tcp()
             client.Send(msg);  
         } 
 
-
         exit(EXIT_SUCCESS);
     }
     else //Parent
     {
+        uint64_t* ptr = (uint64_t*)mmap(nullptr, sm_area_size, PROT_READ| PROT_WRITE,
+            MAP_SHARED, sm_fd, 0);
+        
         using Message = ReceivedStreamMessage;
 
         size_t test_count = 0;
         TCPServer server(port, InternetProtocol::kIPv4);  
+        *ptr = 1; // Tell child process to start.
         while(test_count < num_of_test)
         {
             if(!server.HasPendingConnections())
@@ -202,6 +221,7 @@ static void test_tcp()
         server.Close(); 
 
         wait(nullptr);
+        shm_unlink(shm_name.c_str());
         exit(EXIT_FAILURE);
     }
 }
