@@ -3,8 +3,8 @@
 
 #include "utility/macro.h"
 #include "utility/data/rawdata.h"
-#include "utility/ipc/socket.h"
-#include <memory>
+#include "utility/ipc/basic_socket.h"
+#include "utility/ipc/socket.h" 
 
 _START_EXPRESS_NAMESPACE_
 
@@ -15,63 +15,24 @@ namespace utility
         /**
          * @brief A tcp socket wrapper class.
          */
-        class TCPSocket
+        class TCPSocket :public BasicSocket
         {
         public:
             /**
              * @throw std::runtime_error will be thrown when system call set errno.
              */
-            TCPSocket(InternetProtocol ip_version);
-            TCPSocket(Socket sockfd);
+            TCPSocket(InternetProtocol ip_version)
+                :BasicSocket(SystemIPConstant(ip_version), SOCK_STREAM)
+            {
 
-            ~TCPSocket();
-            void Close();
+            }
+            TCPSocket(Socket sockfd)
+                :BasicSocket(sockfd)
+            {
 
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-            ssize_t Send(const char *buf, size_t size, int flag = 0);
+            }
 
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-            ssize_t Receive(void *buf, size_t size, int flag = 0);
-
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-            void SetOption(int opt, const void *pval, socklen_t len);
-
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-            socklen_t GetOption(int opt, void *pval);
-
-            Socket GetSocket() const noexcept;
-
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-
-            void Connect(const sockaddr &addr, socklen_t addr_len);
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-
-            void Bind(const sockaddr &addr, socklen_t addr_len);
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-            void Listen(int backlog = SOMAXCONN);
-            
-            /**
-             * @throw std::runtime_error will be thrown when system call set errno.
-             */
-            Socket Accept();
-
-        private:
-            bool closed_;
-            Socket socket_;
+            ~TCPSocket() = default;
         };
     }
 }

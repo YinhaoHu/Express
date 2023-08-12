@@ -33,7 +33,7 @@ namespace utility::ipc
             socket_.SetOption(SO_RCVTIMEO, &timeout, sizeof(timeout));
             socket_.SetOption(SO_REUSEADDR, &enable_reuseaddr, sizeof(enable_reuseaddr));
 
-            socket_.Bind(static_cast<sockaddr>(*(p->ai_addr)), p->ai_addrlen);
+            socket_.Bind(*(p->ai_addr));
 
             break;
         }

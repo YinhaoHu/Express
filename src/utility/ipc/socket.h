@@ -7,8 +7,11 @@
 
 using Socket = int;
 #include <sys/socket.h>
+#include <sys/sendfile.h>
+#include <sys/un.h>
 #include <netdb.h>
-
+#include <unistd.h>
+#include <fcntl.h>
 #else
 
 using Socket = SOCKET;
@@ -20,9 +23,11 @@ _START_EXPRESS_NAMESPACE_
 
 namespace utility::ipc
 { 
-    enum class InternetProtocol{ kAny, kIPv4,kIPv6};
+    enum class InternetProtocol{ kAny , kIPv4 ,kIPv6 };
+    enum class SocketType{Stream , Datagram };
 
     int SystemIPConstant(InternetProtocol ip);
+    int SystemSocketTypeConstant(SocketType type);
 }
 
 

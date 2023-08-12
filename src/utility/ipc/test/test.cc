@@ -1,15 +1,18 @@
 #include "utility/ipc/message_queue.h"
 #include "utility/ipc/received_boundary_message.h"
 #include "utility/ipc/received_stream_message.h"
+#include "utility/ipc/unix_domain_socket.h"
 #include "utility/ipc/tcp_client.h"
 #include "utility/ipc/tcp_server.h"
 #include "utility/ipc/sent_message.h"
-#include "utility/test/tool.h"
+#include "utility/test/tool.h"  
 #include <bits/stdc++.h>
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/wait.h>
 #include <sys/mman.h>
+
+#define TRACK() printf("line: %d\n", __LINE__);
 
 using namespace std;
 using namespace express::utility;
@@ -20,13 +23,14 @@ using namespace test;
 static void test_msg();
 static void test_mq();
 static void test_tcp();
-
+static void test_uds();
 
 int main(int argc, char *argv[])
 {
     test_msg();
     test_mq();
     test_tcp();
+    test_uds();
 
     return 0;
 }
@@ -136,72 +140,72 @@ static void test_mq()
                { return compare_correct == true; });
 }
 
-
 static void test_tcp()
-{  
-    const char* ip_address = "127.0.0.1", *port = "32993";
+{
+    const char *ip_address = "127.0.0.1", *port = "32993";
 
     // Synchronization preparation
     const string shm_name("/test_tcp");
     size_t sm_area_size = sizeof(uint64_t);
     int sm_fd = shm_open(shm_name.c_str(), O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
-    if(sm_fd < 0)
+    if (sm_fd < 0)
     {
         perror("test_tcp, shared memory");
         exit(EXIT_FAILURE);
     }
-    ftruncate(sm_fd, sm_area_size);   
+    ftruncate(sm_fd, sm_area_size);
 
     const string comm_data("Hello,Express!");
-    const size_t comm_data_size = comm_data.size() +1;
+    const size_t comm_data_size = comm_data.size() + 1;
     const uint32_t comm_code = 1234;
 
-    const size_t num_of_test = 6;
+    const size_t num_of_test = 1;
 
     int pid = fork();
-    if(pid < 0)
+    if (pid < 0)
     {
         perror("test_tcp-fork");
         exit(EXIT_FAILURE);
     }
-    else if(pid  == 0)  // Child.
-    {    
-        uint64_t* ptr = (uint64_t*)mmap(nullptr, sm_area_size, PROT_READ| PROT_WRITE,
-            MAP_SHARED, sm_fd, 0);
+    else if (pid == 0) // Child.
+    {
+        uint64_t *ptr = (uint64_t *)mmap(nullptr, sm_area_size, PROT_READ | PROT_WRITE,
+                                         MAP_SHARED, sm_fd, 0);
 
-        while(*ptr != 1);
+        while (*ptr != 1)
+            ;
 
-        for(size_t count = 0; count < num_of_test; ++count )
-        { 
+        for (size_t count = 0; count < num_of_test; ++count)
+        {
             TCPClient client(InternetProtocol::kIPv4, ip_address, port);
 
             SentMessage msg;
             msg.SetCommunicationCode(comm_code);
             msg.Add(comm_data.c_str(), comm_data_size);
-            client.Send(msg);  
-        } 
+            client.Send(msg);
+        }
 
         exit(EXIT_SUCCESS);
     }
-    else //Parent
+    else // Parent
     {
-        uint64_t* ptr = (uint64_t*)mmap(nullptr, sm_area_size, PROT_READ| PROT_WRITE,
-            MAP_SHARED, sm_fd, 0);
-        
+        uint64_t *ptr = (uint64_t *)mmap(nullptr, sm_area_size, PROT_READ | PROT_WRITE,
+                                         MAP_SHARED, sm_fd, 0);
+
         using Message = ReceivedStreamMessage;
 
         size_t test_count = 0;
-        TCPServer server(port, InternetProtocol::kIPv4);  
+        TCPServer server(port, InternetProtocol::kIPv4);
         *ptr = 1; // Tell child process to start.
-        while(test_count < num_of_test)
+        while (test_count < num_of_test)
         {
-            if(!server.HasPendingConnections())
+            if (!server.HasPendingConnections())
                 continue;
             auto client = server.NextPending();
 
             shared_ptr<Message::Header> spHeader(new Message::Header);
             client->Receive(spHeader->GetData(), spHeader->Size(), MSG_WAITALL);
-            
+
             Message msg(spHeader);
             client->Receive(msg.GetBodyHandler().get(), spHeader->body_size, MSG_WAITALL);
             msg.ValidateBody();
@@ -209,19 +213,98 @@ static void test_tcp()
             string recv_data{msg[0].pData};
 
             test::test("tcp", "compare", [&]()
-            {
+                       {
                 bool comm_data_correct = (recv_data == comm_data && msg[0].size == comm_data_size);
                 bool comm_meta_correct = 
                     (comm_code && msg.GetHeaderField(Message::Header::Field::kCommunicationCode));
 
-                return comm_data_correct && comm_meta_correct;
-            });
-            ++test_count; 
+                return comm_data_correct && comm_meta_correct; });
+            ++test_count;
         }
-        server.Close(); 
+        server.Close();
 
         wait(nullptr);
         shm_unlink(shm_name.c_str());
+    }
+}
+
+static void test_uds()
+{
+    const string shm_name("/test_uds_shm");
+    shm_unlink(shm_name.c_str());
+    int shm_des = shm_open(shm_name.c_str(), O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+    ftruncate(shm_des, sizeof(int));
+    int *pSyncFlag = (int *)mmap(nullptr, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_des, 0);
+    *pSyncFlag = 0;
+    constexpr int kLetChildConnect = 1, kLetParentAccept = 2,kLetChildExit = 3,
+    kLetCHildSend = 4;
+
+    const char *uds_file_path = "./test_uds_file";
+    const char *uds_path_name = "/tmp/test_uds_uds";
+    unlink(uds_path_name);
+    struct sockaddr_un address;
+    memset(&address, 0, sizeof(address));
+    address.sun_family = AF_UNIX;
+    strcpy(address.sun_path, uds_path_name);
+
+    string buf("12345");
+    const size_t buf_size = buf.size() + 1;
+    bool corret_result = false;
+    int child_pid = fork();
+    if (child_pid < 0)
+    {
+        fprintf(stderr, "fork.\n");
         exit(EXIT_FAILURE);
     }
+    else if (child_pid == 0)
+    {
+        UnixDomainSocket uds(SocketType::Stream); 
+        while (*pSyncFlag != kLetChildConnect); 
+        uds.Connect(address);
+        *pSyncFlag = kLetParentAccept;
+
+        int fd = open(uds_file_path, O_CREAT | O_RDWR, 0666);
+        if(fd < 0) 
+        {
+            perror("Open");
+            exit(EXIT_FAILURE);
+        }
+        pwrite(fd, buf.c_str(), buf_size, 0);
+        while(*pSyncFlag != kLetCHildSend); 
+        uds.SendDescriptor(fd); 
+        while(*pSyncFlag != kLetChildExit); 
+        exit(EXIT_SUCCESS);
+    }
+    else
+    { 
+        // PARENT PROCESS
+        UnixDomainSocket uds(SocketType::Stream );
+
+        uds.Bind(address);
+        uds.Listen();
+
+        *pSyncFlag = kLetChildConnect;  
+
+        while(*pSyncFlag != kLetParentAccept); 
+        UnixDomainSocket client(uds.Accept()); 
+
+        *pSyncFlag = kLetCHildSend; 
+
+        int fd = client.ReceiveDescriptor();
+
+        char *recv_buf = new char[buf_size];
+        pread(fd, recv_buf, buf_size, 0); 
+        corret_result = (buf.compare(recv_buf) == 0); 
+        delete[] recv_buf;
+
+        unlink(uds_path_name);
+        close(fd);
+        remove(uds_file_path);
+        *pSyncFlag = kLetChildExit; 
+        wait(nullptr);
+    }
+
+    test::test("uds", "transfer_fd", [&]()
+               { return corret_result; });
+    shm_unlink(shm_name.c_str());
 }

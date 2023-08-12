@@ -51,7 +51,7 @@ UTIL_IPC_SRC_DIR := ./src/utility/ipc/
 
 ALL_TARGETS += $(UTIL_IPC_TEST_TARGET)
 
-UTIL_IPC_TEST_SRC := test/test.cc message_queue.cc tcp_client.cc tcp_socket.cc \
+UTIL_IPC_TEST_SRC := test/test.cc message_queue.cc tcp_client.cc  basic_socket.cc\
 					tcp_server.cc socket.cc
 UTIL_IPC_TEST_SRCS := $(addprefix $(UTIL_IPC_SRC_DIR),$(UTIL_IPC_TEST_SRC))
 UTIL_IPC_TEST_OBJS = $(UTIL_IPC_TEST_SRCS:%=$(BUILD_DIR)/%.o)

@@ -2,22 +2,19 @@
                             DEVELOPMENT             LOG                      
 ===============================================================================
 
-* Member: Hoo
+#  Member: Hoo
 
 // TODO 
 
-1. Server closes the connection which has no client request for a long time.
+* Server closes the connection which has no client request for a long time.
 
-2. class Message:
-    * Modify Add(): using memcpy to add data.
-    * Delete Delete(): This will not be used anymore in the new implementation.
-    * Constructor(): delete the communication_code initialization parameter for 
-                     removing ambiguous.
-    * Add SetCommunicationCode().
-    * If frequently transfer huge message in the future, consider SpeedSend.
 
-3.  class TCPSocket:
-    * Add Sendfile()
+*  class  UnixSocket:
+    - Send file desciptor
 
-4.  class  UnixSocket:
-    * Send file desciptor.
+*   Script for easy building: 
+    - Each target shares the same template, so consider writing a python
+      script to do that chore.
+
+*  class SentMessage:
+    - In stream channel, consider CORK to tune performance insteand of Data().

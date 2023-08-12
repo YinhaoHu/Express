@@ -20,4 +20,19 @@ namespace express::utility::ipc
         }
         return af;
     }
+
+    int SystemSocketTypeConstant(SocketType type)
+    {
+        int sock_type;
+        switch(type)
+        {
+            case SocketType::Stream:
+                sock_type = SOCK_STREAM;
+                break;
+            case SocketType::Datagram:
+                sock_type = SOCK_DGRAM;
+                break;
+        }
+        return sock_type;
+    }
 }

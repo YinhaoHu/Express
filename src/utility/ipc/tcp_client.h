@@ -31,12 +31,26 @@ namespace utility::ipc
          * can be known in the chosen message queue manual.
          */
         std::unique_ptr<ReceivedStreamMessage> Receive();
-        void Disconnect();
-        Status GetStatus()const noexcept;
+
+        void Disconnect() noexcept;
+
+        /**
+         * @throw std::runtime_error will be thrown in the two cases.
+         * Case1: The error from system related socket functions.
+         * Case2: The client is connected to server.
+         */
+        void Reconnect();
+
+        Status GetStatus();
+
+    private:
+        void ConnectToServer();
 
     private:
         TCPSocket socket_;
         Status status_;
+        std::unique_ptr<std::string> spAddress_, spPort_;
+        InternetProtocol ip_version_;
     };
 }
 

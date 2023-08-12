@@ -19,17 +19,17 @@ namespace utility
          * @note This message should be sent before all data from user is deleted.
          * The object has no ownership of the memory from Add() called by the user.
          *
-         * @example 
+         * @example
          *  string arg1("Hello.");
-         * 
-         *  uint32_t comm_code = 32993;  
-         * 
+         *
+         *  uint32_t comm_code = 32993;
+         *
          *  SentMessage msg;
-         * 
+         *
          *  msg.SetCommunicationCode(comm_code);
-         * 
+         *
          *  msg.Add(arg1.c_str(), arg1.size() + 1);
-         *  
+         *
          *  IPC_channel.send(msg);
          */
         class SentMessage : public AbstractMessage
@@ -74,11 +74,6 @@ namespace utility
                 }
 
                 return res;
-            }
-
-            size_t Size() const noexcept
-            {
-                return spHeader_->Size() + spHeader_->body_size;
             }
         };
 
