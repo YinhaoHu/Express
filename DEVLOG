@@ -7,11 +7,7 @@
 // TODO 
 
 * Server closes the connection which has no client request for a long time.
-
-
-*  class  UnixSocket:
-    - Send file desciptor
-
+ 
 *   Script for easy building: 
     - Each target shares the same template, so consider writing a python
       script to do that chore.
