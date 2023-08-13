@@ -1,13 +1,12 @@
 #include "spec.h"
 
 
-static void process_message(Message& msg, uint priority)
+static void process_message(ReceivedBoundaryMessage& msg, uint priority)
 {
-    auto body = msg.Body();
-    auto field_pointer = body->at(0).pointer;
-    auto field_size = body->at(0).size;
+    auto field_pointer = msg[0].pData;  // New
+    auto field_size = msg[0].size;      // New
  
-    string str(static_cast<const char*>(field_pointer));
+    string str(field_pointer);
 
     print(FormatString("Receive: %s (nbytes = %ld length = %ld priority = %d)\n", 128,
          str.c_str(), field_size, str.size(), priority));
@@ -31,7 +30,8 @@ int main(int argc, char *argv[])
 
         try
         {
-            if(msg.GetHeaderField(Message::HeaderField::kCommunicationCode) == 0)
+            if(msg.GetHeaderField(
+                    ReceivedBoundaryMessage::Header::Field::kCommunicationCode) == 0)
                 process_message(msg,prio);
             else 
                 continue;

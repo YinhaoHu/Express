@@ -47,7 +47,8 @@ static void test_msg()
 
     auto test_boundary_msg = [&]()
     {
-        auto ipc_data = sent_msg.Data();
+        auto ipc_data = sent_msg.MessageData();
+
         ReceivedBoundaryMessage rb_msg(std::move(ipc_data));
         string rcv_arg1((char *)rb_msg[0].pData);
         int64_t rcv_arg2 = *(int64_t *)(rb_msg[1].pData);
@@ -59,15 +60,27 @@ static void test_msg()
     auto test_stream_msg = [&]()
     {
         using MSG = ReceivedStreamMessage;
-        auto ipc_data = sent_msg.Data();
+        auto ipc_data = sent_msg.StreamData();
 
+        size_t ipc_data_size =sent_msg.Size();
+        std::unique_ptr<char[]> ipc_data_buf = make_unique<char[]>(ipc_data_size);
+
+        memcpy(ipc_data_buf.get(), ipc_data->at(0).pData, ipc_data->at(0).size);
+        for(size_t offset = MSG::Header::Size(), i = 1; i<ipc_data->size();i++ )
+        {
+            memcpy(ipc_data_buf.get()+offset,&(ipc_data->at(i).size),sizeof(size_t));
+            offset += sizeof(size_t);
+            memcpy(ipc_data_buf.get()+offset,ipc_data->at(i).pData,ipc_data->at(i).size); 
+            offset += ipc_data->at(i).size;
+        }  
+ 
         std::shared_ptr<MSG::Header> spHeader(new MSG::Header);
 
-        memcpy(spHeader->GetData(), ipc_data.get(), spHeader->Size());
+        memcpy(spHeader->GetData(), ipc_data_buf.get(), spHeader->Size());
 
         MSG msg(spHeader);
         auto body_handler = msg.GetBodyHandler();
-        memcpy(body_handler.get(), ipc_data.get() + spHeader->Size(), spHeader->body_size);
+        memcpy(body_handler.get(), ipc_data_buf.get() + spHeader->Size(), spHeader->body_size);
         msg.ValidateBody();
         string rcv_arg1((char *)msg[0].pData);
         int64_t rcv_arg2 = *(int64_t *)(msg[1].pData);
@@ -210,7 +223,7 @@ static void test_tcp()
             msg.ValidateBody();
 
             string recv_data{msg[0].pData};
-
+            
             test::test("tcp", "compare", [&]()
                        {
                 bool comm_data_correct = (recv_data == comm_data && msg[0].size == comm_data_size);

@@ -7,6 +7,12 @@
 #include <vector>
 #include <stdexcept>
 
+#ifdef __linux
+#include <sys/uio.h>
+#else 
+#error "Provide the implementation of SentMessage::Data() on Windows."
+#endif
+
 _START_EXPRESS_NAMESPACE_
 
 namespace utility
@@ -33,12 +39,15 @@ namespace utility
          *  IPC_channel.send(msg);
          */
         class SentMessage : public AbstractMessage
-        {
+        { 
         private:
-            std::unique_ptr<std::vector<Field>> spFeilds;
+            std::shared_ptr<std::vector<Field>> spData;
 
         public:
-            SentMessage() : spFeilds(new std::vector<Field>){};
+            SentMessage() : spData(new std::vector<Field>)
+            {
+                spData->emplace_back(reinterpret_cast<const char*>(spHeader_.get()), spHeader_->Size());
+            };
             ~SentMessage() = default;
 
             void Add(const char *pData, size_t size)
@@ -46,7 +55,7 @@ namespace utility
                 spHeader_->body_size += size + sizeof(size_t);
                 spHeader_->num_of_fields++;
 
-                spFeilds->emplace_back(pData, size);
+                spData->emplace_back(pData, size);
             }
 
             void SetCommunicationCode(uint32_t comm_code)
@@ -54,9 +63,20 @@ namespace utility
                 spHeader_->communication_code = comm_code;
             }
 
-            std::unique_ptr<char> Data() const
+            /**
+             * @note Used for stream IPC channels.
+            */
+            std::shared_ptr<std::vector<Field>> StreamData()const
             {
-                std::unique_ptr<char> res(new char[this->Size()]);
+                return spData;
+            }
+
+            /**
+             * @note Used for bounded IPC channels.
+            */
+            std::unique_ptr<char[]> MessageData() const
+            {
+                std::unique_ptr<char[]> res(new char[this->Size()]);
 
                 auto p = res.get();
                 size_t offset = 0;
@@ -65,7 +85,7 @@ namespace utility
                 offset += spHeader_->Size();
                 for (size_t i = 0; i < spHeader_->num_of_fields; ++i)
                 {
-                    auto &item = spFeilds->at(i);
+                    auto &item = spData->at(i+1);
 
                     memcpy(p + offset, &item.size, sizeof(item.size));
                     offset += sizeof(item.size);

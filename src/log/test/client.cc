@@ -10,10 +10,11 @@ int main(int argc, char *argv[])
     }
 
     MessageQueue mq(mqname, maxmsg, msgsize);
-    Message msg(static_cast<uint>(0));
+    SentMessage msg;
     
     string data(argv[1]);
 
+    msg.SetCommunicationCode(0); // New.
     msg.Add(data.c_str(), data.size() + 1);  
     mq.Send(msg, 0);
 

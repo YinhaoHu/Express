@@ -20,27 +20,7 @@ $(HELP_TARGET):
 	@echo "To build any available target, type :make <target>"
 	@echo "All available targets until now are listed below:"
 	@echo $(foreach target,$(ALL_TARGETS),"\r* $(target)\n")
-
-
-# ==========================================================
-#						Utility			
-# Targets: test-util, util
-# ==========================================================
-# TODO This target is deprecated and remaines to be updated.
-UTIL_TEST_TARGET := test-util
-UTIL_SRC_DIR := ./src/utility/
-
-ALL_TARGETS += $(UTIL_TEST_TARGET)
-
-UTIL_TEST_SRC := test/test.cc ipc/message.cc 
-UTIL_TEST_SRCS := $(addprefix $(UTIL_SRC_DIR),$(UTIL_TEST_SRC))
-UTIL_TEST_OBJS = $(UTIL_TEST_SRCS:%=$(BUILD_DIR)/%.o)
-
-.PHONY += UTIL_TEST_TARGET
-$(UTIL_TEST_TARGET) : $(UTIL_TEST_OBJS)
-	mkdir -p $(BIN_DIR)
-	$(CXX) $(UTIL_TEST_OBJS) -o $(BIN_DIR)/$@
-	@echo "\033[0;37mGenerated utility test program $(BIN_DIR)/$@\033[0m"
+ 
 
 # ==========================================================
 #						Utility-IPC			
@@ -52,7 +32,7 @@ UTIL_IPC_SRC_DIR := ./src/utility/ipc/
 ALL_TARGETS += $(UTIL_IPC_TEST_TARGET)
 
 UTIL_IPC_TEST_SRC := test/test.cc message_queue.cc tcp_client.cc  basic_socket.cc\
-					tcp_server.cc socket.cc
+					tcp_server.cc socket.cc unix_domain_socket.cc
 UTIL_IPC_TEST_SRCS := $(addprefix $(UTIL_IPC_SRC_DIR),$(UTIL_IPC_TEST_SRC))
 UTIL_IPC_TEST_OBJS = $(UTIL_IPC_TEST_SRCS:%=$(BUILD_DIR)/%.o)
 
@@ -73,15 +53,15 @@ ALL_TARGETS += $(LOG_TEST_TARGET)
 ALL_TARGETS += $(LOG_TEST_CLIENT_TARGET)
 LOG_SRC_DIR := ./src/log/
 
-LOG_RELY_ON_UTIL = ipc/message.cc ipc/message_queue.cc ipc/signal.cc
+LOG_RELY_ON_UTIL = message_queue.cc signal.cc  
 
 LOG_TEST_SRC_FILES := test/server.cc
 LOG_TEST_SRCS = $(addprefix $(LOG_SRC_DIR),$(LOG_TEST_SRC_FILES)) \
-				$(addprefix $(UTIL_SRC_DIR),$(LOG_RELY_ON_UTIL))
+				$(addprefix $(UTIL_IPC_SRC_DIR),$(LOG_RELY_ON_UTIL))
 
 LOG_TEST_CLIENT_SRC_FILES := test/client.cc
 LOG_TEST_CLIENT_SRCS = $(addprefix $(LOG_SRC_DIR),$(LOG_TEST_CLIENT_SRC_FILES)) \
-						$(addprefix $(UTIL_SRC_DIR),$(LOG_RELY_ON_UTIL))
+						$(addprefix $(UTIL_IPC_SRC_DIR),$(LOG_RELY_ON_UTIL))
 
 LOG_TEST_OBJS := $(LOG_TEST_SRCS:%=$(BUILD_DIR)/%.o)
 LOG_TEST_CLIENT_OBJS := $(LOG_TEST_CLIENT_SRCS:%=$(BUILD_DIR)/%.o)

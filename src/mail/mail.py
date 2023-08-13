@@ -8,16 +8,16 @@
 from smtplib import SMTP_SSL
 
 # input_ fields are remained to be filled by the user component.
-input_content = ""
-input_receiver_email = "15086980586@qq.com"
+input_content = ""                          # Runtime Item
+input_receiver_email = "15086980586@qq.com" # Runtime Item
 
-email_server_host = "smtp.qq.com"
-email_server_port = 465
-email_server_login_name = "976693458@qq.com"
-email_server_login_code = "kiymfnhpoqeubdia"
+email_server_host = "smtp.qq.com"            # Configuration Item
+email_server_port = 465                      # Configuration Item
+email_server_login_name = "976693458@qq.com" # Configuration Item
+email_server_login_code = "kiymfnhpoqeubdia" # Configuration Item
 
 
-subject = "Centhoo | No reply"
+subject = "Centhoo | No reply"               # Configuration Item.
 receiver = input_receiver_email
 content = input_content
 message = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n%s\r\n\r\n"\

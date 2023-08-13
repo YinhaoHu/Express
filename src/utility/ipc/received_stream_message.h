@@ -39,7 +39,7 @@ namespace utility
         private:
             bool body_validation_;
             std::shared_ptr<std::vector<Field>> spFields_;
-            std::shared_ptr<char> spBody_;
+            std::shared_ptr<char[]> spBody_;
 
         public:
             /**
@@ -48,9 +48,8 @@ namespace utility
              */
             ReceivedStreamMessage(std::shared_ptr<Header> spheader)
                 : AbstractMessage(spheader), body_validation_(false),
-                  spFields_(new std::vector<Field>), spBody_(nullptr)
-            {
-                spBody_.reset(new char[spheader->body_size]);
+                  spFields_(new std::vector<Field>), spBody_(new char[spheader->body_size])
+            { 
             }
             
             ReceivedStreamMessage(const ReceivedStreamMessage& other)
@@ -65,7 +64,7 @@ namespace utility
             /**
              * Used to receive data from IPC channel.
             */
-            std::shared_ptr<char> GetBodyHandler()
+            std::shared_ptr<char[]> GetBodyHandler()
             {
                 return spBody_;
             }

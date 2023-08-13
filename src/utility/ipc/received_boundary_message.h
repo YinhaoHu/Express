@@ -33,13 +33,13 @@ namespace utility
         {
         private:
             std::shared_ptr<std::vector<Field>> spFields_;
-            std::shared_ptr<char> spFullMessage_;
+            std::shared_ptr<char[]> spFullMessage_;
 
         public:
             /**
              * Construct from IPC data whose ownership should be transferred.
              */
-            ReceivedBoundaryMessage(std::unique_ptr<char> spFullMessage)
+            ReceivedBoundaryMessage(std::unique_ptr<char[]> spFullMessage)
                 : AbstractMessage(), spFields_(new std::vector<Field>),
                   spFullMessage_(std::move(spFullMessage))
             {

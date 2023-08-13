@@ -8,9 +8,16 @@
 
 * Server closes the connection which has no client request for a long time.
  
-*   Script for easy building: 
+* Script: build_copilot.py
     - Each target shares the same template, so consider writing a python
       script to do that chore.
 
 *  class SentMessage:
     - In stream channel, consider CORK to tune performance insteand of Data().
+
+* Finish the basic IPC utilities on 13th. Think more in the coding and project
+    management.
+
+* Notice the chores that encountered in testing and the compilation time. (Consider
+    write the implementation in the header file only in the case where the class
+    is so simple or/and in performance critical situation.)

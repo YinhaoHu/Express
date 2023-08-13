@@ -24,7 +24,21 @@ namespace utility::ipc
  
     void TCPClient::Send(const SentMessage &msg)
     { 
-        socket_.Send(msg.Data().get(), msg.Size());
+        const auto& spData = * msg.StreamData();  
+
+        socket_.Send(spData[0].pData, spData[0].size, MSG_MORE);
+
+        size_t last_idx = spData.size() - 1;
+        for(size_t i = 1; i < last_idx; ++i)
+        {
+            socket_.Send(reinterpret_cast<const char*>(&(spData[i].size)), 
+                sizeof(spData[i].size), MSG_MORE);
+            socket_.Send(spData[i].pData, spData[i].size,  MSG_MORE );
+        }
+        
+        socket_.Send(reinterpret_cast<const char*>(&(spData[last_idx].size)), 
+            sizeof(spData[last_idx].size), MSG_MORE);
+        socket_.Send(spData[last_idx].pData, spData[last_idx].size, MSG_WAITALL);
     }
 
     std::unique_ptr<ReceivedStreamMessage> TCPClient::Receive()
