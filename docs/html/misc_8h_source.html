@@ -90,48 +90,62 @@ $(document).ready(function(){initNavTree('misc_8h_source.html',''); initResizabl
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _EXPRESS_UTILITY_MISC_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">macro.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="signal_8h.html">signal.h</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;system_error&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;format&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="signal_8h.html">signal.h</a>&gt;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceutility.html">utility</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespaceutility_1_1misc.html">   14</a></span>&#160;    <span class="keyword">namespace </span>misc</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">static</span> std::string FormatString(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, <span class="keywordtype">size_t</span> maxlen, Ts &amp;&amp;...args)</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            <span class="keywordtype">char</span> *buf = <span class="keyword">new</span> <span class="keywordtype">char</span>[maxlen]{0};</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            snprintf(buf, maxlen, format, std::forward&lt;Ts&gt;(args)...);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            std::string str(buf);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keyword">delete</span>[] buf;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">return</span> str;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">   27</a></span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">print</a>(std::string &amp;&amp;format_str)</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            printf(<span class="stringliteral">&quot;%s&quot;</span>, format_str.c_str());</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="namespaceutility_1_1misc.html#aac6e74edeef7bf1576a01940d8293d6e">   32</a></span>&#160;        <span class="keyword">inline</span> std::string <a class="code" href="namespaceutility_1_1misc.html#aac6e74edeef7bf1576a01940d8293d6e">ErrorString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *where)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="keywordflow">return</span> FormatString(<span class="stringliteral">&quot;%s: %s&quot;</span>, 256, where, strerror(errno));</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="misc_8h.html#a775648ff7538462aab57e046cca76327">   12</a></span>&#160;<span class="preprocessor">#define SYSTEM_ERROR_INFO(where_cstring) __FILE__,__LINE__,where_cstring  </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceutility.html">utility</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespaceutility_1_1misc.html">   18</a></span>&#160;    <span class="keyword">namespace </span>misc</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Ts&gt;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">static</span> std::string FormatString(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, <span class="keywordtype">size_t</span> maxlen, Ts &amp;&amp;...args)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordtype">char</span> *buf = <span class="keyword">new</span> <span class="keywordtype">char</span>[maxlen]{0};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            snprintf(buf, maxlen, format, std::forward&lt;Ts&gt;(args)...);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            std::string str(buf);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">delete</span>[] buf;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="keywordflow">return</span> str;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">   31</a></span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">print</a>(std::string &amp;&amp;format_str)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            printf(<span class="stringliteral">&quot;%s&quot;</span>, format_str.c_str());</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="namespaceutility_1_1misc.html#aac6e74edeef7bf1576a01940d8293d6e">   36</a></span>&#160;        <span class="keyword">inline</span> std::string <a class="code" href="namespaceutility_1_1misc.html#aac6e74edeef7bf1576a01940d8293d6e">ErrorString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *where)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">return</span> FormatString(<span class="stringliteral">&quot;%s: %s&quot;</span>, 256, where, strerror(errno));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="namespaceutility_1_1misc.html#a25891b06435f0977e137eef47f341ff4">   42</a></span>&#160;        <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="namespaceutility_1_1misc.html#a25891b06435f0977e137eef47f341ff4">ThrowSystemError</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* file_name, <span class="keywordtype">int</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span>* func)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">// This is NOT error but a issue of support for format on VSCode.</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">throw</span> std::system_error(errno, std::generic_category(),</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            std::format(<span class="stringliteral">&quot;{} {} {}&quot;</span>, file_name, func, line ) </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:10</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
-<div class="ttc" id="anamespaceutility_1_1misc_html_aac6e74edeef7bf1576a01940d8293d6e"><div class="ttname"><a href="namespaceutility_1_1misc.html#aac6e74edeef7bf1576a01940d8293d6e">utility::misc::ErrorString</a></div><div class="ttdeci">std::string ErrorString(const char *where)</div><div class="ttdef"><b>Definition:</b> misc.h:32</div></div>
-<div class="ttc" id="anamespaceutility_1_1misc_html_ada3d13c4e3046829ef153d10cb914e04"><div class="ttname"><a href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">utility::misc::print</a></div><div class="ttdeci">void print(std::string &amp;&amp;format_str)</div><div class="ttdef"><b>Definition:</b> misc.h:27</div></div>
+<div class="ttc" id="anamespaceutility_1_1misc_html_a25891b06435f0977e137eef47f341ff4"><div class="ttname"><a href="namespaceutility_1_1misc.html#a25891b06435f0977e137eef47f341ff4">utility::misc::ThrowSystemError</a></div><div class="ttdeci">void ThrowSystemError(const char *file_name, int line, const char *func)</div><div class="ttdef"><b>Definition:</b> misc.h:42</div></div>
+<div class="ttc" id="anamespaceutility_1_1misc_html_aac6e74edeef7bf1576a01940d8293d6e"><div class="ttname"><a href="namespaceutility_1_1misc.html#aac6e74edeef7bf1576a01940d8293d6e">utility::misc::ErrorString</a></div><div class="ttdeci">std::string ErrorString(const char *where)</div><div class="ttdef"><b>Definition:</b> misc.h:36</div></div>
+<div class="ttc" id="anamespaceutility_1_1misc_html_ada3d13c4e3046829ef153d10cb914e04"><div class="ttname"><a href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">utility::misc::print</a></div><div class="ttdeci">void print(std::string &amp;&amp;format_str)</div><div class="ttdef"><b>Definition:</b> misc.h:31</div></div>
 <div class="ttc" id="anamespaceutility_html"><div class="ttname"><a href="namespaceutility.html">utility</a></div><div class="ttdef"><b>Definition:</b> thread_pool.h:17</div></div>
 <div class="ttc" id="asignal_8h_html"><div class="ttname"><a href="signal_8h.html">signal.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

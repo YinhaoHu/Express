@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Express Development Documentation: Main Page</title>
+<title>Express Development Documentation: Express: Documentation for Developer</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -81,11 +81,73 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Express Development Documentation Documentation</div>  </div>
+<div class="title">Express: Documentation for Developer </div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md__home_hoo_project_Express_README"></a> </p><hr  />
+<h1><a class="anchor" id="autotoc_md2"></a>
+Overview</h1>
+<p><code>Express</code> is a social software designed to facilitate self-expression in various social situations, including public interactions, communication with friends, and engagement within specific interest communities.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Business Functionality</h1>
+<p>The software offers the following fundamental functionalities:</p>
+<ul>
+<li><b>Chat with Friends</b>: Users can engage in one-on-one conversations with their friends within the application.</li>
+<li><b>Chat in a Friend Group</b>: Users have the ability to participate in group conversations with their friends.</li>
+<li><b>Post in Interest Communities</b>: Users can create and share posts within specific interest communities, fostering discussions around shared topics of interest.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Business Components</h1>
+<ul>
+<li><b>Friend System</b>: This component manages the relationship between users, enabling friend requests, acceptance, and communication.</li>
+<li><b>Community System</b>: The community system governs the creation, management, and interactions within interest-based communities.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md6"></a>
+Function Components</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Daemon</h2>
+<p>The Daemon is a background process that runs continuously, performing various tasks and services to support the functionality of the application. It takes the responsibilities to initialize the other components according to the configurations.</p>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Log</h2>
+<p>The Log component is responsible for recording important events and messages from the application. It facilitates troubleshooting and debugging efforts.</p>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Database</h2>
+<p>The DataBase component is used to store the persistent data in the software system.It is a similar table-form database but is not identical with that. It does not have any memory cache or other optimization technology in order to make it easier to implement. Its structure is visualized in <code>database-design.drawio</code>.</p>
+<h2><a class="anchor" id="autotoc_md10"></a>
+Mail Service</h2>
+<blockquote class="doxtable">
+<p>This component will be implemented by Python. </p>
+</blockquote>
+<p>The Mail Service component handles communication and notifications related to emails and messages sent within the application. One of its use is sending veritification code.</p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Workers</h2>
+<p>The Workers are responsible for executing various tasks and computations required for the application's functioning. They are part of the master-workers architecture.</p>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Monitor</h2>
+<p>The Monitor component monitors the health and performance of the application in real-time. It keeps track of system metrics and identifies potential issues or bottlenecks.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md14"></a>
+Architecture</h1>
+<p>The software is designed using a <code>microservice architecture</code>, which allows for the development of loosely coupled and independently deployable services. This architecture enhances scalability, maintainability, and resilience.</p>
+<p>Additionally, the software employs the <code>master-workers</code> pattern, which distributes tasks among multiple workers managed by a master process. This pattern optimizes performance and resource utilization.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md16"></a>
+Misccellaneous</h1>
+<h2><a class="anchor" id="autotoc_md17"></a>
+Configure File</h2>
+<p>This file should include at least the following items. And the format of each configuration item should be like<code>KEY=VALUE</code> in every line. <code>#Comment</code> should be the comment format. The least configuration items.</p>
+<ul>
+<li>Component host: local or remote</li>
+<li>Component address: IP address or IPC name. (Based on the implementation)</li>
+<li>Component port: IP port or NULL (Based on the implementation)</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md18"></a>
+Deloyed Automatically</h2>
+<p>Hassle-free experience of deloyment is what we persue. Express server is designed and should be desiged to be deloyed automatically in most effort and the server administrator can deloy it with hassle-free. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

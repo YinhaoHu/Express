@@ -106,14 +106,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad73684772dd324f763f1286c54b4ce9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a174ceeb85044ef8450edaa02cd0a3278"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a174ceeb85044ef8450edaa02cd0a3278">~TCPClient</a> ()</td></tr>
 <tr class="separator:a174ceeb85044ef8450edaa02cd0a3278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f13440a3b018840c7e19f2dd334106d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a2f13440a3b018840c7e19f2dd334106d">Send</a> (const <a class="el" href="classutility_1_1ipc_1_1Message.html">Message</a> &amp;msg)</td></tr>
-<tr class="separator:a2f13440a3b018840c7e19f2dd334106d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1272a50f817f9d9de64cf4d77e30f582"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1Message.html">Message</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a1272a50f817f9d9de64cf4d77e30f582">Receive</a> ()</td></tr>
-<tr class="separator:a1272a50f817f9d9de64cf4d77e30f582"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb496343bd01876d45a6cccd760282f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#adb496343bd01876d45a6cccd760282f8">Disconnect</a> ()</td></tr>
-<tr class="separator:adb496343bd01876d45a6cccd760282f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b7fb8b3f0646207561e156b617a6092"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#afa6138bb91614dc219b5490e7e173a3a">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a9b7fb8b3f0646207561e156b617a6092">GetStatus</a> () const noexcept</td></tr>
-<tr class="separator:a9b7fb8b3f0646207561e156b617a6092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a525c50c71d29abd289849fa65e232260"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a525c50c71d29abd289849fa65e232260">Send</a> (const <a class="el" href="classutility_1_1ipc_1_1SentMessage.html">SentMessage</a> &amp;msg)</td></tr>
+<tr class="separator:a525c50c71d29abd289849fa65e232260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e7701ddc971e44938ca3d8c11b1fbe"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a54e7701ddc971e44938ca3d8c11b1fbe">Receive</a> ()</td></tr>
+<tr class="separator:a54e7701ddc971e44938ca3d8c11b1fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3be1f5b8992d11a1effca02dbdac4c85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a3be1f5b8992d11a1effca02dbdac4c85">Disconnect</a> () noexcept</td></tr>
+<tr class="separator:a3be1f5b8992d11a1effca02dbdac4c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64b10b7deb57fae1476f0e0368915577"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a64b10b7deb57fae1476f0e0368915577">Reconnect</a> ()</td></tr>
+<tr class="separator:a64b10b7deb57fae1476f0e0368915577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323a67025eaf53a84395be19af3aa15c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#afa6138bb91614dc219b5490e7e173a3a">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#a323a67025eaf53a84395be19af3aa15c">GetStatus</a> ()</td></tr>
+<tr class="separator:a323a67025eaf53a84395be19af3aa15c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="afa6138bb91614dc219b5490e7e173a3a"></a>
@@ -195,25 +197,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="adb496343bd01876d45a6cccd760282f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb496343bd01876d45a6cccd760282f8">&#9670;&nbsp;</a></span>Disconnect()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void utility::ipc::TCPClient::Disconnect </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9b7fb8b3f0646207561e156b617a6092"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b7fb8b3f0646207561e156b617a6092">&#9670;&nbsp;</a></span>GetStatus()</h2>
+<a id="a3be1f5b8992d11a1effca02dbdac4c85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3be1f5b8992d11a1effca02dbdac4c85">&#9670;&nbsp;</a></span>Disconnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,10 +207,10 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#afa6138bb91614dc219b5490e7e173a3a">TCPClient::Status</a> utility::ipc::TCPClient::GetStatus </td>
+          <td class="memname">void utility::ipc::TCPClient::Disconnect </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -237,14 +222,31 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1272a50f817f9d9de64cf4d77e30f582"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1272a50f817f9d9de64cf4d77e30f582">&#9670;&nbsp;</a></span>Receive()</h2>
+<a id="a323a67025eaf53a84395be19af3aa15c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323a67025eaf53a84395be19af3aa15c">&#9670;&nbsp;</a></span>GetStatus()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1Message.html">Message</a> &gt; utility::ipc::TCPClient::Receive </td>
+          <td class="memname"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html#afa6138bb91614dc219b5490e7e173a3a">TCPClient::Status</a> utility::ipc::TCPClient::GetStatus </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a54e7701ddc971e44938ca3d8c11b1fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e7701ddc971e44938ca3d8c11b1fbe">&#9670;&nbsp;</a></span>Receive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a> &gt; utility::ipc::TCPClient::Receive </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -260,8 +262,31 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2f13440a3b018840c7e19f2dd334106d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f13440a3b018840c7e19f2dd334106d">&#9670;&nbsp;</a></span>Send()</h2>
+<a id="a64b10b7deb57fae1476f0e0368915577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64b10b7deb57fae1476f0e0368915577">&#9670;&nbsp;</a></span>Reconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void utility::ipc::TCPClient::Reconnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>will be thrown in the two cases. Case1: The error from system related socket functions. Case2: The client is connected to server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a525c50c71d29abd289849fa65e232260"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a525c50c71d29abd289849fa65e232260">&#9670;&nbsp;</a></span>Send()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,7 +294,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void utility::ipc::TCPClient::Send </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classutility_1_1ipc_1_1Message.html">Message</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classutility_1_1ipc_1_1SentMessage.html">SentMessage</a> &amp;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
           <td></td>
         </tr>

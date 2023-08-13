@@ -110,10 +110,10 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="line">        {</div>
 <div class="line">        <span class="keyword">private</span>:</div>
 <div class="line">            std::shared_ptr&lt;std::vector&lt;Field&gt;&gt; spFields_;</div>
-<div class="line">            std::shared_ptr&lt;char&gt; spFullMessage_;</div>
+<div class="line">            std::shared_ptr&lt;char[]&gt; spFullMessage_;</div>
 <div class="line"> </div>
 <div class="line">        <span class="keyword">public</span>:</div>
-<div class="line">            <a name="a1"></a><a class="code" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a8feb7ecb6e1dbf2e159e9406a1cafc19">ReceivedBoundaryMessage</a>(std::unique_ptr&lt;char&gt; spFullMessage)</div>
+<div class="line">            <a name="a1"></a><a class="code" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a0babf9ceab1f782221b5e32abb13be10">ReceivedBoundaryMessage</a>(std::unique_ptr&lt;<span class="keywordtype">char</span>[]&gt; spFullMessage)</div>
 <div class="line">                : <a name="a2"></a><a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#acf1255aab5e0354f07394bcfb9e0ce66">AbstractMessage</a>(), spFields_(<span class="keyword">new</span> std::vector&lt;Field&gt;),</div>
 <div class="line">                  spFullMessage_(std::move(spFullMessage))</div>
 <div class="line">            {</div>
@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="line">                }</div>
 <div class="line">            }</div>
 <div class="line">            </div>
-<div class="line">            <a class="code" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a8feb7ecb6e1dbf2e159e9406a1cafc19">ReceivedBoundaryMessage</a>(<span class="keyword">const</span> <a class="code" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a8feb7ecb6e1dbf2e159e9406a1cafc19">ReceivedBoundaryMessage</a>&amp; other)</div>
+<div class="line">            <a class="code" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a0babf9ceab1f782221b5e32abb13be10">ReceivedBoundaryMessage</a>(<span class="keyword">const</span> <a class="code" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a0babf9ceab1f782221b5e32abb13be10">ReceivedBoundaryMessage</a>&amp; other)</div>
 <div class="line">            : <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#acf1255aab5e0354f07394bcfb9e0ce66">AbstractMessage</a>(other),spFields_(other.spFields_), spFullMessage_(other.spFullMessage_) </div>
 <div class="line">            {</div>
 <div class="line"> </div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html_a15d39d8cf8ad11220c42d874d8498e33"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">utility::ipc::AbstractMessage::spHeader_</a></div><div class="ttdeci">std::shared_ptr&lt; Header &gt; spHeader_</div><div class="ttdef"><b>Definition:</b> abstract_message.h:74</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html_acf1255aab5e0354f07394bcfb9e0ce66"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html#acf1255aab5e0354f07394bcfb9e0ce66">utility::ipc::AbstractMessage::AbstractMessage</a></div><div class="ttdeci">AbstractMessage(std::shared_ptr&lt; Header &gt; pheader=std::make_shared&lt; Header &gt;())</div><div class="ttdef"><b>Definition:</b> abstract_message.h:77</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html_af74141644da049853f4017dddc46fbe2"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html#af74141644da049853f4017dddc46fbe2">utility::ipc::AbstractMessage::GetHeaderField</a></div><div class="ttdeci">uint64_t GetHeaderField(Header::Field field) const noexcept</div><div class="ttdef"><b>Definition:</b> abstract_message.h:87</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedBoundaryMessage_html_a8feb7ecb6e1dbf2e159e9406a1cafc19"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a8feb7ecb6e1dbf2e159e9406a1cafc19">utility::ipc::ReceivedBoundaryMessage::ReceivedBoundaryMessage</a></div><div class="ttdeci">ReceivedBoundaryMessage(std::unique_ptr&lt; char &gt; spFullMessage)</div><div class="ttdef"><b>Definition:</b> received_boundary_message.h:42</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedBoundaryMessage_html_a0babf9ceab1f782221b5e32abb13be10"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a0babf9ceab1f782221b5e32abb13be10">utility::ipc::ReceivedBoundaryMessage::ReceivedBoundaryMessage</a></div><div class="ttdeci">ReceivedBoundaryMessage(std::unique_ptr&lt; char[]&gt; spFullMessage)</div><div class="ttdef"><b>Definition:</b> received_boundary_message.h:42</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedBoundaryMessage_html_adf273a68bfb721b00b3276b91613deb3"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#adf273a68bfb721b00b3276b91613deb3">utility::ipc::ReceivedBoundaryMessage::operator[]</a></div><div class="ttdeci">const Field &amp; operator[](size_t id)</div><div class="ttdef"><b>Definition:</b> received_boundary_message.h:75</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedBoundaryMessage_html_ae3ab5e51a981d3247efb353859e6909d"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#ae3ab5e51a981d3247efb353859e6909d">utility::ipc::ReceivedBoundaryMessage::~ReceivedBoundaryMessage</a></div><div class="ttdeci">~ReceivedBoundaryMessage()=default</div></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>

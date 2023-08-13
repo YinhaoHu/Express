@@ -95,17 +95,19 @@ $(document).ready(function(){initNavTree('namespaceutility_1_1ipc.html',''); ini
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1AbstractMessage.html">AbstractMessage</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1Message.html">Message</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A IPC(Local and Net) message class.  <a href="classutility_1_1ipc_1_1Message.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html">BasicSocket</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1MessageQueue.html">MessageQueue</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A message queue class which encapsulates the POSIX message queue library.  <a href="classutility_1_1ipc_1_1MessageQueue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html">ReceivedBoundaryMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A message class that is used to receive messages from bounded IPC channel.  <a href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A message class that is used to receive messages from stream IPC channel.  <a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1SentMessage.html">SentMessage</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A message class that encapsulate all data to send in a consecutive memory block.  <a href="classutility_1_1ipc_1_1SentMessage.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPClient.html">TCPClient</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,6 +124,10 @@ Enumerations</h2></td></tr>
 , <a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5aff1bc132716a26ab844c23103b483851">kIPv6</a>
  }</td></tr>
 <tr class="separator:a71055c292606124d4a4aa79db069d9f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f86cc6870b93f9fdd6309edd96b99a5"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">SocketType</a> { <a class="el" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392">Stream</a>
+, <a class="el" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5a640931067618ca3bc723805cb196e22f">Datagram</a>
+ }</td></tr>
+<tr class="separator:a4f86cc6870b93f9fdd6309edd96b99a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -129,6 +135,8 @@ Functions</h2></td></tr>
 <tr class="separator:aa7fecdcea35981891206b1330d09b02e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec936b964d64413c13febb79d06e71c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1ipc.html#aec936b964d64413c13febb79d06e71c3">SystemIPConstant</a> (<a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5">InternetProtocol</a> ip)</td></tr>
 <tr class="separator:aec936b964d64413c13febb79d06e71c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf13169eb6c1526096ade2f5fae36515"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1ipc.html#acf13169eb6c1526096ade2f5fae36515">SystemSocketTypeConstant</a> (<a class="el" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">SocketType</a> type)</td></tr>
+<tr class="separator:acf13169eb6c1526096ade2f5fae36515"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a71055c292606124d4a4aa79db069d9f5"></a>
@@ -154,6 +162,32 @@ Functions</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a71055c292606124d4a4aa79db069d9f5a198158a4155a179dc73ad4bea1159c1d"></a>kAny&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a71055c292606124d4a4aa79db069d9f5a6fdcd9b7feb0e92456b072ef3505bb65"></a>kIPv4&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a71055c292606124d4a4aa79db069d9f5aff1bc132716a26ab844c23103b483851"></a>kIPv6&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a4f86cc6870b93f9fdd6309edd96b99a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f86cc6870b93f9fdd6309edd96b99a5">&#9670;&nbsp;</a></span>SocketType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">utility::ipc::SocketType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392"></a>Stream&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4f86cc6870b93f9fdd6309edd96b99a5a640931067618ca3bc723805cb196e22f"></a>Datagram&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -206,6 +240,24 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5">InternetProtocol</a>&#160;</td>
           <td class="paramname"><em>ip</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf13169eb6c1526096ade2f5fae36515"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf13169eb6c1526096ade2f5fae36515">&#9670;&nbsp;</a></span>SystemSocketTypeConstant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int utility::ipc::SystemSocketTypeConstant </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">SocketType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

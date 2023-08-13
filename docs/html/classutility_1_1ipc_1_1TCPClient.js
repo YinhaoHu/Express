@@ -6,8 +6,9 @@ var classutility_1_1ipc_1_1TCPClient =
     ] ],
     [ "TCPClient", "classutility_1_1ipc_1_1TCPClient.html#ad73684772dd324f763f1286c54b4ce9b", null ],
     [ "~TCPClient", "classutility_1_1ipc_1_1TCPClient.html#a174ceeb85044ef8450edaa02cd0a3278", null ],
-    [ "Disconnect", "classutility_1_1ipc_1_1TCPClient.html#adb496343bd01876d45a6cccd760282f8", null ],
-    [ "GetStatus", "classutility_1_1ipc_1_1TCPClient.html#a9b7fb8b3f0646207561e156b617a6092", null ],
-    [ "Receive", "classutility_1_1ipc_1_1TCPClient.html#a1272a50f817f9d9de64cf4d77e30f582", null ],
-    [ "Send", "classutility_1_1ipc_1_1TCPClient.html#a2f13440a3b018840c7e19f2dd334106d", null ]
+    [ "Disconnect", "classutility_1_1ipc_1_1TCPClient.html#a3be1f5b8992d11a1effca02dbdac4c85", null ],
+    [ "GetStatus", "classutility_1_1ipc_1_1TCPClient.html#a323a67025eaf53a84395be19af3aa15c", null ],
+    [ "Receive", "classutility_1_1ipc_1_1TCPClient.html#a54e7701ddc971e44938ca3d8c11b1fbe", null ],
+    [ "Reconnect", "classutility_1_1ipc_1_1TCPClient.html#a64b10b7deb57fae1476f0e0368915577", null ],
+    [ "Send", "classutility_1_1ipc_1_1TCPClient.html#a525c50c71d29abd289849fa65e232260", null ]
 ];

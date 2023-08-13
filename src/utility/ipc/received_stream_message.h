@@ -13,26 +13,25 @@ namespace utility
 {
     namespace ipc
     {
+        /** 
+         * @example ReceivedStreamMessage
+         * @brief The basic usage of this class.
+         * @code
+         *  std::shared_ptr<Header> spHeader;
+         *  IPC_channel.receive(spHeader->GetDataHandler(),spHeader->Size());
+         *  ReceivedStreamMessage msg(spHeader); 
+         *  IPC_channel.receive(msg.GetBodyHandler, spHeader->body_size); 
+         *  msg.ValidateBody(); 
+         *  auto arg1_pointer = msg[0].pData; 
+         *  auto arg1_size = msg[0].size; 
+         * @endcode
+         */
+
         /**
-         * A message class that is used to receive messages from stream IPC channel.
+         * @brief A message class that is used to receive messages from stream IPC channel.
          * 
          * @note All data in this class has the life time which is same as this class
          * object.
-         * 
-         * @example 
-         *  std::shared_ptr<Header> spHeader;
-         * 
-         *  IPC_channel.receive(spHeader->GetDataHandler(),spHeader->Size());
-         * 
-         *  ReceivedStreamMessage msg(spHeader);
-         * 
-         *  IPC_channel.receive(msg.GetBodyHandler, spHeader->body_size);
-         * 
-         *  msg.ValidateBody();
-         * 
-         *  auto arg1_pointer = msg[0].pData;
-         * 
-         *  auto arg1_size = msg[0].size; 
          */
         class ReceivedStreamMessage : public AbstractMessage
         {

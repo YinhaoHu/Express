@@ -6,11 +6,9 @@ var dir_8bc533ae4e070b67fdac28663519efb4 =
       [ "Field", "structutility_1_1ipc_1_1AbstractMessage_1_1Field.html", "structutility_1_1ipc_1_1AbstractMessage_1_1Field" ],
       [ "Header", "structutility_1_1ipc_1_1AbstractMessage_1_1Header.html", "structutility_1_1ipc_1_1AbstractMessage_1_1Header" ]
     ] ],
-    [ "message.cc", "message_8cc.html", null ],
-    [ "message.h", "message_8h.html", [
-      [ "Message", "classutility_1_1ipc_1_1Message.html", "classutility_1_1ipc_1_1Message" ],
-      [ "Header", "structutility_1_1ipc_1_1Message_1_1Header.html", "structutility_1_1ipc_1_1Message_1_1Header" ],
-      [ "Field", "structutility_1_1ipc_1_1Message_1_1Field.html", "structutility_1_1ipc_1_1Message_1_1Field" ]
+    [ "basic_socket.cc", "basic__socket_8cc.html", null ],
+    [ "basic_socket.h", "basic__socket_8h.html", [
+      [ "BasicSocket", "classutility_1_1ipc_1_1BasicSocket.html", "classutility_1_1ipc_1_1BasicSocket" ]
     ] ],
     [ "message_queue.cc", "message__queue_8cc.html", null ],
     [ "message_queue.h", "message__queue_8h.html", "message__queue_8h" ],
@@ -35,8 +33,9 @@ var dir_8bc533ae4e070b67fdac28663519efb4 =
     [ "tcp_server.h", "tcp__server_8h.html", [
       [ "TCPServer", "classutility_1_1ipc_1_1TCPServer.html", "classutility_1_1ipc_1_1TCPServer" ]
     ] ],
-    [ "tcp_socket.cc", "tcp__socket_8cc.html", null ],
     [ "tcp_socket.h", "tcp__socket_8h.html", [
       [ "TCPSocket", "classutility_1_1ipc_1_1TCPSocket.html", "classutility_1_1ipc_1_1TCPSocket" ]
-    ] ]
+    ] ],
+    [ "unix_domain_socket.cc", "unix__domain__socket_8cc.html", null ],
+    [ "unix_domain_socket.h", "unix__domain__socket_8h.html", null ]
 ];

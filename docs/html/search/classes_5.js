@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['message_188',['Message',['../classutility_1_1ipc_1_1Message.html',1,'utility::ipc']]],
-  ['messagequeue_189',['MessageQueue',['../classutility_1_1ipc_1_1MessageQueue.html',1,'utility::ipc']]]
+  ['impl_206',['Impl',['../classdatabase_1_1DataBase_1_1Impl.html',1,'database::DataBase::Impl'],['../classdatabase_1_1DataList_1_1Impl.html',1,'database::DataList::Impl']]]
 ];

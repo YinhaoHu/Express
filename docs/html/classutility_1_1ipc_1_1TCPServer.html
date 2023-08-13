@@ -103,8 +103,8 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1cb8f300b5a2dba8625bf72d329596b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPServer.html#a1cb8f300b5a2dba8625bf72d329596b4">TCPServer</a> (const char *port, <a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5">InternetProtocol</a> ip=<a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5a198158a4155a179dc73ad4bea1159c1d">InternetProtocol::kAny</a>, int backlog=SOMAXCONN)</td></tr>
-<tr class="separator:a1cb8f300b5a2dba8625bf72d329596b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e8ff85938fab0f3b40ce0a7e87cbdf5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPServer.html#a9e8ff85938fab0f3b40ce0a7e87cbdf5">TCPServer</a> (const char *port, <a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5">InternetProtocol</a> ip=<a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5a198158a4155a179dc73ad4bea1159c1d">InternetProtocol::kAny</a>, int backlog=SOMAXCONN, int accept_timeout=1)</td></tr>
+<tr class="separator:a9e8ff85938fab0f3b40ce0a7e87cbdf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19738bf31de2e8f3b3cc17fba82124d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPServer.html#a19738bf31de2e8f3b3cc17fba82124d7">~TCPServer</a> ()</td></tr>
 <tr class="separator:a19738bf31de2e8f3b3cc17fba82124d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae078fa718ad1f6005330f37346b78067"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1ipc_1_1TCPServer.html#a2e101dd5783c503f087d21f537a01120">Status</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPServer.html#ae078fa718ad1f6005330f37346b78067">GetStatus</a> () const noexcept</td></tr>
@@ -145,8 +145,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1cb8f300b5a2dba8625bf72d329596b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cb8f300b5a2dba8625bf72d329596b4">&#9670;&nbsp;</a></span>TCPServer()</h2>
+<a id="a9e8ff85938fab0f3b40ce0a7e87cbdf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e8ff85938fab0f3b40ce0a7e87cbdf5">&#9670;&nbsp;</a></span>TCPServer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,7 +167,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>backlog</em> = <code>SOMAXCONN</code>&#160;</td>
+          <td class="paramname"><em>backlog</em> = <code>SOMAXCONN</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>accept_timeout</em> = <code>1</code>&#160;</td>
         </tr>
         <tr>
           <td></td>

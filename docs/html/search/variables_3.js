@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['item_5fmax_5fch_339',['item_max_ch',['../database_2test_2test_8cc.html#a77f827a6b7b64b4b84d02855284a7d61',1,'test.cc']]],
-  ['item_5fmin_5fch_340',['item_min_ch',['../database_2test_2test_8cc.html#a347f0ee04a790c06069083036c43d65c',1,'test.cc']]]
+  ['email_5fserver_5fhost_365',['email_server_host',['../namespacemail.html#ad1a8babf14f94586dca8a5a6660f2afe',1,'mail']]],
+  ['email_5fserver_5flogin_5fcode_366',['email_server_login_code',['../namespacemail.html#a01074c449bfc4505635b8c06047a9e88',1,'mail']]],
+  ['email_5fserver_5flogin_5fname_367',['email_server_login_name',['../namespacemail.html#adc13fcb78faf09c0f6d88b506bda9ace',1,'mail']]],
+  ['email_5fserver_5fport_368',['email_server_port',['../namespacemail.html#aa5b7675fac44a2bca17cd41f5952a1f6',1,'mail']]]
 ];

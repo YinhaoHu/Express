@@ -8,6 +8,4 @@ digraph "/home/hoo/project/Express/src/utility/test/tool.h"
   Node2 [label="/home/hoo/project/Express\l/src/database/test/test.cc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$database_2test_2test_8cc.html",tooltip=" "];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="/home/hoo/project/Express\l/src/utility/ipc/test/test.cc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utility_2ipc_2test_2test_8cc.html",tooltip=" "];
-  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="/home/hoo/project/Express\l/src/utility/test/test.cc",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$utility_2test_2test_8cc.html",tooltip=" "];
 }

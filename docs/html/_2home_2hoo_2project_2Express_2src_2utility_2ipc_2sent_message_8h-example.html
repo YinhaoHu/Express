@@ -89,8 +89,7 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <p>A message class that encapsulate all data to send in a consecutive memory block.</p>
 <dl class="section note"><dt>Note</dt><dd>This message should be sent before all data from user is deleted. The object has no ownership of the memory from Add() called by the user.</dd></dl>
 <p>string arg1("Hello.");</p>
-<p>uint32_t comm_code = 32993; <br  />
-</p>
+<p>uint32_t comm_code = 32993;</p>
 <p>SentMessage msg;</p>
 <p>msg.SetCommunicationCode(comm_code);</p>
 <p>msg.Add(arg1.c_str(), arg1.size() + 1);</p>
@@ -104,6 +103,12 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#ifdef __linux</span></div>
+<div class="line"><span class="preprocessor">#include &lt;sys/uio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#else </span></div>
+<div class="line"><span class="preprocessor">#error &quot;Provide the implementation of SentMessage::Data() on Windows.&quot;</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
 <div class="line"><a name="a0"></a><a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">namespace </span><a class="code" href="namespaceutility.html">utility</a></div>
@@ -111,20 +116,23 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="line">    <span class="keyword">namespace </span>ipc</div>
 <div class="line">    {</div>
 <div class="line">        <span class="keyword">class </span>SentMessage : <span class="keyword">public</span> AbstractMessage</div>
-<div class="line">        {</div>
+<div class="line">        { </div>
 <div class="line">        <span class="keyword">private</span>:</div>
-<div class="line">            std::unique_ptr&lt;std::vector&lt;Field&gt;&gt; spFeilds;</div>
+<div class="line">            std::shared_ptr&lt;std::vector&lt;Field&gt;&gt; spData;</div>
 <div class="line"> </div>
 <div class="line">        <span class="keyword">public</span>:</div>
-<div class="line">            <a name="a1"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#afc290bdf6bf781ebc09491038d7f74a0">SentMessage</a>() : spFeilds(<span class="keyword">new</span> std::vector&lt;Field&gt;){};</div>
-<div class="line">            <a name="a2"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#aabbf490b79f2b3498a3b5f7364e19610">~SentMessage</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"> </div>
-<div class="line">            <span class="keywordtype">void</span> <a name="a3"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#ae2a26dc25b61475309fed969885ce8d7">Add</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pData, <span class="keywordtype">size_t</span> size)</div>
+<div class="line">            <a name="a1"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#afc290bdf6bf781ebc09491038d7f74a0">SentMessage</a>() : spData(<span class="keyword">new</span> std::vector&lt;Field&gt;)</div>
 <div class="line">            {</div>
-<div class="line">                <a name="a4"></a><a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;body_size += size + <span class="keyword">sizeof</span>(size_t);</div>
+<div class="line">                spData-&gt;emplace_back(<span class="keyword">reinterpret_cast&lt;</span><span class="keyword">const </span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(<a name="a2"></a><a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>.get()), <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;Size());</div>
+<div class="line">            };</div>
+<div class="line">            <a name="a3"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#aabbf490b79f2b3498a3b5f7364e19610">~SentMessage</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordtype">void</span> <a name="a4"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#ae2a26dc25b61475309fed969885ce8d7">Add</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pData, <span class="keywordtype">size_t</span> size)</div>
+<div class="line">            {</div>
+<div class="line">                <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;body_size += size + <span class="keyword">sizeof</span>(size_t);</div>
 <div class="line">                <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;num_of_fields++;</div>
 <div class="line"> </div>
-<div class="line">                spFeilds-&gt;emplace_back(pData, size);</div>
+<div class="line">                spData-&gt;emplace_back(pData, size);</div>
 <div class="line">            }</div>
 <div class="line"> </div>
 <div class="line">            <span class="keywordtype">void</span> <a name="a5"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#a153b8e0840edce9a4b747a1553ccf115">SetCommunicationCode</a>(uint32_t comm_code)</div>
@@ -132,9 +140,14 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="line">                <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;communication_code = comm_code;</div>
 <div class="line">            }</div>
 <div class="line"> </div>
-<div class="line">            std::unique_ptr&lt;char&gt; <a name="a6"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#a57ae10eab8e7af65c748a56398edcea4">Data</a>()<span class="keyword"> const</span></div>
+<div class="line">            std::shared_ptr&lt;std::vector&lt;Field&gt;&gt; <a name="a6"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#a9987840193ca5af06b21788dcb1ce702">StreamData</a>()<span class="keyword">const</span></div>
 <div class="line"><span class="keyword">            </span>{</div>
-<div class="line">                std::unique_ptr&lt;char&gt; res(<span class="keyword">new</span> <span class="keywordtype">char</span>[this-&gt;<a name="a7"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#a68c52fc71b3b093e4512fb6f4e7e2115">Size</a>()]);</div>
+<div class="line">                <span class="keywordflow">return</span> spData;</div>
+<div class="line">            }</div>
+<div class="line"> </div>
+<div class="line">            std::unique_ptr&lt;char[]&gt; <a name="a7"></a><a class="code" href="classutility_1_1ipc_1_1SentMessage.html#a6fc1a5b2b9f55319be7a7423101cd1f5">MessageData</a>()<span class="keyword"> const</span></div>
+<div class="line"><span class="keyword">            </span>{</div>
+<div class="line">                std::unique_ptr&lt;char[]&gt; res(<span class="keyword">new</span> <span class="keywordtype">char</span>[this-&gt;<a name="a8"></a><a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a1c251a5136f0fadf2e9f4bee5bd9b4b6">Size</a>()]);</div>
 <div class="line"> </div>
 <div class="line">                <span class="keyword">auto</span> p = res.get();</div>
 <div class="line">                <span class="keywordtype">size_t</span> offset = 0;</div>
@@ -143,7 +156,7 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="line">                offset += <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;Size();</div>
 <div class="line">                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;num_of_fields; ++i)</div>
 <div class="line">                {</div>
-<div class="line">                    <span class="keyword">auto</span> &amp;item = spFeilds-&gt;at(i);</div>
+<div class="line">                    <span class="keyword">auto</span> &amp;item = spData-&gt;at(i+1);</div>
 <div class="line"> </div>
 <div class="line">                    memcpy(p + offset, &amp;item.size, <span class="keyword">sizeof</span>(item.size));</div>
 <div class="line">                    offset += <span class="keyword">sizeof</span>(item.size);</div>
@@ -153,27 +166,23 @@ $(document).ready(function(){initNavTree('_2home_2hoo_2project_2Express_2src_2ut
 <div class="line"> </div>
 <div class="line">                <span class="keywordflow">return</span> res;</div>
 <div class="line">            }</div>
-<div class="line"> </div>
-<div class="line">            <span class="keywordtype">size_t</span> <a class="code" href="classutility_1_1ipc_1_1SentMessage.html#a68c52fc71b3b093e4512fb6f4e7e2115">Size</a>() <span class="keyword">const</span> noexcept</div>
-<div class="line">            {</div>
-<div class="line">                <span class="keywordflow">return</span> <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;Size() + <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;body_size;</div>
-<div class="line">            }</div>
 <div class="line">        };</div>
 <div class="line"> </div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="line"><a name="a8"></a><a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="a9"></a><a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aabstract__message_8h_html"><div class="ttname"><a href="abstract__message_8h.html">abstract_message.h</a></div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html_a15d39d8cf8ad11220c42d874d8498e33"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">utility::ipc::AbstractMessage::spHeader_</a></div><div class="ttdeci">std::shared_ptr&lt; Header &gt; spHeader_</div><div class="ttdef"><b>Definition:</b> abstract_message.h:74</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_a153b8e0840edce9a4b747a1553ccf115"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#a153b8e0840edce9a4b747a1553ccf115">utility::ipc::SentMessage::SetCommunicationCode</a></div><div class="ttdeci">void SetCommunicationCode(uint32_t comm_code)</div><div class="ttdef"><b>Definition:</b> sent_message.h:52</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_a57ae10eab8e7af65c748a56398edcea4"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#a57ae10eab8e7af65c748a56398edcea4">utility::ipc::SentMessage::Data</a></div><div class="ttdeci">std::unique_ptr&lt; char &gt; Data() const</div><div class="ttdef"><b>Definition:</b> sent_message.h:57</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_a68c52fc71b3b093e4512fb6f4e7e2115"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#a68c52fc71b3b093e4512fb6f4e7e2115">utility::ipc::SentMessage::Size</a></div><div class="ttdeci">size_t Size() const noexcept</div><div class="ttdef"><b>Definition:</b> sent_message.h:79</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html_a1c251a5136f0fadf2e9f4bee5bd9b4b6"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html#a1c251a5136f0fadf2e9f4bee5bd9b4b6">utility::ipc::AbstractMessage::Size</a></div><div class="ttdeci">size_t Size() const noexcept</div><div class="ttdef"><b>Definition:</b> abstract_message.h:109</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_a153b8e0840edce9a4b747a1553ccf115"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#a153b8e0840edce9a4b747a1553ccf115">utility::ipc::SentMessage::SetCommunicationCode</a></div><div class="ttdeci">void SetCommunicationCode(uint32_t comm_code)</div><div class="ttdef"><b>Definition:</b> sent_message.h:61</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_a6fc1a5b2b9f55319be7a7423101cd1f5"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#a6fc1a5b2b9f55319be7a7423101cd1f5">utility::ipc::SentMessage::MessageData</a></div><div class="ttdeci">std::unique_ptr&lt; char[]&gt; MessageData() const</div><div class="ttdef"><b>Definition:</b> sent_message.h:77</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_a9987840193ca5af06b21788dcb1ce702"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#a9987840193ca5af06b21788dcb1ce702">utility::ipc::SentMessage::StreamData</a></div><div class="ttdeci">std::shared_ptr&lt; std::vector&lt; Field &gt; &gt; StreamData() const</div><div class="ttdef"><b>Definition:</b> sent_message.h:69</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_aabbf490b79f2b3498a3b5f7364e19610"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#aabbf490b79f2b3498a3b5f7364e19610">utility::ipc::SentMessage::~SentMessage</a></div><div class="ttdeci">~SentMessage()=default</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_ae2a26dc25b61475309fed969885ce8d7"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#ae2a26dc25b61475309fed969885ce8d7">utility::ipc::SentMessage::Add</a></div><div class="ttdeci">void Add(const char *pData, size_t size)</div><div class="ttdef"><b>Definition:</b> sent_message.h:44</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_afc290bdf6bf781ebc09491038d7f74a0"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#afc290bdf6bf781ebc09491038d7f74a0">utility::ipc::SentMessage::SentMessage</a></div><div class="ttdeci">SentMessage()</div><div class="ttdef"><b>Definition:</b> sent_message.h:41</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_ae2a26dc25b61475309fed969885ce8d7"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#ae2a26dc25b61475309fed969885ce8d7">utility::ipc::SentMessage::Add</a></div><div class="ttdeci">void Add(const char *pData, size_t size)</div><div class="ttdef"><b>Definition:</b> sent_message.h:53</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1SentMessage_html_afc290bdf6bf781ebc09491038d7f74a0"><div class="ttname"><a href="classutility_1_1ipc_1_1SentMessage.html#afc290bdf6bf781ebc09491038d7f74a0">utility::ipc::SentMessage::SentMessage</a></div><div class="ttdeci">SentMessage()</div><div class="ttdef"><b>Definition:</b> sent_message.h:47</div></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:10</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>

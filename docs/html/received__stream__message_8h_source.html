@@ -101,78 +101,77 @@ $(document).ready(function(){initNavTree('received__stream__message_8h_source.ht
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">namespace </span>ipc</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    {</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">   37</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a> : <span class="keyword">public</span> <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html">AbstractMessage</a></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="keywordtype">bool</span> body_validation_;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            std::shared_ptr&lt;std::vector&lt;Field&gt;&gt; spFields_;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            std::shared_ptr&lt;char&gt; spBody_;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f">   49</a></span>&#160;            <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f">ReceivedStreamMessage</a>(std::shared_ptr&lt;Header&gt; spheader)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                : <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html">AbstractMessage</a>(spheader), body_validation_(false),</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                  spFields_(new std::vector&lt;<a class="code" href="structutility_1_1ipc_1_1AbstractMessage_1_1Field.html">Field</a>&gt;), spBody_(nullptr)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                spBody_.reset(<span class="keyword">new</span> <span class="keywordtype">char</span>[spheader-&gt;body_size]);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82">   56</a></span>&#160;            <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82">ReceivedStreamMessage</a>(<span class="keyword">const</span> <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a>&amp; other)</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                :body_validation_(other.body_validation_), spFields_(other.spFields_),</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                spBody_(other.spBody_)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">   36</a></span>&#160;        <span class="keyword">class </span><a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a> : <span class="keyword">public</span> <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html">AbstractMessage</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordtype">bool</span> body_validation_;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            std::shared_ptr&lt;std::vector&lt;Field&gt;&gt; spFields_;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            std::shared_ptr&lt;char[]&gt; spBody_;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f">   48</a></span>&#160;            <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f">ReceivedStreamMessage</a>(std::shared_ptr&lt;Header&gt; spheader)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                : <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html">AbstractMessage</a>(spheader), body_validation_(false),</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                  spFields_(new std::vector&lt;<a class="code" href="structutility_1_1ipc_1_1AbstractMessage_1_1Field.html">Field</a>&gt;), spBody_(new char[spheader-&gt;body_size])</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            { </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82">   54</a></span>&#160;            <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82">ReceivedStreamMessage</a>(<span class="keyword">const</span> <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a>&amp; other)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                :body_validation_(other.body_validation_), spFields_(other.spFields_),</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                spBody_(other.spBody_)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000">   61</a></span>&#160;            <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000">~ReceivedStreamMessage</a>() = <span class="keywordflow">default</span>;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000">   63</a></span>&#160;            <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000">~ReceivedStreamMessage</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a53c7743d856788be132bcd4d084871a2">   68</a></span>&#160;            std::shared_ptr&lt;char&gt; <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a53c7743d856788be132bcd4d084871a2">GetBodyHandler</a>()</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">return</span> spBody_;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">   76</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">ValidateBody</a>()</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keyword">auto</span> p = spBody_.get();</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0, offset = 0; i &lt; <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;num_of_fields; ++i)</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    <span class="keywordtype">size_t</span> data_size;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    memcpy(&amp;data_size, p + offset, <span class="keyword">sizeof</span>(data_size));</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    offset += <span class="keyword">sizeof</span>(data_size);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    spFields_-&gt;emplace_back(p + offset, data_size);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    offset += data_size;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                body_validation_ = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66">   91</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="structutility_1_1ipc_1_1AbstractMessage_1_1Field.html">Field</a> <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66">operator[]</a>(<span class="keywordtype">size_t</span> <span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">if</span> (!body_validation_)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;ReceivedStreamMessage::operator[]:Body is not valid yet.&quot;</span>);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">if</span> (<span class="keywordtype">id</span> &gt;= <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#af74141644da049853f4017dddc46fbe2">GetHeaderField</a>(Header::Field::kNumOfFields))</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;ReceivedStreamMessage:: operator[] out of range.&quot;</span>);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    <span class="keywordflow">return</span> (*spFields_)[id];</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        };</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a04b6542d8f13af3cd9b0225df7c29c0d">   66</a></span>&#160;            std::shared_ptr&lt;char[]&gt; <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a04b6542d8f13af3cd9b0225df7c29c0d">GetBodyHandler</a>()</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">return</span> spBody_;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">   74</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">ValidateBody</a>()</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keyword">auto</span> p = spBody_.get();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0, offset = 0; i &lt; <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a>-&gt;num_of_fields; ++i)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    <span class="keywordtype">size_t</span> data_size;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    memcpy(&amp;data_size, p + offset, <span class="keyword">sizeof</span>(data_size));</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    offset += <span class="keyword">sizeof</span>(data_size);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    spFields_-&gt;emplace_back(p + offset, data_size);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    offset += data_size;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                body_validation_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66">   89</a></span>&#160;            <span class="keyword">const</span> <a class="code" href="structutility_1_1ipc_1_1AbstractMessage_1_1Field.html">Field</a> <a class="code" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66">operator[]</a>(<span class="keywordtype">size_t</span> <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordflow">if</span> (!body_validation_)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;ReceivedStreamMessage::operator[]:Body is not valid yet.&quot;</span>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <span class="keywordflow">if</span> (<span class="keywordtype">id</span> &gt;= <a class="code" href="classutility_1_1ipc_1_1AbstractMessage.html#af74141644da049853f4017dddc46fbe2">GetHeaderField</a>(Header::Field::kNumOfFields))</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    <span class="keywordflow">throw</span> std::out_of_range(<span class="stringliteral">&quot;ReceivedStreamMessage:: operator[] out of range.&quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    <span class="keywordflow">return</span> (*spFields_)[id];</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aabstract__message_8h_html"><div class="ttname"><a href="abstract__message_8h.html">abstract_message.h</a></div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html">utility::ipc::AbstractMessage</a></div><div class="ttdef"><b>Definition:</b> abstract_message.h:18</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html_a15d39d8cf8ad11220c42d874d8498e33"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">utility::ipc::AbstractMessage::spHeader_</a></div><div class="ttdeci">std::shared_ptr&lt; Header &gt; spHeader_</div><div class="ttdef"><b>Definition:</b> abstract_message.h:74</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1AbstractMessage_html_af74141644da049853f4017dddc46fbe2"><div class="ttname"><a href="classutility_1_1ipc_1_1AbstractMessage.html#af74141644da049853f4017dddc46fbe2">utility::ipc::AbstractMessage::GetHeaderField</a></div><div class="ttdeci">uint64_t GetHeaderField(Header::Field field) const noexcept</div><div class="ttdef"><b>Definition:</b> abstract_message.h:87</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">utility::ipc::ReceivedStreamMessage</a></div><div class="ttdef"><b>Definition:</b> received_stream_message.h:38</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a2638fbe96dc8649ccfe8a153bebf893f"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f">utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage</a></div><div class="ttdeci">ReceivedStreamMessage(std::shared_ptr&lt; Header &gt; spheader)</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:49</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">utility::ipc::ReceivedStreamMessage</a></div><div class="ttdoc">A message class that is used to receive messages from stream IPC channel.</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:37</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a04b6542d8f13af3cd9b0225df7c29c0d"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a04b6542d8f13af3cd9b0225df7c29c0d">utility::ipc::ReceivedStreamMessage::GetBodyHandler</a></div><div class="ttdeci">std::shared_ptr&lt; char[]&gt; GetBodyHandler()</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:66</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a2638fbe96dc8649ccfe8a153bebf893f"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f">utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage</a></div><div class="ttdeci">ReceivedStreamMessage(std::shared_ptr&lt; Header &gt; spheader)</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:48</div></div>
 <div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a46657a5ca319fde28bd34e54a598c000"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000">utility::ipc::ReceivedStreamMessage::~ReceivedStreamMessage</a></div><div class="ttdeci">~ReceivedStreamMessage()=default</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a53c7743d856788be132bcd4d084871a2"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a53c7743d856788be132bcd4d084871a2">utility::ipc::ReceivedStreamMessage::GetBodyHandler</a></div><div class="ttdeci">std::shared_ptr&lt; char &gt; GetBodyHandler()</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:68</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a71f8d25954c454283b11ed46e305df82"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82">utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage</a></div><div class="ttdeci">ReceivedStreamMessage(const ReceivedStreamMessage &amp;other)</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:56</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a9223c94e8b7b21b37894138bf91ba66a"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">utility::ipc::ReceivedStreamMessage::ValidateBody</a></div><div class="ttdeci">void ValidateBody()</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:76</div></div>
-<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_ac40e47b6d8dd65016527b8402408fd66"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66">utility::ipc::ReceivedStreamMessage::operator[]</a></div><div class="ttdeci">const Field operator[](size_t id)</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:91</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a71f8d25954c454283b11ed46e305df82"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82">utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage</a></div><div class="ttdeci">ReceivedStreamMessage(const ReceivedStreamMessage &amp;other)</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:54</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_a9223c94e8b7b21b37894138bf91ba66a"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">utility::ipc::ReceivedStreamMessage::ValidateBody</a></div><div class="ttdeci">void ValidateBody()</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:74</div></div>
+<div class="ttc" id="aclassutility_1_1ipc_1_1ReceivedStreamMessage_html_ac40e47b6d8dd65016527b8402408fd66"><div class="ttname"><a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66">utility::ipc::ReceivedStreamMessage::operator[]</a></div><div class="ttdeci">const Field operator[](size_t id)</div><div class="ttdef"><b>Definition:</b> received_stream_message.h:89</div></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:10</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>

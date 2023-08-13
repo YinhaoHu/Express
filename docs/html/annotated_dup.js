@@ -14,7 +14,7 @@ var annotated_dup =
       ] ],
       [ "ipc", "namespaceutility_1_1ipc.html", [
         [ "AbstractMessage", "classutility_1_1ipc_1_1AbstractMessage.html", "classutility_1_1ipc_1_1AbstractMessage" ],
-        [ "Message", "classutility_1_1ipc_1_1Message.html", "classutility_1_1ipc_1_1Message" ],
+        [ "BasicSocket", "classutility_1_1ipc_1_1BasicSocket.html", "classutility_1_1ipc_1_1BasicSocket" ],
         [ "MessageQueue", "classutility_1_1ipc_1_1MessageQueue.html", "classutility_1_1ipc_1_1MessageQueue" ],
         [ "ReceivedBoundaryMessage", "classutility_1_1ipc_1_1ReceivedBoundaryMessage.html", "classutility_1_1ipc_1_1ReceivedBoundaryMessage" ],
         [ "ReceivedStreamMessage", "classutility_1_1ipc_1_1ReceivedStreamMessage.html", "classutility_1_1ipc_1_1ReceivedStreamMessage" ],

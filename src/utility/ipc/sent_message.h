@@ -19,24 +19,25 @@ namespace utility
 {
     namespace ipc
     {
+        /** 
+         * @example SentMessage
+         * @brief The basic usage of this class.
+         * @code
+         *  string arg1("Hello.");
+         *  uint32_t comm_code = 32993;
+         *  SentMessage msg;
+         *  msg.SetCommunicationCode(comm_code);
+         *  msg.Add(arg1.c_str(), arg1.size() + 1);
+         *  IPC_channel.send(msg);
+         * @endcode
+         */
+
         /**
-         * A message class that encapsulate all data to send in a consecutive memory block.
+         * @brief A message class that encapsulate all data to send in a consecutive 
+         * memory block.
          *
          * @note This message should be sent before all data from user is deleted.
          * The object has no ownership of the memory from Add() called by the user.
-         *
-         * @example
-         *  string arg1("Hello.");
-         *
-         *  uint32_t comm_code = 32993;
-         *
-         *  SentMessage msg;
-         *
-         *  msg.SetCommunicationCode(comm_code);
-         *
-         *  msg.Add(arg1.c_str(), arg1.size() + 1);
-         *
-         *  IPC_channel.send(msg);
          */
         class SentMessage : public AbstractMessage
         { 

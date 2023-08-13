@@ -6,5 +6,10 @@ var socket_8h =
       [ "kIPv4", "socket_8h.html#a71055c292606124d4a4aa79db069d9f5a6fdcd9b7feb0e92456b072ef3505bb65", null ],
       [ "kIPv6", "socket_8h.html#a71055c292606124d4a4aa79db069d9f5aff1bc132716a26ab844c23103b483851", null ]
     ] ],
-    [ "SystemIPConstant", "socket_8h.html#aec936b964d64413c13febb79d06e71c3", null ]
+    [ "SocketType", "socket_8h.html#a4f86cc6870b93f9fdd6309edd96b99a5", [
+      [ "Stream", "socket_8h.html#a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392", null ],
+      [ "Datagram", "socket_8h.html#a4f86cc6870b93f9fdd6309edd96b99a5a640931067618ca3bc723805cb196e22f", null ]
+    ] ],
+    [ "SystemIPConstant", "socket_8h.html#aec936b964d64413c13febb79d06e71c3", null ],
+    [ "SystemSocketTypeConstant", "socket_8h.html#acf13169eb6c1526096ade2f5fae36515", null ]
 ];

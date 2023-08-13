@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('classutility_1_1ipc_1_1ReceivedBoundar
 </div><!--header-->
 <div class="contents">
 
+<p>A message class that is used to receive messages from bounded IPC channel.  
+ <a href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="received__boundary__message_8h_source.html">received_boundary_message.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for utility::ipc::ReceivedBoundaryMessage:</div>
@@ -104,8 +107,8 @@ Collaboration diagram for utility::ipc::ReceivedBoundaryMessage:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8feb7ecb6e1dbf2e159e9406a1cafc19"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a8feb7ecb6e1dbf2e159e9406a1cafc19">ReceivedBoundaryMessage</a> (std::unique_ptr&lt; char &gt; spFullMessage)</td></tr>
-<tr class="separator:a8feb7ecb6e1dbf2e159e9406a1cafc19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0babf9ceab1f782221b5e32abb13be10"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a0babf9ceab1f782221b5e32abb13be10">ReceivedBoundaryMessage</a> (std::unique_ptr&lt; char[]&gt; spFullMessage)</td></tr>
+<tr class="separator:a0babf9ceab1f782221b5e32abb13be10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaf2bf9794fa512b88331244639d1673"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#abaf2bf9794fa512b88331244639d1673">ReceivedBoundaryMessage</a> (const <a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html">ReceivedBoundaryMessage</a> &amp;other)</td></tr>
 <tr class="separator:abaf2bf9794fa512b88331244639d1673"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3ab5e51a981d3247efb353859e6909d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#ae3ab5e51a981d3247efb353859e6909d">~ReceivedBoundaryMessage</a> ()=default</td></tr>
@@ -134,9 +137,12 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a15d39d8cf8ad11220c42d874d8498e33 inherit pro_attribs_classutility_1_1ipc_1_1AbstractMessage"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="structutility_1_1ipc_1_1AbstractMessage_1_1Header.html">Header</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33">spHeader_</a></td></tr>
 <tr class="separator:a15d39d8cf8ad11220c42d874d8498e33 inherit pro_attribs_classutility_1_1ipc_1_1AbstractMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8feb7ecb6e1dbf2e159e9406a1cafc19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8feb7ecb6e1dbf2e159e9406a1cafc19">&#9670;&nbsp;</a></span>ReceivedBoundaryMessage() <span class="overload">[1/2]</span></h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A message class that is used to receive messages from bounded IPC channel. </p>
+<dl class="section note"><dt>Note</dt><dd>All data in this class has the life time which is same as this class object. </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a0babf9ceab1f782221b5e32abb13be10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0babf9ceab1f782221b5e32abb13be10">&#9670;&nbsp;</a></span>ReceivedBoundaryMessage() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -147,7 +153,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">utility::ipc::ReceivedBoundaryMessage::ReceivedBoundaryMessage </td>
           <td>(</td>
-          <td class="paramtype">std::unique_ptr&lt; char &gt;&#160;</td>
+          <td class="paramtype">std::unique_ptr&lt; char[]&gt;&#160;</td>
           <td class="paramname"><em>spFullMessage</em></td><td>)</td>
           <td></td>
         </tr>
@@ -159,8 +165,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Construct from IPC data whose ownership should be transferred. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2hoo_2project_2Express_2src_2utility_2ipc_2received_boundary_message_8h-example.html#a1">/home/hoo/project/Express/src/utility/ipc/received_boundary_message.h</a>.</dd>
-</dl>
 
 </div>
 </div>
@@ -212,8 +216,6 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2hoo_2project_2Express_2src_2utility_2ipc_2received_boundary_message_8h-example.html#a4">/home/hoo/project/Express/src/utility/ipc/received_boundary_message.h</a>.</dd>
-</dl>
 
 </div>
 </div>
@@ -242,8 +244,6 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Access the specified field. </p><dl class="section warning"><dt>Warning</dt><dd>The data has the life time which is same as this class object. </dd></dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="_2home_2hoo_2project_2Express_2src_2utility_2ipc_2received_boundary_message_8h-example.html#a5">/home/hoo/project/Express/src/utility/ipc/received_boundary_message.h</a>.</dd>
-</dl>
 
 </div>
 </div>

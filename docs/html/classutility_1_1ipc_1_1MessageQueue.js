@@ -14,7 +14,7 @@ var classutility_1_1ipc_1_1MessageQueue =
     [ "Limitation", "classutility_1_1ipc_1_1MessageQueue.html#ae1496ff25fcc4e9a5ed38c743a9ff9ee", null ],
     [ "operator=", "classutility_1_1ipc_1_1MessageQueue.html#af34c70d10adf5f4a8b866f02750062bb", null ],
     [ "Receive", "classutility_1_1ipc_1_1MessageQueue.html#af09590b598616f1e052c507f9621b518", null ],
-    [ "Send", "classutility_1_1ipc_1_1MessageQueue.html#a5630fa285e06dcfae889087ad5679adf", null ],
+    [ "Send", "classutility_1_1ipc_1_1MessageQueue.html#a862ea82518d3b5643f870e845a7d6c2d", null ],
     [ "SetAttribute", "classutility_1_1ipc_1_1MessageQueue.html#a866c42b2f4941dbc82e5af5741b35f32", null ],
     [ "SetSignalNotify", "classutility_1_1ipc_1_1MessageQueue.html#a36d1547bb9f1d556bf47deb317722f32", null ],
     [ "SetThreadNotify", "classutility_1_1ipc_1_1MessageQueue.html#a4946c034ddc5133bccd19434c9bb6d95", null ],

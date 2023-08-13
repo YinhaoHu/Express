@@ -1,4 +1,5 @@
-# Express: Documentation for Developer( Status: On developing )
+# Express: Documentation for Developer 
+
 ---
 
 ## Overview
@@ -77,7 +78,6 @@ This file should include at least the following items. And the format of each co
 
 - Component port: IP port or NULL (Based on the implementation)
 
-### 
 
 ### Deloyed Automatically
 

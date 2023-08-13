@@ -84,12 +84,15 @@ $(document).ready(function(){initNavTree('misc_8h.html',''); initResizable(); })
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">misc.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="macro_8h_source.html">macro.h</a>&quot;</code><br />
+<code>#include &lt;system_error&gt;</code><br />
+<code>#include &lt;format&gt;</code><br />
 <code>#include &lt;cstdio&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -114,13 +117,39 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceutility_1_1misc"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1misc.html">utility::misc</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a775648ff7538462aab57e046cca76327"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="misc_8h.html#a775648ff7538462aab57e046cca76327">SYSTEM_ERROR_INFO</a>(where_cstring)&#160;&#160;&#160;__FILE__,__LINE__,where_cstring</td></tr>
+<tr class="separator:a775648ff7538462aab57e046cca76327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ada3d13c4e3046829ef153d10cb914e04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">utility::misc::print</a> (std::string &amp;&amp;format_str)</td></tr>
 <tr class="separator:ada3d13c4e3046829ef153d10cb914e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac6e74edeef7bf1576a01940d8293d6e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1misc.html#aac6e74edeef7bf1576a01940d8293d6e">utility::misc::ErrorString</a> (const char *where)</td></tr>
 <tr class="separator:aac6e74edeef7bf1576a01940d8293d6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25891b06435f0977e137eef47f341ff4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility_1_1misc.html#a25891b06435f0977e137eef47f341ff4">utility::misc::ThrowSystemError</a> (const char *file_name, int line, const char *func)</td></tr>
+<tr class="separator:a25891b06435f0977e137eef47f341ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a775648ff7538462aab57e046cca76327"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a775648ff7538462aab57e046cca76327">&#9670;&nbsp;</a></span>SYSTEM_ERROR_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SYSTEM_ERROR_INFO</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">where_cstring</td><td>)</td>
+          <td>&#160;&#160;&#160;__FILE__,__LINE__,where_cstring</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

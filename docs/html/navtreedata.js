@@ -25,6 +25,24 @@
 var NAVTREE =
 [
   [ "Express Development Documentation", "index.html", [
+    [ "Express: Documentation for Developer", "index.html", [
+      [ "Overview", "index.html#autotoc_md2", null ],
+      [ "Business Functionality", "index.html#autotoc_md3", null ],
+      [ "Business Components", "index.html#autotoc_md4", null ],
+      [ "Function Components", "index.html#autotoc_md6", [
+        [ "Daemon", "index.html#autotoc_md7", null ],
+        [ "Log", "index.html#autotoc_md8", null ],
+        [ "Database", "index.html#autotoc_md9", null ],
+        [ "Mail Service", "index.html#autotoc_md10", null ],
+        [ "Workers", "index.html#autotoc_md11", null ],
+        [ "Monitor", "index.html#autotoc_md12", null ]
+      ] ],
+      [ "Architecture", "index.html#autotoc_md14", null ],
+      [ "Misccellaneous", "index.html#autotoc_md16", [
+        [ "Configure File", "index.html#autotoc_md17", null ],
+        [ "Deloyed Automatically", "index.html#autotoc_md18", null ]
+      ] ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -62,8 +80,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_2home_2hoo_2project_2Express_2src_2utility_2ipc_2received_boundary_message_8h-example.html",
-"namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04"
+"ReceivedBoundaryMessage-example.html",
+"namespaceexpress_1_1utility_1_1ipc.html#a21b780721a461d36353a06ed8fd17e83"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

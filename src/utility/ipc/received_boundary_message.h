@@ -12,22 +12,23 @@ _START_EXPRESS_NAMESPACE_
 namespace utility
 {
     namespace ipc
-    {
+    {   
+        /**
+         * @example ReceivedBoundaryMessage
+         * @brief The basic usage of this class.
+         * @code
+         *  auto ipc_data = IPC_channel.receive(); 
+         *  ReceivedBoundaryMessage msg(std::move(ipc_data)); 
+         *  auto arg1_pointer = msg[0].pData; 
+         *  auto arg1_size = msg[0].size; 
+         * @endcode
+         */
+
         /**
          * @brief A message class that is used to receive messages from bounded IPC channel.
          * 
          * @note All data in this class has the life time which is same as this class
-         * object.
-         * 
-         * @example 
-         * 
-         *  auto ipc_data = IPC_channel.receive();
-         * 
-         *  ReceivedBoundaryMessage msg(std::move(ipc_data));
-         * 
-         *  auto arg1_pointer = msg[0].pData;
-         * 
-         *  auto arg1_size = msg[0].size; 
+         * object. 
          */
         class ReceivedBoundaryMessage : public AbstractMessage
         {
