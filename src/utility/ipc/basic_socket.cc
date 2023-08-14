@@ -17,7 +17,7 @@ namespace utility::ipc
     {
         socket_ = socket(domain, type, 0);
         if (socket_ < 0)
-            throw runtime_error(ErrorString("BasicSocket::BasicSocket"));
+            ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::BasicSocket()"));
     }
 
     BasicSocket::BasicSocket(Socket sockfd)
@@ -36,21 +36,36 @@ namespace utility::ipc
         close(socket_);
     }
 
-    ssize_t BasicSocket::Send(const char *data, size_t size, int flag)
+    void BasicSocket::Send(const char *data, size_t size, int flag)
     {
-        ssize_t sent_bytes = send(socket_, data, size, flag);
+        if(size == 0)
+            throw invalid_argument("BasicSocket::Send(): Zero size is prohibited.");
 
-        if (sent_bytes < 0)
-            throw runtime_error(ErrorString("BasicSocket::Send"));
-        return sent_bytes;
+        ssize_t once_sent_bytes = 0, total_sent_bytes = 0;
+
+        while(total_sent_bytes != static_cast<ssize_t>(size))
+        {
+            once_sent_bytes  = send(socket_, data, size - total_sent_bytes, flag);
+            if(once_sent_bytes < 0)
+                misc::ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Send()"));
+            total_sent_bytes += once_sent_bytes;
+        } 
     }
-    ssize_t BasicSocket::Receive(void *buf, size_t size, int flag)
-    {
-        ssize_t recv_bytes = recv(socket_, buf, size, flag);
 
-        if (recv_bytes < 0)
-            throw runtime_error(ErrorString("BasicSocket::Receive"));
-        return recv_bytes;
+    void BasicSocket::Receive(void *buf, size_t size, int flag)
+    {
+        if(size == 0)
+            throw invalid_argument("BasicSocket::Send(): Zero size is prohibited.");
+
+        ssize_t once_recv_bytes = 0, total_recv_bytes = 0;
+
+        while(total_recv_bytes != static_cast<ssize_t>(size))
+        {
+            once_recv_bytes  = recv(socket_, buf, size - total_recv_bytes, flag);
+            if(once_recv_bytes < 0)
+                misc::ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Receive()"));
+            total_recv_bytes += once_recv_bytes;
+        } 
     }
 
     void BasicSocket::SetOption(int opt, const void *pval, socklen_t len)
@@ -58,7 +73,7 @@ namespace utility::ipc
         int rc;
         rc = setsockopt(socket_, SOL_SOCKET, opt, pval, len);
         if (rc < 0)
-            throw(runtime_error(ErrorString("BasicSocket::SetOption")));
+            ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::SetOption()"));
     }
 
     void BasicSocket::GetOption(int opt, void *pval, socklen_t* len)
@@ -66,7 +81,7 @@ namespace utility::ipc
         int rc;
         rc = getsockopt(socket_, SOL_SOCKET, opt, pval,  len);
         if (rc < 0)
-            throw runtime_error(ErrorString("BasicSocket::GetOption")); 
+            ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::GetOption()")); 
     }
 
     Socket BasicSocket::GetNative() const noexcept
@@ -78,14 +93,14 @@ namespace utility::ipc
     void BasicSocket::Listen(int backlog)
     {
         if (listen(socket_, backlog) < 0)
-            throw runtime_error(ErrorString("BasicSocket::Listen"));
+            ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Listen()"));
     }
 
     Socket BasicSocket::Accept()
     {
         Socket conncection_sockfd = accept(socket_, nullptr, nullptr);
         if (conncection_sockfd < 0)
-            throw runtime_error(ErrorString("BasicSocket::Accept"));
+             ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Accept"));
         return conncection_sockfd;
     }
 
@@ -100,17 +115,17 @@ namespace utility::ipc
  
 
         if (in_fd < 0)
-            throw runtime_error(ErrorString("BasicSocket::Sendfile-open"));
+             ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Sendfile-open"));
 
         memset(spStat.get(), 0, sizeof(struct stat));
         if (fstat(in_fd, spStat.get()) < 0)
-            throw runtime_error(ErrorString("BasicSocket::Sendfile-fstat"));
+             ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Sendfile-fstat"));
 
         while (sent_size != spStat->st_size)
         {
             res = sendfile(this->socket_, in_fd, &offset, spStat->st_size - offset);
             if (res < 0)
-                throw runtime_error(ErrorString("BasicSocket::Sendfile-sednfile"));
+                 ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Sendfile-sednfile"));
             sent_size += res;
         }
 

@@ -7,6 +7,8 @@
 #include "utility/misc.h"
 #include "utility/ipc/socket.h"
 #include "utility/ipc/basic_socket.h"
+#include "utility/ipc/sent_message.h"
+#include "utility/ipc/received_stream_message.h"
 #include <utility>
 #include <stdexcept>
 
@@ -40,6 +42,10 @@ namespace utility::ipc
          * 2. std::system_rror: Error in system call.
          */
         int ReceiveDescriptor();
+
+        void SendMessage(const SentMessage& msg);
+
+        std::unique_ptr<ReceivedStreamMessage> ReceiveMessage();
     };
 }
 

@@ -261,7 +261,9 @@ static void test_uds()
 
     string buf("12345");
     const size_t buf_size = buf.size() + 1;
-    bool corret_result = false;
+    uint32_t comm_code = 123;
+    bool  msg_correct_result = false;
+    bool  fd_correct_result = false;
     int child_pid = fork();
     if (child_pid < 0)
     {
@@ -281,8 +283,17 @@ static void test_uds()
             perror("Open");
             exit(EXIT_FAILURE);
         }
+        
         pwrite(fd, buf.c_str(), buf_size, 0);
         while(*pSyncFlag != kLetCHildSend); 
+        
+        SentMessage msg;
+
+        msg.SetCommunicationCode(comm_code);
+        msg.Add(buf.c_str(), buf_size);
+        msg.Add(buf.c_str(), buf_size); 
+
+        uds.SendMessage(msg);
         uds.SendDescriptor(fd); 
         while(*pSyncFlag != kLetChildExit); 
         exit(EXIT_SUCCESS);
@@ -300,13 +311,20 @@ static void test_uds()
         while(*pSyncFlag != kLetParentAccept); 
         UnixDomainSocket client(uds.Accept()); 
 
-        *pSyncFlag = kLetCHildSend; 
+        *pSyncFlag = kLetCHildSend;  
+        auto msg = client.ReceiveMessage();
+
+        msg_correct_result = (
+            msg->GetHeaderField(ReceivedStreamMessage::Header::Field::kCommunicationCode) == comm_code &&
+            buf.compare((*msg)[0].pData)==0 && (*msg)[0].size == buf_size &&
+            buf.compare((*msg)[1].pData)==0 && (*msg)[1].size == buf_size 
+        );
 
         int fd = client.ReceiveDescriptor();
 
         char *recv_buf = new char[buf_size];
         pread(fd, recv_buf, buf_size, 0); 
-        corret_result = (buf.compare(recv_buf) == 0); 
+        fd_correct_result = (buf.compare(recv_buf) == 0); 
         delete[] recv_buf;
 
         unlink(uds_path_name);
@@ -317,6 +335,10 @@ static void test_uds()
     }
 
     test::test("uds", "transfer_fd", [&]()
-               { return corret_result; });
+               { return  fd_correct_result; });
+    test::test("uds", "transfer_msg", [&](){
+        return msg_correct_result;
+    });
+
     shm_unlink(shm_name.c_str());
 }

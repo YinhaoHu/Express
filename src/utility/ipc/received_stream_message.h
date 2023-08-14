@@ -17,7 +17,7 @@ namespace utility
          * @example ReceivedStreamMessage
          * @brief The basic usage of this class.
          * @code
-         *  std::shared_ptr<Header> spHeader;
+         *  std::shared_ptr<Header> spHeader = std::make_shared<Header>();
          *  IPC_channel.receive(spHeader->GetDataHandler(),spHeader->Size());
          *  ReceivedStreamMessage msg(spHeader); 
          *  IPC_channel.receive(msg.GetBodyHandler, spHeader->body_size); 

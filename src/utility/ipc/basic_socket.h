@@ -15,7 +15,7 @@ namespace utility
         {
         public:
             /**
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @throw std::system_error will be thrown when system call set errno.
              */
             BasicSocket(int domain, int type);
             BasicSocket(Socket sockfd);
@@ -24,22 +24,28 @@ namespace utility
             void Close();
 
             /**
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @note size bytes are guaranteed to be sent if no exception thrown.
+             * @throw Exceptions will be thrown in the two cases. 
+             * 1. std::system_error will be thrown when system call set errno.
+             * 2. std::invalid_argument will be thrown when size is zero.
              */
-            ssize_t Send(const char *buf, size_t size, int flag = 0);
+            void Send(const char *buf, size_t size, int flag = 0);
 
             /**
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @note size bytes are guaranteed to be received if no exception thrown.
+             * @throw Exceptions will be thrown in the two cases.
+             * 1. std::system_error will be thrown when system call set errno.
+             * 2. std::invalid_argument will be thrown when size is zero.
              */
-            ssize_t Receive(void *buf, size_t size, int flag = 0);
+            void Receive(void *buf, size_t size, int flag = MSG_WAITALL);
 
             /**
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @throw std::system_error will be thrown when system call set errno.
              */
             void SetOption(int opt, const void *pval, socklen_t len);
 
             /**
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @throw std::system_error will be thrown when system call set errno.
              */
             void GetOption(int opt, void *pval, socklen_t *len);
 
@@ -65,12 +71,12 @@ namespace utility
                     misc::ThrowSystemError(SYSTEM_ERROR_INFO("BasicSocket::Bind"));
             }
             /**
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @throw std::system_error will be thrown when system call set errno.
              */
             void Listen(int backlog = SOMAXCONN);
 
             /**
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @throw std::system_error will be thrown when system call set errno.
              */
             Socket Accept();
 
@@ -78,7 +84,7 @@ namespace utility
              * @note If this function is called in Message transfer, you would set
              * TCP_CORK option before using. The recommended way is that set include
              * tail files in the SentMessage.
-             * @throw std::runtime_error will be thrown when system call set errno.
+             * @throw std::system_error will be thrown when system call set errno.
              */
             void SendFile(const char *file_path);
 

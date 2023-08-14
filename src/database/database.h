@@ -11,8 +11,8 @@ _START_EXPRESS_NAMESPACE_
 namespace database
 {
     /**
-     * A basic data base class.
-     * */
+     * @brief A basic data base class with thread-safe CRUD.
+     */
     class DataBase
     {
 
@@ -29,6 +29,7 @@ namespace database
          * @param data_unit_size Size of each unit data
          * @param meta_once_alloc_num Specify how many meta data units will be allocated every
          * meta data allocation.
+         * @warning This function is NOT thread-safe.
          */
         void MakeTable(const std::string &name, size_t data_unit_size, size_t meta_once_alloc_num);
 
@@ -40,7 +41,6 @@ namespace database
          * @brief Retrieve the specified data in the specified table.
          * @return The data desiered if id is valid. Otherwise, invalid raw_data will
          * be returned.
-         * @warning The returned data should be MANUALLY deleted.
          */
         utility::data::RawData Retrieve(const std::string &table_name, id_t id) noexcept(true);
         /**

@@ -66,6 +66,9 @@ namespace utility
 
             /**
              * @note Used for stream IPC channels.
+             * @warning It is a typical error that forget to send Field.size before 
+             * Field.pData. To correctly use this function for sending Message,
+             * you can learn how TCPClient::Send() do this.
             */
             std::shared_ptr<std::vector<Field>> StreamData()const
             {

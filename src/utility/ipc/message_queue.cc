@@ -30,9 +30,21 @@ namespace utility::ipc
                          S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, &attr);
 
         if (mqdes_ < 0)
-            throw std::runtime_error(
-                utility::misc::FormatString("MessageQueue constructor: %s", 128, strerror(errno)));
+            misc::ThrowSystemError(SYSTEM_ERROR_INFO("MessageQueue::MessageQueue()"));        
     }
+
+    MessageQueue::MessageQueue(const std::string &name)
+        :closed_(false)
+    {
+        name_.push_back('/');
+        name_.append(name);
+ 
+        mqdes_ = mq_open(name_.c_str(),  O_RDWR);
+
+        if (mqdes_ < 0)
+            misc::ThrowSystemError(SYSTEM_ERROR_INFO("MessageQueue::MessageQueue()"));        
+    }
+
 
     MessageQueue::~MessageQueue()
     {

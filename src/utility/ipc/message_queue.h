@@ -34,10 +34,16 @@ namespace utility
 
         public:
             /**
-             * @throw std::runtime_error will be thrown depending on the system library
+             * @throw std::system_error will be thrown depending on the system library
              * implementation for message queue.
              */
             MessageQueue(const std::string &name, long maxmsg, long msgsize);
+
+            /**
+             * @throw std::system_error will be thrown depending on the system library
+             * implementation for message queue.
+             */
+            MessageQueue(const std::string &name);
 
             MessageQueue(const MessageQueue &other) = delete;
             MessageQueue &operator=(const MessageQueue &rhs) = delete;
@@ -78,6 +84,26 @@ namespace utility
             }
 
             /**
+             * @return The max number of in-queue message allowed.
+            */
+            size_t MaxSize() const noexcept
+            {
+                mq_attr attr;
+                mq_getattr(mqdes_, &attr);
+                return attr.mq_maxmsg;
+            }
+
+            /**
+             * @return The max size of one message allowed.
+            */
+            size_t MaxMessageLength() const noexcept
+            {
+                mq_attr attr;
+                mq_getattr(mqdes_, &attr);
+                return attr.mq_msgsize;
+            }
+
+            /**
              * @return A std::vector which contains limitations. Each element of the vector
              * is a std::pair whose first is the limitation key and second is the value.
              */
@@ -86,7 +112,7 @@ namespace utility
             void SetAttribute(Attribute attr) noexcept;
 
             Attribute GetAttribute() const noexcept;
- 
+
             void CancelNotify() noexcept;
 
             void SetSignalNotify(int signo);
