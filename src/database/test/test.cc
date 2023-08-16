@@ -1,33 +1,142 @@
-#include "database/database.h"
+#include "database/client.h"
+#include "database/public.h"
 #include "utility/test/tool.h"
-#include "utility/misc.h"
-#include <iostream>
-#include <vector>
-#include <barrier>
-#include <filesystem>
-#include <random>
-#include <thread>
-#include <unistd.h>
+#include "utility/ipc/unix_domain_socket.h"
+#include <sys/wait.h>
+#include <bits/stdc++.h>
 
-using namespace express::database;
-using namespace express::utility::misc;
-using namespace express::utility::test;
 using namespace std;
+using namespace express;
+using namespace database;
+using namespace utility;
 
-static string dbname("/home/hoo/project/express/src/database/test/testdb"),
-    tablename("multi-thread-db");
+static string tablename("test_db_dir");
 
-DataBase *db = new DataBase(dbname);
-static size_t nitems;
-static size_t data_unit_size, once_alloc_meta;
-static size_t item_maxlen, item_minlen;
+static size_t nitems = 256, data_unit_size = 64, once_alloc_meta = 64;
+static size_t item_minlen = 1, item_maxlen = 512, nthreads = 1;
 constexpr char item_min_ch = 'a', item_max_ch = 'z';
 
 vector<string> write_bufs;
+const string table_name("test-table");
+static Client *db;
 
-void test_init()
+static void parse_argv(int argc, char *argv[]);
+static void client_init();
+static void client_create();
+static void client_update();
+static void client_delete();
+ 
+
+int main(int argc, char *argv[])
+{
+    parse_argv(argc, argv);
+    auto socket_pair = ipc::UnixDomainSocket::SocketPair();
+    int server_sock = socket_pair.first;
+    int client_sock = socket_pair.second;
+    const char* db_dir_name = "bin/dbdir";
+ 
+    int child_pid = fork();
+    if (child_pid < 0)
+    {
+        perror("fork()\n");
+        exit(EXIT_FAILURE);
+    }
+    else if (child_pid == 0)
+    {
+        close(client_sock);
+        if (execl("./bin/db-server", "./bin/db-server",
+                  db_dir_name, "log-mq-name",
+                  to_string(server_sock).c_str(), to_string(nthreads).c_str(), nullptr) < 0)
+        {
+            perror("child process execl");
+            exit(EXIT_FAILURE);
+        }
+    }
+    else
+    {
+        close(server_sock);
+        // FIXME Connect the server and client with sockaddr instead of pair sockets.
+        db = new Client(client_sock);
+
+        client_init();
+        client_create();
+        client_update();
+        client_delete();
+
+        delete db;
+    } 
+    kill(child_pid, database::kTerminateSignal); 
+    remove(db_dir_name);
+
+    int stat;
+
+    wait(&stat);
+    cout << format("\033[0;36mchild exit({}) captured!\033[0m", stat) << endl;
+    return 0;
+}
+
+static void parse_argv(int argc, char *argv[])
+{
+    unordered_map<char, string> opt_list = {
+        {'h', "help"},
+        {'n', "number of items"},
+        {'t', "number of threads"},
+        {'M', "item max len"},
+        {'m', "item min len"},
+        {'s', "real data unit size"},
+        {'a', "once allocate number of meta data"}};
+
+    int opt;
+
+    while ((opt = getopt(argc, argv, "hn:t:M:m:s:a:")) != -1)
+    {
+        switch (opt)
+        {
+        case 'h':  
+            for (const auto &option : opt_list)
+                cout << format("-{}:{}\n",option.first, option.second.c_str());
+            exit(EXIT_SUCCESS);
+
+        case 'n':
+            nitems = atoi(optarg);  
+            break;
+        case 't':
+            nthreads = atoi(optarg);  
+            break;
+        case 'a':
+            once_alloc_meta = atoi(optarg);  
+            break;
+        case 'm':
+            item_minlen = atoi(optarg);  
+            break;
+        case 'M':
+            item_maxlen = atoi(optarg);  
+            break;
+        case 's':
+            data_unit_size = atoi(optarg);  
+            break;
+        default:
+            cerr << format("invalid option: {}\n", opt);
+            cerr << format("Try `{}` -h for more information.\n", argv[0]);
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    cout << format( "Test Arguments(Try `{}` -h for more information.)\n"\
+                    "nitems             = {}\n"\
+                    "nthreads           = {}\n"\
+                    "once_alloc_meta    = {}\n"\
+                    "data_unit_size     = {}\n"\
+                    "item_min_len       = {}\n"\
+                    "item_max_len       = {}\n\n",
+                    argv[0], nitems, nthreads, once_alloc_meta,
+                    data_unit_size, item_minlen, item_maxlen);
+}
+
+static void client_init()
 {
     db->MakeTable(tablename, data_unit_size, once_alloc_meta);
+    sleep(1);
     write_bufs.resize(nitems);
 
     random_device rd;
@@ -49,14 +158,12 @@ void test_init()
     }
 }
 
-void test_create()
+static void client_create()
 {
     bool result = true;
 
-    for (size_t i = 0; i < nitems; ++i)
-    {
-        db->Create(tablename, write_bufs[i].c_str(), write_bufs[i].size() + 1);
-    }
+    for (size_t i = 0; i < nitems; ++i) 
+        db->Create(tablename, write_bufs[i].c_str(), write_bufs[i].size() + 1); 
 
     for (size_t i = 0; i < nitems; ++i)
     {
@@ -65,22 +172,19 @@ void test_create()
             result = false;
     }
 
-    test("create", "compare", [&result]() -> bool
-         { return result == true; });
+    test::test("create", "compare", [&result]() -> bool
+               { return result == true; });
 }
 
-void test_update()
-{
-    if (nitems < 129)
-    {
-        printf("Test update: Nitems should at least be greaer than 128");
-        return;
-    }
+static void client_update()
+{ 
     string update_data("123456789123456789123456789");
     vector<express::database::id_t> update_ids{0, 5, 10, 32, 63, 64, 65, 127, 128, 129};
 
     for (auto id : update_ids)
     {
+        if(id >= nitems)
+            break;
         write_bufs[id] = update_data;
         db->Update(tablename, id, update_data.c_str(), update_data.size() + 1);
     }
@@ -88,31 +192,18 @@ void test_update()
     bool result = true;
     for (auto id : update_ids)
     {
+        if(id >= nitems) 
+            break;
         auto new_data = db->Retrieve(tablename, id);
 
         if (update_data.compare(new_data.Get().get()) != 0)
             result = false;
     }
-    test("udpate", "compare", [result]() -> bool
-         { return result; });
+    test::test("udpate", "compare", [result]() -> bool
+               { return result; });
 }
 
-void test_retrieve()
-{
-    bool found_wrong = false;
-
-    for (size_t i = 0; i < nitems; i += 3)
-    {
-        auto data = db->Retrieve(tablename, i);
-        if (write_bufs[i].compare(data.Get().get()) != 0)
-            found_wrong = true;
-    }
-
-    test("retrieve", "compare", [&]() -> bool
-         { return !found_wrong; });
-}
-
-void test_delete()
+static void client_delete()
 {
     bool comp_found_wrong = false, reuse_found_wrong = false;
     uint64_t id;
@@ -128,179 +219,8 @@ void test_delete()
     uint64_t newid = db->Create(tablename, write_bufs[0].c_str(), write_bufs[0].size());
     if (newid != id - 4)
         reuse_found_wrong = true;
-    test("delete", "compare", [&]() -> bool
-         { return comp_found_wrong == false; });
-    test("delete", "reuse", [&]() -> bool
-         { return reuse_found_wrong == false; });
-}
-
-static void single_thread_test()
-{
-    test_create();
-    test_update();
-    test_retrieve();
-    test_delete();
-}
-
-void thread_entry(int tid, mutex *iomutex, barrier<> *delete_barrier)
-{
-    vector<uint64_t> id_vec;
-    bool size_found_wrong = false, data_found_wrong = false;
-    bool delete_found_error = false, update_found_error = false;
-    string new_write_buf_1("first_string");
-    string new_write_buf_2("second string");
-
-    // Create
-    for (size_t i = 0; i < nitems; ++i)
-    {
-        uint64_t newid = db->Create(tablename, write_bufs[i].c_str(), write_bufs[i].size() + 1);
-        id_vec.push_back(newid);
-    }
-
-    // Retrieve
-    int i = 0;
-    for (auto id : id_vec)
-    {
-        auto data = db->Retrieve(tablename, id);
-        if (write_bufs[i].compare(data.Get().get()) != 0)
-            data_found_wrong = true;
-        if ((write_bufs[i].size() + 1) != data.Size())
-        {
-            lock_guard<mutex> lk(*iomutex);
-            printf("Error size: %ld (expect %ld)\n", data.Size(), write_bufs[i].size() + 1);
-            size_found_wrong = true;
-        }
-        i++;
-    }
-
-    // Update
-    for (auto id : id_vec)
-    {
-        if (tid == 1)
-            db->Update(tablename, id, new_write_buf_1.c_str(), new_write_buf_1.size() + 1);
-
-        else
-            db->Update(tablename, id, new_write_buf_2.c_str(), new_write_buf_2.size() + 1);
-    }
-
-    // Check Update
-    for (auto id : id_vec)
-    {
-        auto data = db->Retrieve(tablename, id);
-        if (tid == 1 && new_write_buf_1.compare(data.Get().get()))
-            update_found_error = true;
-        else if (tid != 1 && new_write_buf_2.compare(data.Get().get()))
-            update_found_error = true; 
-    }
-
-    // Delete and check
-    delete_barrier->arrive_and_wait();
-    int j = 0;
-    for (auto id : id_vec)
-    {
-        db->Delete(tablename, id);
-        auto data = db->Retrieve(tablename, id);
-        if (data.Valid())
-            delete_found_error = true;
-        ++j;
-    }
-
-    iomutex->lock();
-    printf("[Thread %d] "
-           "data: %s\033[0m\t"
-           "size: %s\033[0m\t"
-           "update: %s\033[0m\t"
-           "delete: %s\033[0m\n",
-           tid,
-           data_found_wrong ? "\033[0;31mFAIL" : "\033[0;33mPASS",
-           size_found_wrong ? "\033[0;31mFAIL" : "\033[0;33mPASS",
-           update_found_error ? "\033[0;31mFAIL" : "\033[0;33mPASS",
-           delete_found_error ? "\033[0;31mFAIL" : "\033[0;33mPASS");
-    iomutex->unlock();
-}
-
-static void multi_thread_test(int nthreads)
-{
-    vector<thread *> threads;
-    barrier delete_barrier(nthreads);
-    mutex iomutex;
-    for (int i = 0; i < nthreads; ++i)
-    {
-        threads.push_back(new thread(thread_entry, i, &iomutex, &delete_barrier));
-    }
-
-    for (auto th : threads)
-        th->join();
-}
-
-int main(int argc, char *argv[])
-{
-    vector<pair<char, string>> opt_list{
-        pair<char, string>{'h', "help"},
-        pair<char, string>{'n', "number of items"},
-        pair<char, string>{'t', "number of threads"},
-        pair<char, string>{'M', "item max len"},
-        pair<char, string>{'m', "item min len"},
-        pair<char, string>{'s', "real data unit size"},
-        pair<char, string>{'a', "once allocate number of meta data"}};
-
-    int opt, opt_count = 0, nthreads;
-    opterr = 0;
-
-    while ((opt = getopt(argc, argv, "hn:t:M:m:s:a:")) != -1)
-    {
-        switch (opt)
-        {
-        case 'h':
-            printf("Help\n");
-            for (const auto &option : opt_list)
-                printf("%c : %s\n", option.first, option.second.c_str());
-            exit(EXIT_SUCCESS);
-
-        case 'n':
-            nitems = atoi(optarg);
-            opt_count++;
-            break;
-        case 't':
-            nthreads = atoi(optarg);
-            opt_count++;
-            break;
-        case 'a':
-            once_alloc_meta = atoi(optarg);
-            opt_count++;
-            break;
-        case 'm':
-            item_minlen = atoi(optarg);
-            opt_count++;
-            break;
-        case 'M':
-            item_maxlen = atoi(optarg);
-            opt_count++;
-            break;
-        case 's':
-            data_unit_size = atoi(optarg);
-            opt_count++;
-            break;
-        default:
-            fprintf(stderr, "Invalid input:%c %s\n", opt, optarg);
-            exit(EXIT_FAILURE);
-        }
-    }
-
-    if (opt_count != 6)
-    {
-        fprintf(stderr, "Missing arguments. Option -h is used to see help.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    printf("\033[0;37mThe performance in testing should not be considered to compare.\033[0m\n");
-    test_init();
-    if (nthreads == 1)
-        single_thread_test();
-    else
-        multi_thread_test(nthreads);
-
-    delete db;
-
-    return 0;
+    test::test("delete", "compare", [&]() -> bool
+               { return comp_found_wrong == false; });
+    test::test("delete", "reuse", [&]() -> bool
+               { return reuse_found_wrong == false; });
 }

@@ -8,7 +8,7 @@ var classutility_1_1ipc_1_1TCPServer =
     [ "TCPServer", "classutility_1_1ipc_1_1TCPServer.html#a9e8ff85938fab0f3b40ce0a7e87cbdf5", null ],
     [ "~TCPServer", "classutility_1_1ipc_1_1TCPServer.html#a19738bf31de2e8f3b3cc17fba82124d7", null ],
     [ "Close", "classutility_1_1ipc_1_1TCPServer.html#a8140481943b411600e0debd931e7ed88", null ],
-    [ "GetStatus", "classutility_1_1ipc_1_1TCPServer.html#ae078fa718ad1f6005330f37346b78067", null ],
+    [ "GetStatus", "classutility_1_1ipc_1_1TCPServer.html#afe140dcafcc564c5a6661dfc817ac849", null ],
     [ "HasPendingConnections", "classutility_1_1ipc_1_1TCPServer.html#a693736c29faefe710a74d9bcfb2c7d17", null ],
-    [ "NextPending", "classutility_1_1ipc_1_1TCPServer.html#a7796ca13afaa20d29ff4ae89f4ddd4e9", null ]
+    [ "NextPending", "classutility_1_1ipc_1_1TCPServer.html#a9fd610ccaea2534dba6764b4faa2edec", null ]
 ];

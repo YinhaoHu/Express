@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('ReceivedStreamMessage-example.html',''
 <div class="title">ReceivedStreamMessage</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>The basic usage of this class. </p><div class="fragment"><div class="line">std::shared_ptr&lt;Header&gt; spHeader;</div>
+<p>The basic usage of this class. </p><div class="fragment"><div class="line">std::shared_ptr&lt;Header&gt; spHeader = std::make_shared&lt;Header&gt;();</div>
 <div class="line">IPC_channel.receive(spHeader-&gt;GetDataHandler(),spHeader-&gt;Size());</div>
 <div class="line">ReceivedStreamMessage msg(spHeader); </div>
 <div class="line">IPC_channel.receive(msg.GetBodyHandler, spHeader-&gt;body_size); </div>

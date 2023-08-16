@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('namespacedatabase.html',''); initResiz
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">database Namespace Reference</div>  </div>
@@ -93,9 +95,10 @@ $(document).ready(function(){initNavTree('namespacedatabase.html',''); initResiz
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html">DataBase</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1Client.html">Client</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1FreeList.html">FreeList</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html">DataBase</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A basic data base class with thread-safe CRUD.  <a href="classdatabase_1_1DataBase.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataList.html">DataList</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data List class.  <a href="classdatabase_1_1DataList.html#details">More...</a><br /></td></tr>
@@ -103,10 +106,38 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:accb8ab10878d1936fc57203cc57dd802"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a> = uint64_t</td></tr>
+<tr class="separator:accb8ab10878d1936fc57203cc57dd802"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5854971426749e6ebcd021acf84d36b7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#a5854971426749e6ebcd021acf84d36b7">pos_t</a> = uint64_t</td></tr>
 <tr class="separator:a5854971426749e6ebcd021acf84d36b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1074b82f1c23a34e7dda84c43bb71a39"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a> = uint64_t</td></tr>
-<tr class="separator:a1074b82f1c23a34e7dda84c43bb71a39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a0fe360d555cf2f31ea9d9da695e5999a"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">CommCode</a> : uint32_t { <br />
+&#160;&#160;<a class="el" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa1deee0ed1f1bff93adbe6bb69734557d">kMakeTable</a>
+, <a class="el" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aab9bd4b7bbc4fbe61cec6edd5bad6496d">kCreate</a>
+, <a class="el" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa78adec6ec3709184a1988aaff33f1c79">kRetrieve</a>
+, <a class="el" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa3f55b8326206a387d817795ab2a0b339">kUpdate</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aaa075d0261593f6a884f416df38cb9696">kDelete</a>
+<br />
+ }</td></tr>
+<tr class="separator:a0fe360d555cf2f31ea9d9da695e5999a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f3c7fbf9fbe5f5e53c4720de3594c01"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">ExitCode</a> : int { <br />
+&#160;&#160;<a class="el" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a8c632159fa131f09d04f94e3cbcd8782">kSuccess</a>
+, <a class="el" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a80fdc050363ea6925fa2e7eb7f0a94a0">kInvalidArgument</a>
+, <a class="el" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a24e059d374450b90a1c093eaaf468b2d">kLogInitFailure</a>
+, <a class="el" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc">kLoggedInitFailure</a>
+, <br />
+&#160;&#160;<a class="el" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5">kRuntimeFailure</a>
+<br />
+ }</td></tr>
+<tr class="separator:a9f3c7fbf9fbe5f5e53c4720de3594c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af1ed639feaacc16dc80f4c952c819a0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#af1ed639feaacc16dc80f4c952c819a0a">react</a> (std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">utility::ipc::ReceivedStreamMessage</a> &gt; msg)</td></tr>
+<tr class="separator:af1ed639feaacc16dc80f4c952c819a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -114,14 +145,14 @@ Variables</h2></td></tr>
 <tr class="separator:a0f83b280535d19dbae7fbbdebbb6c935"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a1074b82f1c23a34e7dda84c43bb71a39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1074b82f1c23a34e7dda84c43bb71a39">&#9670;&nbsp;</a></span>id_t</h2>
+<a id="accb8ab10878d1936fc57203cc57dd802"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accb8ab10878d1936fc57203cc57dd802">&#9670;&nbsp;</a></span>id_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">database::id_t</a> = typedef uint64_t</td>
+          <td class="memname">typedef uint64_t <a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">database::id_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -136,6 +167,84 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">using <a class="el" href="namespacedatabase.html#a5854971426749e6ebcd021acf84d36b7">database::pos_t</a> = typedef uint64_t</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a0fe360d555cf2f31ea9d9da695e5999a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fe360d555cf2f31ea9d9da695e5999a">&#9670;&nbsp;</a></span>CommCode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">database::CommCode</a> : uint32_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0fe360d555cf2f31ea9d9da695e5999aa1deee0ed1f1bff93adbe6bb69734557d"></a>kMakeTable&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0fe360d555cf2f31ea9d9da695e5999aab9bd4b7bbc4fbe61cec6edd5bad6496d"></a>kCreate&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0fe360d555cf2f31ea9d9da695e5999aa78adec6ec3709184a1988aaff33f1c79"></a>kRetrieve&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0fe360d555cf2f31ea9d9da695e5999aa3f55b8326206a387d817795ab2a0b339"></a>kUpdate&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0fe360d555cf2f31ea9d9da695e5999aaa075d0261593f6a884f416df38cb9696"></a>kDelete&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<a id="a9f3c7fbf9fbe5f5e53c4720de3594c01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f3c7fbf9fbe5f5e53c4720de3594c01">&#9670;&nbsp;</a></span>ExitCode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">database::ExitCode</a> : int</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9f3c7fbf9fbe5f5e53c4720de3594c01a8c632159fa131f09d04f94e3cbcd8782"></a>kSuccess&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9f3c7fbf9fbe5f5e53c4720de3594c01a80fdc050363ea6925fa2e7eb7f0a94a0"></a>kInvalidArgument&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9f3c7fbf9fbe5f5e53c4720de3594c01a24e059d374450b90a1c093eaaf468b2d"></a>kLogInitFailure&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc"></a>kLoggedInitFailure&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5"></a>kRuntimeFailure&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="af1ed639feaacc16dc80f4c952c819a0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1ed639feaacc16dc80f4c952c819a0a">&#9670;&nbsp;</a></span>react()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void database::react </td>
+          <td>(</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">utility::ipc::ReceivedStreamMessage</a> &gt;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

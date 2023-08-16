@@ -4,6 +4,7 @@
 #include "utility/macro.h"
 #include "utility/misc.h"
 #include "utility/ipc/socket.h"
+#include <mutex>
 
 _START_EXPRESS_NAMESPACE_
 
@@ -19,6 +20,7 @@ namespace utility
              */
             BasicSocket(int domain, int type);
             BasicSocket(Socket sockfd);
+            BasicSocket(const BasicSocket&) = delete;
             virtual ~BasicSocket();
 
             void Close();
@@ -88,9 +90,16 @@ namespace utility
              */
             void SendFile(const char *file_path);
 
+            std::mutex& GetWriteMutex();
+            
+            std::mutex& GetReadMutex();
+
         protected:
             bool closed_;
             Socket socket_;
+        
+        private:
+            std::mutex read_mutex_, write_mutex_;
         };
     }
 }

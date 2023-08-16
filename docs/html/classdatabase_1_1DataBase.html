@@ -83,7 +83,6 @@ $(document).ready(function(){initNavTree('classdatabase_1_1DataBase.html',''); i
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classdatabase_1_1DataBase-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -91,13 +90,11 @@ $(document).ready(function(){initNavTree('classdatabase_1_1DataBase.html',''); i
 </div><!--header-->
 <div class="contents">
 
+<p>A basic data base class with thread-safe CRUD.  
+ <a href="classdatabase_1_1DataBase.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="database_8h_source.html">database.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase_1_1Impl.html">Impl</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af1b5ada0b7c74d9dab271059f62319ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#af1b5ada0b7c74d9dab271059f62319ad">DataBase</a> (const std::string &amp;dir_name)</td></tr>
@@ -107,19 +104,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a963ef2024805ca9f2ecde5662ceb477f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a963ef2024805ca9f2ecde5662ceb477f">MakeTable</a> (const std::string &amp;name, size_t data_unit_size, size_t meta_once_alloc_num)</td></tr>
 <tr class="memdesc:a963ef2024805ca9f2ecde5662ceb477f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a new table with the given parameters.  <a href="classdatabase_1_1DataBase.html#a963ef2024805ca9f2ecde5662ceb477f">More...</a><br /></td></tr>
 <tr class="separator:a963ef2024805ca9f2ecde5662ceb477f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a951d4e3b40961558b09cbee0bf407805"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a951d4e3b40961558b09cbee0bf407805">Create</a> (const std::string &amp;table_name, const char *data, size_t size) noexcept(true)</td></tr>
+<tr class="memitem:a951d4e3b40961558b09cbee0bf407805"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a951d4e3b40961558b09cbee0bf407805">Create</a> (const std::string &amp;table_name, const char *data, size_t size) noexcept(true)</td></tr>
 <tr class="memdesc:a951d4e3b40961558b09cbee0bf407805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an item in the specified table.  <a href="classdatabase_1_1DataBase.html#a951d4e3b40961558b09cbee0bf407805">More...</a><br /></td></tr>
 <tr class="separator:a951d4e3b40961558b09cbee0bf407805"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5649eeda490ff929c962ced718ffd277"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1data_1_1RawData.html">utility::data::RawData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a5649eeda490ff929c962ced718ffd277">Retrieve</a> (const std::string &amp;table_name, <a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a> id) noexcept(true)</td></tr>
+<tr class="memitem:a5649eeda490ff929c962ced718ffd277"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1data_1_1RawData.html">utility::data::RawData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a5649eeda490ff929c962ced718ffd277">Retrieve</a> (const std::string &amp;table_name, <a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a> id) noexcept(true)</td></tr>
 <tr class="memdesc:a5649eeda490ff929c962ced718ffd277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the specified data in the specified table.  <a href="classdatabase_1_1DataBase.html#a5649eeda490ff929c962ced718ffd277">More...</a><br /></td></tr>
 <tr class="separator:a5649eeda490ff929c962ced718ffd277"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ec37c264663b7a80f1db7452641a920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a4ec37c264663b7a80f1db7452641a920">Update</a> (const std::string &amp;table_name, <a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a> id, const char *new_data, size_t new_size)</td></tr>
+<tr class="memitem:a4ec37c264663b7a80f1db7452641a920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a4ec37c264663b7a80f1db7452641a920">Update</a> (const std::string &amp;table_name, <a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a> id, const char *new_data, size_t new_size)</td></tr>
 <tr class="separator:a4ec37c264663b7a80f1db7452641a920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a5bbdcda7cc8521adeb52a5eff07257"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a6a5bbdcda7cc8521adeb52a5eff07257">Delete</a> (const std::string &amp;table_name, <a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a> id)</td></tr>
+<tr class="memitem:a6a5bbdcda7cc8521adeb52a5eff07257"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdatabase_1_1DataBase.html#a6a5bbdcda7cc8521adeb52a5eff07257">Delete</a> (const std::string &amp;table_name, <a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a> id)</td></tr>
 <tr class="separator:a6a5bbdcda7cc8521adeb52a5eff07257"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A basic data base class. </p>
+<div class="textblock"><p>A basic data base class with thread-safe CRUD. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af1b5ada0b7c74d9dab271059f62319ad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af1b5ada0b7c74d9dab271059f62319ad">&#9670;&nbsp;</a></span>DataBase()</h2>
@@ -139,6 +136,12 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dir_name</td><td>The absolute path name of directory where the database stores its data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::system</td><td>error will be thrown if errno is set. </td></tr>
   </table>
   </dd>
 </dl>
@@ -173,7 +176,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a> database::DataBase::Create </td>
+          <td class="memname"><a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a> database::DataBase::Create </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>table_name</em>, </td>
@@ -222,7 +225,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a>&#160;</td>
           <td class="paramname"><em>id</em>&#160;</td>
         </tr>
         <tr>
@@ -234,7 +237,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::range_error</td><td>will be thrown if the id is out of range. </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>will be thrown if the id is not valid. </td></tr>
   </table>
   </dd>
 </dl>
@@ -282,6 +285,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section warning"><dt>Warning</dt><dd>This function is NOT thread-safe. </dd></dl>
 
 </div>
 </div>
@@ -303,7 +307,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a>&#160;</td>
           <td class="paramname"><em>id</em>&#160;</td>
         </tr>
         <tr>
@@ -321,7 +325,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Retrieve the specified data in the specified table. </p>
 <dl class="section return"><dt>Returns</dt><dd>The data desiered if id is valid. Otherwise, invalid raw_data will be returned. </dd></dl>
-<dl class="section warning"><dt>Warning</dt><dd>The returned data should be MANUALLY deleted. </dd></dl>
 
 </div>
 </div>
@@ -340,7 +343,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacedatabase.html#a1074b82f1c23a34e7dda84c43bb71a39">id_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacedatabase.html#accb8ab10878d1936fc57203cc57dd802">id_t</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -364,16 +367,15 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::range_error</td><td>will be thrown if the id is out of range. </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>will be thrown if the id is not valid. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/hoo/project/Express/src/database/<a class="el" href="database_8h_source.html">database.h</a></li>
-<li>/home/hoo/project/Express/src/database/<a class="el" href="database_8cc.html">database.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

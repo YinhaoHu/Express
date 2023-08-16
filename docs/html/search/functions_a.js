@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['main_299',['main',['../read_8cc.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;read.cc'],['../database_2test_2test_8cc.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test.cc'],['../log_2main_8cc.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cc'],['../client_8cc.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;client.cc'],['../server_8cc.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;server.cc'],['../utility_2ipc_2test_2test_8cc.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;test.cc']]],
-  ['maketable_300',['MakeTable',['../classdatabase_1_1DataBase_1_1Impl.html#ac0d838c78748dccc5d92aa9ef5f87b9d',1,'database::DataBase::Impl::MakeTable()'],['../classdatabase_1_1DataBase.html#a963ef2024805ca9f2ecde5662ceb477f',1,'database::DataBase::MakeTable()']]],
-  ['messagedata_301',['MessageData',['../classutility_1_1ipc_1_1SentMessage.html#a6fc1a5b2b9f55319be7a7423101cd1f5',1,'utility::ipc::SentMessage']]],
-  ['messagequeue_302',['MessageQueue',['../classutility_1_1ipc_1_1MessageQueue.html#ad67d4120cc58392c02fce3fc07c33171',1,'utility::ipc::MessageQueue::MessageQueue(const std::string &amp;name, long maxmsg, long msgsize)'],['../classutility_1_1ipc_1_1MessageQueue.html#a4b7a0a0452a2f4f57c28e034d99ed571',1,'utility::ipc::MessageQueue::MessageQueue(const MessageQueue &amp;other)=delete']]],
-  ['mqname_303',['mqname',['../spec_8h.html#a7aab6524d7540366e65826a141cbf485',1,'spec.h']]]
+  ['nextpending_249',['NextPending',['../classutility_1_1ipc_1_1TCPServer.html#a9fd610ccaea2534dba6764b4faa2edec',1,'utility::ipc::TCPServer']]]
 ];

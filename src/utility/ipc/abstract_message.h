@@ -24,6 +24,7 @@ namespace utility
  
                 Field(const char* p = nullptr, size_t nbytes  = 0)
                     : pData(p), size(nbytes){}
+                ~Field() {}
             };
             struct Header
             {

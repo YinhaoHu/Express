@@ -126,75 +126,76 @@ $(document).ready(function(){initNavTree('thread__pool_8h_source.html',''); init
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; nthreads; ++i)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            workers_.emplace_back(</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                [<span class="keyword">this</span>]()</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    std::function&lt;void()&gt; mytask;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    <span class="keywordflow">for</span> (;;)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                        {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                            std::unique_lock&lt;std::mutex&gt; lock(this-&gt;tasks_mutex_);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                            this-&gt;tasks_cv_.wait(lock, [&amp;]()</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                 { <span class="keywordflow">return</span> !this-&gt;tasks_.empty() || this-&gt;stopped_; });</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                            <span class="keywordflow">if</span> (this-&gt;stopped_ &amp;&amp; this-&gt;tasks_.empty())</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                            mytask = std::move(this-&gt;tasks_.front());</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                            this-&gt;tasks_.pop();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        mytask();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                });</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975">   64</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975">ThreadPool::~ThreadPool</a>()</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            std::scoped_lock&lt;std::mutex&gt; lock(tasks_mutex_);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            stopped_ = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        tasks_cv_.notify_all();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;worker : workers_)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            worker.join();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span>... Args&gt;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classutility_1_1concurrency_1_1ThreadPool.html#a31d71ef1abdf11f2f9a3013209ce5314">   76</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classutility_1_1concurrency_1_1ThreadPool.html#a31d71ef1abdf11f2f9a3013209ce5314">ThreadPool::Add</a>(F &amp;&amp;task, Args &amp;&amp;...args)</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">using</span> return_value_type = invoke_result_t&lt;F, Args...&gt;;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keyword">auto</span> async_task = make_shared&lt;packaged_task&lt;return_value_type()&gt;&gt;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        (packaged_task{</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            [&amp;]()</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            {<span class="keywordflow">return</span> task(forward&lt;Args&gt;(args)...);}</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        );</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            scoped_lock&lt;std::mutex&gt; lock(tasks_mutex_);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (stopped_)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Thread pool stopped.&quot;</span>);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            tasks_.emplace([async_task]()</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                           { (*async_task)(); });</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        tasks_cv_.notify_one();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> async_task-&gt;get_future();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;};</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="comment">//TODO Bind different thread in different CPU.</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            workers_.emplace_back(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                [<span class="keyword">this</span>]()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                    std::function&lt;void()&gt; mytask;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                    <span class="keywordflow">for</span> (;;)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                            std::unique_lock&lt;std::mutex&gt; lock(this-&gt;tasks_mutex_);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                            this-&gt;tasks_cv_.wait(lock, [&amp;]()</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                                                 { <span class="keywordflow">return</span> !this-&gt;tasks_.empty() || this-&gt;stopped_; });</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                            <span class="keywordflow">if</span> (this-&gt;stopped_ &amp;&amp; this-&gt;tasks_.empty())</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                            mytask = std::move(this-&gt;tasks_.front());</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                            this-&gt;tasks_.pop();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        mytask();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                });</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975">   65</a></span>&#160;    <span class="keyword">inline</span> <a class="code" href="classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975">ThreadPool::~ThreadPool</a>()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            std::scoped_lock&lt;std::mutex&gt; lock(tasks_mutex_);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            stopped_ = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        tasks_cv_.notify_all();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;worker : workers_)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            worker.join();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classutility_1_1concurrency_1_1ThreadPool.html#a31d71ef1abdf11f2f9a3013209ce5314">   77</a></span>&#160;    <span class="keyword">auto</span> <a class="code" href="classutility_1_1concurrency_1_1ThreadPool.html#a31d71ef1abdf11f2f9a3013209ce5314">ThreadPool::Add</a>(F &amp;&amp;task, Args &amp;&amp;...args)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">using</span> return_value_type = invoke_result_t&lt;F, Args...&gt;;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keyword">auto</span> async_task = make_shared&lt;packaged_task&lt;return_value_type()&gt;&gt;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        (packaged_task{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            [&amp;]()</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {<span class="keywordflow">return</span> task(forward&lt;Args&gt;(args)...);}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            scoped_lock&lt;std::mutex&gt; lock(tasks_mutex_);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (stopped_)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <span class="keywordflow">throw</span> runtime_error(<span class="stringliteral">&quot;Thread pool stopped.&quot;</span>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            tasks_.emplace([async_task]()</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                           { (*async_task)(); });</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        tasks_cv_.notify_one();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">return</span> async_task-&gt;get_future();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassutility_1_1concurrency_1_1ThreadPool_html"><div class="ttname"><a href="classutility_1_1concurrency_1_1ThreadPool.html">utility::concurrency::ThreadPool</a></div><div class="ttdef"><b>Definition:</b> thread_pool.h:19</div></div>
 <div class="ttc" id="aclassutility_1_1concurrency_1_1ThreadPool_html_a305f731b5d351581e2d395561402ca61"><div class="ttname"><a href="classutility_1_1concurrency_1_1ThreadPool.html#a305f731b5d351581e2d395561402ca61">utility::concurrency::ThreadPool::ThreadPool</a></div><div class="ttdeci">ThreadPool(size_t nthreads)</div><div class="ttdef"><b>Definition:</b> thread_pool.h:36</div></div>
-<div class="ttc" id="aclassutility_1_1concurrency_1_1ThreadPool_html_a31d71ef1abdf11f2f9a3013209ce5314"><div class="ttname"><a href="classutility_1_1concurrency_1_1ThreadPool.html#a31d71ef1abdf11f2f9a3013209ce5314">utility::concurrency::ThreadPool::Add</a></div><div class="ttdeci">auto Add(F &amp;&amp;task, Args &amp;&amp;...args)</div><div class="ttdef"><b>Definition:</b> thread_pool.h:76</div></div>
-<div class="ttc" id="aclassutility_1_1concurrency_1_1ThreadPool_html_a42af4c764566f1d3c6e02cab1aee0975"><div class="ttname"><a href="classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975">utility::concurrency::ThreadPool::~ThreadPool</a></div><div class="ttdeci">~ThreadPool()</div><div class="ttdef"><b>Definition:</b> thread_pool.h:64</div></div>
+<div class="ttc" id="aclassutility_1_1concurrency_1_1ThreadPool_html_a31d71ef1abdf11f2f9a3013209ce5314"><div class="ttname"><a href="classutility_1_1concurrency_1_1ThreadPool.html#a31d71ef1abdf11f2f9a3013209ce5314">utility::concurrency::ThreadPool::Add</a></div><div class="ttdeci">auto Add(F &amp;&amp;task, Args &amp;&amp;...args)</div><div class="ttdef"><b>Definition:</b> thread_pool.h:77</div></div>
+<div class="ttc" id="aclassutility_1_1concurrency_1_1ThreadPool_html_a42af4c764566f1d3c6e02cab1aee0975"><div class="ttname"><a href="classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975">utility::concurrency::ThreadPool::~ThreadPool</a></div><div class="ttdeci">~ThreadPool()</div><div class="ttdef"><b>Definition:</b> thread_pool.h:65</div></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
-<div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:10</div></div>
-<div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
+<div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
+<div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:8</div></div>
 <div class="ttc" id="anamespaceutility_1_1concurrency_html"><div class="ttname"><a href="namespaceutility_1_1concurrency.html">utility::concurrency</a></div><div class="ttdef"><b>Definition:</b> thread_pool.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

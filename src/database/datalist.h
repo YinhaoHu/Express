@@ -18,8 +18,7 @@ namespace database
     public:
         /**
          * @param name The name of the specified table.
-         * @throw std::runtime_error will be thrown in these case: 1. sepcified table file does
-         * not exist.
+         * @throw std::system_error will be thrown if errno is set .
          */
         DataList(const char *name);
         ~DataList();

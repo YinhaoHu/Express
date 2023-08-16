@@ -95,42 +95,50 @@ $(document).ready(function(){initNavTree('unix__domain__socket_8h_source.html','
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="misc_8h.html">utility/misc.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="socket_8h.html">utility/ipc/socket.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="basic__socket_8h.html">utility/ipc/basic_socket.h</a>&quot;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="sent__message_8h.html">utility/ipc/sent_message.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="received__stream__message_8h.html">utility/ipc/received_stream_message.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceutility_1_1ipc.html">utility::ipc</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">class </span>UnixDomainSocket : <span class="keyword">public</span> BasicSocket</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">static</span> std::pair&lt;Socket, Socket&gt; SocketPair(<a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">SocketType</a> sock_type = <a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392">SocketType::Stream</a>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        UnixDomainSocket(<a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">SocketType</a> sock_type = <a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392">SocketType::Stream</a>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        UnixDomainSocket(<a class="code" href="socket_8h.html#af267afc664829a34f50c78fb2a48e250">Socket</a> sock_fd);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> SendDescriptor(<span class="keywordtype">int</span> fd);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">int</span> ReceiveDescriptor();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceutility_1_1ipc.html">utility::ipc</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">class </span>UnixDomainSocket : <span class="keyword">public</span> BasicSocket</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">static</span> std::pair&lt;Socket, Socket&gt; SocketPair(<a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">SocketType</a> sock_type = <a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392">SocketType::Stream</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        UnixDomainSocket(<a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">SocketType</a> sock_type = <a class="code" href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392">SocketType::Stream</a>);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        UnixDomainSocket(<span class="keyword">const</span> UnixDomainSocket&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        UnixDomainSocket(<a class="code" href="socket_8h.html#af267afc664829a34f50c78fb2a48e250">Socket</a> sock_fd);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> SendDescriptor(<span class="keywordtype">int</span> fd);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">int</span> ReceiveDescriptor();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> SendMessage(<span class="keyword">const</span> SentMessage&amp; msg);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// for #ifdef __linux</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;#endif <span class="comment">// for express macro</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        std::unique_ptr&lt;ReceivedStreamMessage&gt; ReceiveMessage();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// for #ifdef __linux</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;#endif <span class="comment">// for express macro</span></div>
 <div class="ttc" id="abasic__socket_8h_html"><div class="ttname"><a href="basic__socket_8h.html">basic_socket.h</a></div></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
-<div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:10</div></div>
-<div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
+<div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
+<div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:8</div></div>
 <div class="ttc" id="amisc_8h_html"><div class="ttname"><a href="misc_8h.html">misc.h</a></div></div>
 <div class="ttc" id="anamespaceutility_1_1ipc_html"><div class="ttname"><a href="namespaceutility_1_1ipc.html">utility::ipc</a></div><div class="ttdef"><b>Definition:</b> abstract_message.h:16</div></div>
 <div class="ttc" id="anamespaceutility_1_1ipc_html_a4f86cc6870b93f9fdd6309edd96b99a5"><div class="ttname"><a href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5">utility::ipc::SocketType</a></div><div class="ttdeci">SocketType</div><div class="ttdef"><b>Definition:</b> socket.h:27</div></div>
 <div class="ttc" id="anamespaceutility_1_1ipc_html_a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392"><div class="ttname"><a href="namespaceutility_1_1ipc.html#a4f86cc6870b93f9fdd6309edd96b99a5aeae835e83c0494a376229f254f7d3392">utility::ipc::SocketType::Stream</a></div><div class="ttdeci">@ Stream</div></div>
+<div class="ttc" id="areceived__stream__message_8h_html"><div class="ttname"><a href="received__stream__message_8h.html">received_stream_message.h</a></div></div>
+<div class="ttc" id="asent__message_8h_html"><div class="ttname"><a href="sent__message_8h.html">sent_message.h</a></div></div>
 <div class="ttc" id="asocket_8h_html"><div class="ttname"><a href="socket_8h.html">socket.h</a></div></div>
 <div class="ttc" id="asocket_8h_html_af267afc664829a34f50c78fb2a48e250"><div class="ttname"><a href="socket_8h.html#af267afc664829a34f50c78fb2a48e250">Socket</a></div><div class="ttdeci">SOCKET Socket</div><div class="ttdef"><b>Definition:</b> socket.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->

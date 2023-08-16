@@ -104,14 +104,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a082662b2e4e9f748fa7a9de0debe004b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d3efef1901849ad7a86eb7c6c53f010"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a2d3efef1901849ad7a86eb7c6c53f010">BasicSocket</a> (<a class="el" href="socket_8h.html#af267afc664829a34f50c78fb2a48e250">Socket</a> sockfd)</td></tr>
 <tr class="separator:a2d3efef1901849ad7a86eb7c6c53f010"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ee3174a62bf7e9858b7952c7f0a042d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a2ee3174a62bf7e9858b7952c7f0a042d">~BasicSocket</a> ()</td></tr>
-<tr class="separator:a2ee3174a62bf7e9858b7952c7f0a042d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad18fe9a0d341cd4774590a3de5274366"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#ad18fe9a0d341cd4774590a3de5274366">BasicSocket</a> (const <a class="el" href="classutility_1_1ipc_1_1BasicSocket.html">BasicSocket</a> &amp;)=delete</td></tr>
+<tr class="separator:ad18fe9a0d341cd4774590a3de5274366"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad41b3488a69bda656dd8e617cce3a4f4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#ad41b3488a69bda656dd8e617cce3a4f4">~BasicSocket</a> ()</td></tr>
+<tr class="separator:ad41b3488a69bda656dd8e617cce3a4f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1959f5840b5826531076618e8a970994"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a1959f5840b5826531076618e8a970994">Close</a> ()</td></tr>
 <tr class="separator:a1959f5840b5826531076618e8a970994"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91b866ea8e118776d1418e1be56dfafb"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a91b866ea8e118776d1418e1be56dfafb">Send</a> (const char *buf, size_t size, int flag=0)</td></tr>
-<tr class="separator:a91b866ea8e118776d1418e1be56dfafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb870180e1f329c1e92e778e49dbd2ff"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#aeb870180e1f329c1e92e778e49dbd2ff">Receive</a> (void *buf, size_t size, int flag=0)</td></tr>
-<tr class="separator:aeb870180e1f329c1e92e778e49dbd2ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0faea48af7d7aa0ed93e976db0d0499c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a0faea48af7d7aa0ed93e976db0d0499c">Send</a> (const char *buf, size_t size, int flag=0)</td></tr>
+<tr class="separator:a0faea48af7d7aa0ed93e976db0d0499c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ff1532d8476de208bbde954818853d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a03ff1532d8476de208bbde954818853d">Receive</a> (void *buf, size_t size, int flag=MSG_WAITALL)</td></tr>
+<tr class="separator:a03ff1532d8476de208bbde954818853d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9390e73165768fe5c63e876aefc26aff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a9390e73165768fe5c63e876aefc26aff">SetOption</a> (int opt, const void *pval, socklen_t len)</td></tr>
 <tr class="separator:a9390e73165768fe5c63e876aefc26aff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa927300d29e05365f019439dba5eabdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#aa927300d29e05365f019439dba5eabdd">GetOption</a> (int opt, void *pval, socklen_t *len)</td></tr>
@@ -140,7 +142,7 @@ Protected Attributes</h2></td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a082662b2e4e9f748fa7a9de0debe004b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a082662b2e4e9f748fa7a9de0debe004b">&#9670;&nbsp;</a></span>BasicSocket() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a082662b2e4e9f748fa7a9de0debe004b">&#9670;&nbsp;</a></span>BasicSocket() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -166,7 +168,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>will be thrown when system call set errno. </td></tr>
   </table>
   </dd>
 </dl>
@@ -174,7 +176,7 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a2d3efef1901849ad7a86eb7c6c53f010"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d3efef1901849ad7a86eb7c6c53f010">&#9670;&nbsp;</a></span>BasicSocket() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d3efef1901849ad7a86eb7c6c53f010">&#9670;&nbsp;</a></span>BasicSocket() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -191,8 +193,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2ee3174a62bf7e9858b7952c7f0a042d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ee3174a62bf7e9858b7952c7f0a042d">&#9670;&nbsp;</a></span>~BasicSocket()</h2>
+<a id="ad18fe9a0d341cd4774590a3de5274366"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad18fe9a0d341cd4774590a3de5274366">&#9670;&nbsp;</a></span>BasicSocket() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -201,7 +203,33 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">utility::ipc::BasicSocket::~BasicSocket </td>
+          <td class="memname">utility::ipc::BasicSocket::BasicSocket </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classutility_1_1ipc_1_1BasicSocket.html">BasicSocket</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad41b3488a69bda656dd8e617cce3a4f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad41b3488a69bda656dd8e617cce3a4f4">&#9670;&nbsp;</a></span>~BasicSocket()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual utility::ipc::BasicSocket::~BasicSocket </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -233,7 +261,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>will be thrown when system call set errno. </td></tr>
   </table>
   </dd>
 </dl>
@@ -383,7 +411,7 @@ template&lt;typename SocketAddressT &gt; </div>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>will be thrown when system call set errno. </td></tr>
   </table>
   </dd>
 </dl>
@@ -407,21 +435,21 @@ template&lt;typename SocketAddressT &gt; </div>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>will be thrown when system call set errno. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="aeb870180e1f329c1e92e778e49dbd2ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb870180e1f329c1e92e778e49dbd2ff">&#9670;&nbsp;</a></span>Receive()</h2>
+<a id="a03ff1532d8476de208bbde954818853d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03ff1532d8476de208bbde954818853d">&#9670;&nbsp;</a></span>Receive()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ssize_t utility::ipc::BasicSocket::Receive </td>
+          <td class="memname">void utility::ipc::BasicSocket::Receive </td>
           <td>(</td>
           <td class="paramtype">void *&#160;</td>
           <td class="paramname"><em>buf</em>, </td>
@@ -436,7 +464,7 @@ template&lt;typename SocketAddressT &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>flag</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>flag</em> = <code>MSG_WAITALL</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -445,23 +473,28 @@ template&lt;typename SocketAddressT &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>size bytes are guaranteed to be received if no exception thrown. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">Exceptions</td><td>will be thrown in the two cases.<ol type="1">
+<li>std::system_error will be thrown when system call set errno.</li>
+<li>std::invalid_argument will be thrown when size is zero. </li>
+</ol>
+</td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a91b866ea8e118776d1418e1be56dfafb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91b866ea8e118776d1418e1be56dfafb">&#9670;&nbsp;</a></span>Send()</h2>
+<a id="a0faea48af7d7aa0ed93e976db0d0499c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0faea48af7d7aa0ed93e976db0d0499c">&#9670;&nbsp;</a></span>Send()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">ssize_t utility::ipc::BasicSocket::Send </td>
+          <td class="memname">void utility::ipc::BasicSocket::Send </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>buf</em>, </td>
@@ -485,9 +518,14 @@ template&lt;typename SocketAddressT &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>size bytes are guaranteed to be sent if no exception thrown. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">Exceptions</td><td>will be thrown in the two cases.<ol type="1">
+<li>std::system_error will be thrown when system call set errno.</li>
+<li>std::invalid_argument will be thrown when size is zero. </li>
+</ol>
+</td></tr>
   </table>
   </dd>
 </dl>
@@ -512,7 +550,7 @@ template&lt;typename SocketAddressT &gt; </div>
 <dl class="section note"><dt>Note</dt><dd>If this function is called in Message transfer, you would set TCP_CORK option before using. The recommended way is that set include tail files in the <a class="el" href="classutility_1_1ipc_1_1SentMessage.html" title="A message class that encapsulate all data to send in a consecutive memory block.">SentMessage</a>. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>will be thrown when system call set errno. </td></tr>
   </table>
   </dd>
 </dl>
@@ -552,7 +590,7 @@ template&lt;typename SocketAddressT &gt; </div>
 </div><div class="memdoc">
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::runtime_error</td><td>will be thrown when system call set errno. </td></tr>
+    <tr><td class="paramname">std::system_error</td><td>will be thrown when system call set errno. </td></tr>
   </table>
   </dd>
 </dl>
@@ -604,9 +642,8 @@ template&lt;typename SocketAddressT &gt; </div>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/hoo/project/Express/src/utility/ipc/<a class="el" href="basic__socket_8h_source.html">basic_socket.h</a></li>
-<li>/home/hoo/project/Express/src/utility/ipc/<a class="el" href="basic__socket_8cc.html">basic_socket.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

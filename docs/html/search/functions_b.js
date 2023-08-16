@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['nextpending_304',['NextPending',['../classutility_1_1ipc_1_1TCPServer.html#a7796ca13afaa20d29ff4ae89f4ddd4e9',1,'utility::ipc::TCPServer']]]
+  ['operator_3d_250',['operator=',['../classutility_1_1data_1_1RawData.html#ad3ae1412243aa0ce4bcaed496f2d4ed7',1,'utility::data::RawData::operator=(const RawData &amp;rhs)'],['../classutility_1_1data_1_1RawData.html#ac7515c8825096a30c91a5d23e763a646',1,'utility::data::RawData::operator=(RawData &amp;&amp;rhs)'],['../structutility_1_1ipc_1_1AbstractMessage_1_1Header.html#a2ea45bb1485b7f8f6659c64665443e1b',1,'utility::ipc::AbstractMessage::Header::operator=()'],['../classutility_1_1ipc_1_1AbstractMessage.html#accd437cd3d953cd251dc061a3d43ab32',1,'utility::ipc::AbstractMessage::operator=()'],['../classutility_1_1ipc_1_1MessageQueue.html#af34c70d10adf5f4a8b866f02750062bb',1,'utility::ipc::MessageQueue::operator=()']]],
+  ['operator_5b_5d_251',['operator[]',['../classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#adf273a68bfb721b00b3276b91613deb3',1,'utility::ipc::ReceivedBoundaryMessage::operator[]()'],['../classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66',1,'utility::ipc::ReceivedStreamMessage::operator[]()']]]
 ];

@@ -27,9 +27,9 @@ namespace utility::ipc
 
     public:
         UnixDomainSocket(SocketType sock_type = SocketType::Stream);
-
+        UnixDomainSocket(const UnixDomainSocket&) = delete;
         UnixDomainSocket(Socket sock_fd);
-
+        
         /**
          * @throw  std::system_rror if error in system call.
          */

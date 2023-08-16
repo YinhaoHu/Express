@@ -10,6 +10,7 @@
 #include <memory>
 #include <stdexcept>
 #include <type_traits>
+#include <sched.h> 
 
 _START_EXPRESS_NAMESPACE_
 
@@ -36,26 +37,32 @@ namespace utility::concurrency
     inline ThreadPool::ThreadPool(size_t nthreads)
         : stopped_(false)
     {
+        int n_processor = sysconf(_SC_NPROCESSORS_CONF);
+
         for (size_t i = 0; i < nthreads; ++i)
         {
+
             workers_.emplace_back(
-                [this]()
+                [this, i, n_processor]()
                 {
-                    std::function<void()> mytask;
+                    cpu_set_t cpu_set;
+                    CPU_ZERO(&cpu_set);
+                    CPU_SET(i % n_processor, &cpu_set);
+                    pthread_setaffinity_np(pthread_self(), sizeof(cpu_set), &cpu_set);
 
                     for (;;)
                     {
-                        {
-                            std::unique_lock<std::mutex> lock(this->tasks_mutex_);
-                            this->tasks_cv_.wait(lock, [&]()
-                                                 { return !this->tasks_.empty() || this->stopped_; });
-
-                            if (this->stopped_ && this->tasks_.empty())
-                                return;
-                            mytask = std::move(this->tasks_.front());
-                            this->tasks_.pop();
-                        }
-                        mytask();
+                    std::function<void()> mytask;
+                    {
+                        std::unique_lock<std::mutex> lock(this->tasks_mutex_);
+                        this->tasks_cv_.wait(lock, [this]()
+                                             { return !this->tasks_.empty() || this->stopped_; });
+                        if (this->stopped_ && this->tasks_.empty())
+                            return;
+                        mytask = std::move(this->tasks_.front());
+                        this->tasks_.pop();
+                    }
+                    mytask();
                     }
                 });
         }
@@ -64,7 +71,7 @@ namespace utility::concurrency
     inline ThreadPool::~ThreadPool()
     {
         {
-            std::scoped_lock<std::mutex> lock(tasks_mutex_);
+            std::lock_guard<std::mutex> lock(tasks_mutex_);
             stopped_ = true;
         }
         tasks_cv_.notify_all();
@@ -79,14 +86,19 @@ namespace utility::concurrency
         using return_value_type = invoke_result_t<F, Args...>;
 
         auto async_task = make_shared<packaged_task<return_value_type()>>
-        (packaged_task{
-            [&]()
-            {return task(forward<Args>(args)...);}
-        }
+        (
+            packaged_task<return_value_type()>(
+            [task = std::forward<F>(task), captured_args = std::make_tuple(std::forward<Args>(args)...)]
+            ()  mutable
+            {
+                return std::apply([&task](auto &&...args)mutable
+                                  { return task(std::forward<decltype(args)>(args)...); },
+                                  std::move(captured_args));
+            })
         );
 
         {
-            scoped_lock<std::mutex> lock(tasks_mutex_);
+            lock_guard<std::mutex> lock(tasks_mutex_);
             if (stopped_)
                 throw runtime_error("Thread pool stopped.");
             tasks_.emplace([async_task]()

@@ -4,5 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="database::DataList\l::Impl",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdatabase_1_1DataList_1_1Impl.html",tooltip=" "];
+  Node0 [label="utility::concurrency\l::ThreadPool",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classutility_1_1concurrency_1_1ThreadPool.html",tooltip=" "];
 }

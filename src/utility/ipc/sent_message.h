@@ -45,24 +45,13 @@ namespace utility
             std::shared_ptr<std::vector<Field>> spData;
 
         public:
-            SentMessage() : spData(new std::vector<Field>)
-            {
-                spData->emplace_back(reinterpret_cast<const char*>(spHeader_.get()), spHeader_->Size());
-            };
-            ~SentMessage() = default;
+            SentMessage() ;
+            SentMessage(SentMessage& ) = delete;
+            ~SentMessage();
 
-            void Add(const char *pData, size_t size)
-            {
-                spHeader_->body_size += size + sizeof(size_t);
-                spHeader_->num_of_fields++;
+            void Add(const void *pData, size_t size);
 
-                spData->emplace_back(pData, size);
-            }
-
-            void SetCommunicationCode(uint32_t comm_code)
-            {
-                spHeader_->communication_code = comm_code;
-            }
+            void SetCommunicationCode(uint32_t comm_code);
 
             /**
              * @note Used for stream IPC channels.
@@ -70,36 +59,12 @@ namespace utility
              * Field.pData. To correctly use this function for sending Message,
              * you can learn how TCPClient::Send() do this.
             */
-            std::shared_ptr<std::vector<Field>> StreamData()const
-            {
-                return spData;
-            }
+            std::shared_ptr<std::vector<Field>> StreamData()const;
 
             /**
              * @note Used for bounded IPC channels.
             */
-            std::unique_ptr<char[]> MessageData() const
-            {
-                std::unique_ptr<char[]> res(new char[this->Size()]);
-
-                auto p = res.get();
-                size_t offset = 0;
-
-                memcpy(p, spHeader_.get(), spHeader_->Size());
-                offset += spHeader_->Size();
-                for (size_t i = 0; i < spHeader_->num_of_fields; ++i)
-                {
-                    auto &item = spData->at(i+1);
-
-                    memcpy(p + offset, &item.size, sizeof(item.size));
-                    offset += sizeof(item.size);
-                    memcpy(p + offset, item.pData, item.size);
-                    offset += item.size;
-                }
-
-                return res;
-            }
-        };
+            std::unique_ptr<char[]> MessageData() const;};
 
     }
 

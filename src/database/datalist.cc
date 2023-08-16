@@ -261,7 +261,7 @@ namespace database
 
             /**
              * @brief Update the metadata specifed by id.
-             * @throw std::range_error This error should be thrown if the
+             * @throw std::runtime_error This error should be thrown if the
              * id is invalid.
              */
             void Update(id_t id, size_t new_size, pos_t new_pos)
@@ -269,7 +269,7 @@ namespace database
                 auto pos = Position(id);
 
                 if (pos == kNullPos)
-                    throw range_error("Invalid id");
+                    throw runtime_error("Invalid id");
                 else
                 {
                     Unit unit;
@@ -281,7 +281,7 @@ namespace database
             }
 
             /**
-             * @throw std::range_error will be thrown if id is invalid.
+             * @throw std::runtime_error will be thrown if id is invalid.
              */
             void Delete(id_t id)
             {
@@ -487,8 +487,7 @@ namespace database
             string data_file_name(name);
             fd_ = open(data_file_name.c_str(), O_RDWR);
             if (fd_ < 0)
-                throw runtime_error(utility::misc::FormatString("open file %s: %s\n", 128,
-                                                                name, strerror(errno)));
+                utility::misc::ThrowSystemError(SYSTEM_ERROR_INFO("DataList::Impl::Impl()"));
 
             string free_id_name(name), free_blk_name(name);
             size_t once_alloc_num_metadata, unitsize_realdata;

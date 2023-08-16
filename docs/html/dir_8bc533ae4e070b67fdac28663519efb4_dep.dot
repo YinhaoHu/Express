@@ -5,13 +5,7 @@ digraph "/home/hoo/project/Express/src/utility/ipc" {
   subgraph clusterdir_0619a8f54b4fad7043a6de45be8fde0b {
     graph [ bgcolor="#ddddee", pencolor="black", label="utility" fontname="Helvetica", fontsize="10", URL="dir_0619a8f54b4fad7043a6de45be8fde0b.html"]
   dir_d360c48aa0a3c3f27257a6424a974ab8 [shape=box label="data" URL="dir_d360c48aa0a3c3f27257a6424a974ab8.html"];
-  dir_d5fdc76a5a613cc7d4eac4a9dc973e0d [shape=box label="test" URL="dir_d5fdc76a5a613cc7d4eac4a9dc973e0d.html"];
-  subgraph clusterdir_8bc533ae4e070b67fdac28663519efb4 {
-    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_8bc533ae4e070b67fdac28663519efb4.html"];
-    dir_8bc533ae4e070b67fdac28663519efb4 [shape=plaintext label="ipc"];
-  dir_4c766068ec115176a63bd7090ba1306e [shape=box label="test" fillcolor="white" style="filled" URL="dir_4c766068ec115176a63bd7090ba1306e.html"];
+  dir_8bc533ae4e070b67fdac28663519efb4 [shape=box, label="ipc", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_8bc533ae4e070b67fdac28663519efb4.html"];
   }
-  }
-  dir_8bc533ae4e070b67fdac28663519efb4->dir_d360c48aa0a3c3f27257a6424a974ab8 [headlabel="1", labeldistance=1.5 headhref="dir_000005_000010.html"];
-  dir_4c766068ec115176a63bd7090ba1306e->dir_d5fdc76a5a613cc7d4eac4a9dc973e0d [headlabel="1", labeldistance=1.5 headhref="dir_000006_000011.html"];
+  dir_8bc533ae4e070b67fdac28663519efb4->dir_d360c48aa0a3c3f27257a6424a974ab8 [headlabel="1", labeldistance=1.5 headhref="dir_000007_000006.html"];
 }

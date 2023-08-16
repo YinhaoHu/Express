@@ -81,7 +81,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "ReceivedBoundaryMessage-example.html",
-"namespaceexpress_1_1utility_1_1ipc.html#a21b780721a461d36353a06ed8fd17e83"
+"public_8h.html#a0fe360d555cf2f31ea9d9da695e5999aab9bd4b7bbc4fbe61cec6edd5bad6496d"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

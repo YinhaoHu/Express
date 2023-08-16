@@ -20,6 +20,7 @@ namespace database
         /**
          * @param dir_name The absolute path name of directory where the database stores its
          * data.
+         * @throw std::system error will be thrown if errno is set.
          */
         DataBase(const std::string &dir_name);
         ~DataBase();
@@ -44,11 +45,11 @@ namespace database
          */
         utility::data::RawData Retrieve(const std::string &table_name, id_t id) noexcept(true);
         /**
-         * @throw std::range_error will be thrown if the id is out of range.
+         * @throw std::runtime_error will be thrown if the id is not valid.
          */
         void Update(const std::string &table_name, id_t id, const char *new_data, size_t new_size);
         /**
-         * @throw std::range_error will be thrown if the id is out of range.
+         * @throw std::runtime_error will be thrown if the id is not valid.
          */
         void Delete(const std::string &table_name, id_t id);
 

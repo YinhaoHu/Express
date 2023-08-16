@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['internetprotocol_394',['InternetProtocol',['../namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5',1,'utility::ipc']]]
+  ['exitcode_316',['ExitCode',['../namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01',1,'database']]]
 ];
