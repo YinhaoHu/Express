@@ -19,6 +19,7 @@ var namespacedatabase =
       [ "kLoggedInitFailure", "namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc", null ],
       [ "kRuntimeFailure", "namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5", null ]
     ] ],
-    [ "react", "namespacedatabase.html#af1ed639feaacc16dc80f4c952c819a0a", null ],
-    [ "kNullPos", "namespacedatabase.html#a0f83b280535d19dbae7fbbdebbb6c935", null ]
+    [ "handle", "namespacedatabase.html#a7950961425092a7a7e00bb2482ee2b00", null ],
+    [ "kNullPos", "namespacedatabase.html#a0f83b280535d19dbae7fbbdebbb6c935", null ],
+    [ "kTerminateSignal", "namespacedatabase.html#a5af2116c1f7cb72207ea0c0ab14e5ed4", null ]
 ];

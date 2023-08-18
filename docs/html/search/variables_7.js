@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['size_308',['size',['../structutility_1_1ipc_1_1AbstractMessage_1_1Field.html#a4c1d95ce4a0f106f847c27878c7b334e',1,'utility::ipc::AbstractMessage::Field']]],
-  ['socket_5f_309',['socket_',['../classutility_1_1ipc_1_1BasicSocket.html#a50200f60685da8bd3ce6e43504863f86',1,'utility::ipc::BasicSocket']]],
-  ['spheader_5f_310',['spHeader_',['../classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33',1,'utility::ipc::AbstractMessage']]]
+  ['pcomponentpool_386',['pComponentPool',['../namespacedaemon.html#a136b350f41bbe3a041c8b7fdef5713a2',1,'daemon']]],
+  ['pconfig_387',['pConfig',['../namespacedaemon.html#abac82d1066bcfc95183e810c36bff6f5',1,'daemon']]],
+  ['pdata_388',['pData',['../structutility_1_1ipc_1_1AbstractMessage_1_1Field.html#a0accd0259db694b996015f2e966d4901',1,'utility::ipc::AbstractMessage::Field']]],
+  ['priority_389',['priority',['../structutility_1_1ipc_1_1MessageQueue_1_1ReceiveReturnType.html#a2074e2a87945740cee289503ea823246',1,'utility::ipc::MessageQueue::ReceiveReturnType']]],
+  ['prog_5fname_390',['prog_name',['../namespacedaemon.html#a1b1373b0ffddd09dcc7f41f4e08ad0be',1,'daemon']]]
 ];

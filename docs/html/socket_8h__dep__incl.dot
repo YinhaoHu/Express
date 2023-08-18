@@ -7,7 +7,7 @@ digraph "/home/hoo/project/Express/src/utility/ipc/socket.h"
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 [label="/home/hoo/project/Express\l/src/database/client.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$client_8h.html",tooltip=" "];
   Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="/home/hoo/project/Express\l/src/database/reactor.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$reactor_8h.html",tooltip=" "];
+  Node3 [label="/home/hoo/project/Express\l/src/database/handler.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$handler_8h.html",tooltip=" "];
   Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="/home/hoo/project/Express\l/src/utility/ipc/basic\l_socket.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$basic__socket_8h.html",tooltip=" "];
   Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

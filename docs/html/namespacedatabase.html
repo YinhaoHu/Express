@@ -136,13 +136,15 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af1ed639feaacc16dc80f4c952c819a0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#af1ed639feaacc16dc80f4c952c819a0a">react</a> (std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">utility::ipc::ReceivedStreamMessage</a> &gt; msg)</td></tr>
-<tr class="separator:af1ed639feaacc16dc80f4c952c819a0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7950961425092a7a7e00bb2482ee2b00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#a7950961425092a7a7e00bb2482ee2b00">handle</a> (std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">utility::ipc::ReceivedStreamMessage</a> &gt; msg)</td></tr>
+<tr class="separator:a7950961425092a7a7e00bb2482ee2b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a0f83b280535d19dbae7fbbdebbb6c935"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacedatabase.html#a5854971426749e6ebcd021acf84d36b7">pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#a0f83b280535d19dbae7fbbdebbb6c935">kNullPos</a> = 0l</td></tr>
 <tr class="separator:a0f83b280535d19dbae7fbbdebbb6c935"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5af2116c1f7cb72207ea0c0ab14e5ed4"><td class="memItemLeft" align="right" valign="top">constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedatabase.html#a5af2116c1f7cb72207ea0c0ab14e5ed4">kTerminateSignal</a> = SIGUSR1</td></tr>
+<tr class="separator:a5af2116c1f7cb72207ea0c0ab14e5ed4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="accb8ab10878d1936fc57203cc57dd802"></a>
@@ -233,14 +235,14 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af1ed639feaacc16dc80f4c952c819a0a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1ed639feaacc16dc80f4c952c819a0a">&#9670;&nbsp;</a></span>react()</h2>
+<a id="a7950961425092a7a7e00bb2482ee2b00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7950961425092a7a7e00bb2482ee2b00">&#9670;&nbsp;</a></span>handle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void database::react </td>
+          <td class="memname">void database::handle </td>
           <td>(</td>
           <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">utility::ipc::ReceivedStreamMessage</a> &gt;&#160;</td>
           <td class="paramname"><em>msg</em></td><td>)</td>
@@ -263,6 +265,28 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">constexpr <a class="el" href="namespacedatabase.html#a5854971426749e6ebcd021acf84d36b7">pos_t</a> database::kNullPos = 0l</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5af2116c1f7cb72207ea0c0ab14e5ed4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5af2116c1f7cb72207ea0c0ab14e5ed4">&#9670;&nbsp;</a></span>kTerminateSignal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr int database::kTerminateSignal = SIGUSR1</td>
         </tr>
       </table>
   </td>

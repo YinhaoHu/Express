@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['num_5fof_5ffields_304',['num_of_fields',['../structutility_1_1ipc_1_1AbstractMessage_1_1Header.html#a6f43103c089ae689c3e8441ec7f1e3bd',1,'utility::ipc::AbstractMessage::Header']]]
+  ['lock_5ffile_5fname_381',['lock_file_name',['../namespacedaemon.html#ab97ea0b6f52402b4995bb11749e2ea65',1,'daemon']]]
 ];

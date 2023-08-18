@@ -90,51 +90,56 @@ $(document).ready(function(){initNavTree('public_8h_source.html',''); initResiza
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#ifndef _EXPRESS_DATABASE_PUBLIC_H</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#define _EXPRESS_DATABASE_PUBLIC_H</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedatabase.html">database</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">   17</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">CommCode</a> : uint32_t</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa1deee0ed1f1bff93adbe6bb69734557d">kMakeTable</a>,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aab9bd4b7bbc4fbe61cec6edd5bad6496d">kCreate</a>,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa78adec6ec3709184a1988aaff33f1c79">kRetrieve</a>,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa3f55b8326206a387d817795ab2a0b339">kUpdate</a>,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aaa075d0261593f6a884f416df38cb9696">kDelete</a>,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    };</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">   26</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">ExitCode</a> : int</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a8c632159fa131f09d04f94e3cbcd8782">kSuccess</a>,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a80fdc050363ea6925fa2e7eb7f0a94a0">kInvalidArgument</a>,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a24e059d374450b90a1c093eaaf468b2d">kLogInitFailure</a>,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc">kLoggedInitFailure</a>,</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5">kRuntimeFailure</a>,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    };</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="signal_8h.html">signal.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedatabase.html">database</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">   18</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">CommCode</a> : uint32_t</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa1deee0ed1f1bff93adbe6bb69734557d">kMakeTable</a>,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aab9bd4b7bbc4fbe61cec6edd5bad6496d">kCreate</a>,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa78adec6ec3709184a1988aaff33f1c79">kRetrieve</a>,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa3f55b8326206a387d817795ab2a0b339">kUpdate</a>,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aaa075d0261593f6a884f416df38cb9696">kDelete</a>,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    };</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">   27</a></span>&#160;    <span class="keyword">enum class</span> <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">ExitCode</a> : int</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a8c632159fa131f09d04f94e3cbcd8782">kSuccess</a>,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a80fdc050363ea6925fa2e7eb7f0a94a0">kInvalidArgument</a>,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a24e059d374450b90a1c093eaaf468b2d">kLogInitFailure</a>,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc">kLoggedInitFailure</a>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5">kRuntimeFailure</a>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="namespacedatabase.html#a5af2116c1f7cb72207ea0c0ab14e5ed4">   36</a></span>&#160;    <span class="keyword">inline</span> constexpr <span class="keywordtype">int</span> <a class="code" href="namespacedatabase.html#a5af2116c1f7cb72207ea0c0ab14e5ed4">kTerminateSignal</a> = SIGUSR1;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:8</div></div>
 <div class="ttc" id="anamespacedatabase_html"><div class="ttname"><a href="namespacedatabase.html">database</a></div><div class="ttdef"><b>Definition:</b> client.h:12</div></div>
-<div class="ttc" id="anamespacedatabase_html_a0fe360d555cf2f31ea9d9da695e5999a"><div class="ttname"><a href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">database::CommCode</a></div><div class="ttdeci">CommCode</div><div class="ttdef"><b>Definition:</b> public.h:18</div></div>
+<div class="ttc" id="anamespacedatabase_html_a0fe360d555cf2f31ea9d9da695e5999a"><div class="ttname"><a href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999a">database::CommCode</a></div><div class="ttdeci">CommCode</div><div class="ttdef"><b>Definition:</b> public.h:19</div></div>
 <div class="ttc" id="anamespacedatabase_html_a0fe360d555cf2f31ea9d9da695e5999aa1deee0ed1f1bff93adbe6bb69734557d"><div class="ttname"><a href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa1deee0ed1f1bff93adbe6bb69734557d">database::CommCode::kMakeTable</a></div><div class="ttdeci">@ kMakeTable</div></div>
 <div class="ttc" id="anamespacedatabase_html_a0fe360d555cf2f31ea9d9da695e5999aa3f55b8326206a387d817795ab2a0b339"><div class="ttname"><a href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa3f55b8326206a387d817795ab2a0b339">database::CommCode::kUpdate</a></div><div class="ttdeci">@ kUpdate</div></div>
 <div class="ttc" id="anamespacedatabase_html_a0fe360d555cf2f31ea9d9da695e5999aa78adec6ec3709184a1988aaff33f1c79"><div class="ttname"><a href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aa78adec6ec3709184a1988aaff33f1c79">database::CommCode::kRetrieve</a></div><div class="ttdeci">@ kRetrieve</div></div>
 <div class="ttc" id="anamespacedatabase_html_a0fe360d555cf2f31ea9d9da695e5999aaa075d0261593f6a884f416df38cb9696"><div class="ttname"><a href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aaa075d0261593f6a884f416df38cb9696">database::CommCode::kDelete</a></div><div class="ttdeci">@ kDelete</div></div>
 <div class="ttc" id="anamespacedatabase_html_a0fe360d555cf2f31ea9d9da695e5999aab9bd4b7bbc4fbe61cec6edd5bad6496d"><div class="ttname"><a href="namespacedatabase.html#a0fe360d555cf2f31ea9d9da695e5999aab9bd4b7bbc4fbe61cec6edd5bad6496d">database::CommCode::kCreate</a></div><div class="ttdeci">@ kCreate</div></div>
-<div class="ttc" id="anamespacedatabase_html_a9f3c7fbf9fbe5f5e53c4720de3594c01"><div class="ttname"><a href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">database::ExitCode</a></div><div class="ttdeci">ExitCode</div><div class="ttdef"><b>Definition:</b> public.h:27</div></div>
+<div class="ttc" id="anamespacedatabase_html_a5af2116c1f7cb72207ea0c0ab14e5ed4"><div class="ttname"><a href="namespacedatabase.html#a5af2116c1f7cb72207ea0c0ab14e5ed4">database::kTerminateSignal</a></div><div class="ttdeci">constexpr int kTerminateSignal</div><div class="ttdef"><b>Definition:</b> public.h:36</div></div>
+<div class="ttc" id="anamespacedatabase_html_a9f3c7fbf9fbe5f5e53c4720de3594c01"><div class="ttname"><a href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01">database::ExitCode</a></div><div class="ttdeci">ExitCode</div><div class="ttdef"><b>Definition:</b> public.h:28</div></div>
 <div class="ttc" id="anamespacedatabase_html_a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc"><div class="ttname"><a href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc">database::ExitCode::kLoggedInitFailure</a></div><div class="ttdeci">@ kLoggedInitFailure</div></div>
 <div class="ttc" id="anamespacedatabase_html_a9f3c7fbf9fbe5f5e53c4720de3594c01a24e059d374450b90a1c093eaaf468b2d"><div class="ttname"><a href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a24e059d374450b90a1c093eaaf468b2d">database::ExitCode::kLogInitFailure</a></div><div class="ttdeci">@ kLogInitFailure</div></div>
 <div class="ttc" id="anamespacedatabase_html_a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5"><div class="ttname"><a href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5">database::ExitCode::kRuntimeFailure</a></div><div class="ttdeci">@ kRuntimeFailure</div></div>
 <div class="ttc" id="anamespacedatabase_html_a9f3c7fbf9fbe5f5e53c4720de3594c01a80fdc050363ea6925fa2e7eb7f0a94a0"><div class="ttname"><a href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a80fdc050363ea6925fa2e7eb7f0a94a0">database::ExitCode::kInvalidArgument</a></div><div class="ttdeci">@ kInvalidArgument</div></div>
 <div class="ttc" id="anamespacedatabase_html_a9f3c7fbf9fbe5f5e53c4720de3594c01a8c632159fa131f09d04f94e3cbcd8782"><div class="ttname"><a href="namespacedatabase.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a8c632159fa131f09d04f94e3cbcd8782">database::ExitCode::kSuccess</a></div><div class="ttdeci">@ kSuccess</div></div>
+<div class="ttc" id="asignal_8h_html"><div class="ttname"><a href="signal_8h.html">signal.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

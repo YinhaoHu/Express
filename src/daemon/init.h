@@ -7,7 +7,8 @@ _START_EXPRESS_NAMESPACE_
 
 namespace daemon
 {
-    extern void InitDataBase( );   
+    extern void InitDataBase();   
+    extern void InitMaster();
 }
 
 

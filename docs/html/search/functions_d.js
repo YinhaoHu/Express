@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['rawdata_253',['RawData',['../classutility_1_1data_1_1RawData.html#a006f4e9093b6047ec8c2ab7151f24fea',1,'utility::data::RawData::RawData(size_t nbytes)'],['../classutility_1_1data_1_1RawData.html#a8f66a1efe8398e72bdc0dfc767fd1466',1,'utility::data::RawData::RawData(const RawData &amp;other)'],['../classutility_1_1data_1_1RawData.html#aeca356624714394cc6b10db8fad17a98',1,'utility::data::RawData::RawData(RawData &amp;&amp;other)']]],
-  ['react_254',['react',['../namespacedatabase.html#af1ed639feaacc16dc80f4c952c819a0a',1,'database']]],
-  ['receive_255',['Receive',['../classutility_1_1ipc_1_1BasicSocket.html#a03ff1532d8476de208bbde954818853d',1,'utility::ipc::BasicSocket::Receive()'],['../classutility_1_1ipc_1_1MessageQueue.html#a0590b8ce31a89351c18d261f61991ffb',1,'utility::ipc::MessageQueue::Receive()'],['../classutility_1_1ipc_1_1TCPClient.html#a386a1c6c426461fa983980e77ac5c517',1,'utility::ipc::TCPClient::Receive()']]],
-  ['receivedboundarymessage_256',['ReceivedBoundaryMessage',['../classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a0babf9ceab1f782221b5e32abb13be10',1,'utility::ipc::ReceivedBoundaryMessage::ReceivedBoundaryMessage(std::unique_ptr&lt; char[]&gt; spFullMessage)'],['../classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#abaf2bf9794fa512b88331244639d1673',1,'utility::ipc::ReceivedBoundaryMessage::ReceivedBoundaryMessage(const ReceivedBoundaryMessage &amp;other)']]],
-  ['receivedstreammessage_257',['ReceivedStreamMessage',['../classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f',1,'utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage(std::shared_ptr&lt; Header &gt; spheader)'],['../classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82',1,'utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage(const ReceivedStreamMessage &amp;other)']]],
-  ['reconnect_258',['Reconnect',['../classutility_1_1ipc_1_1TCPClient.html#a64b10b7deb57fae1476f0e0368915577',1,'utility::ipc::TCPClient']]],
-  ['retrieve_259',['Retrieve',['../classdatabase_1_1Client.html#a118355f9cf71e63d1b8d750e7047ccfa',1,'database::Client::Retrieve()'],['../classdatabase_1_1DataBase.html#a5649eeda490ff929c962ced718ffd277',1,'database::DataBase::Retrieve()'],['../classdatabase_1_1DataList.html#aaa916ea2498bc399aa90fbda74a02135',1,'database::DataList::Retrieve()']]]
+  ['parseargs_323',['ParseArgs',['../namespacedaemon.html#af27e0e45eb7767ab1ad957e2b08a0999',1,'daemon']]],
+  ['prepare_324',['Prepare',['../namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6',1,'daemon']]],
+  ['print_325',['print',['../namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04',1,'utility::misc']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['database_184',['database',['../namespacedatabase.html',1,'']]]
+  ['daemon_233',['daemon',['../namespacedaemon.html',1,'']]],
+  ['database_234',['database',['../namespacedatabase.html',1,'']]]
 ];

@@ -94,11 +94,15 @@ $(document).ready(function(){initNavTree('macro_8h_source.html',''); initResizab
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">    8</a></span>&#160;<span class="preprocessor">#define _START_EXPRESS_NAMESPACE_ namespace express{</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">    9</a></span>&#160;<span class="preprocessor">#define _END_EXPRESS_NAMESPACE_ }</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">    9</a></span>&#160;<span class="preprocessor">#define _END_EXPRESS_NAMESPACE_ } </span><span class="comment">//namespace express</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef _EXPRESS_DEBUG</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define _EXPRESS_DEBUG_INSTRUCTION(expression) expression</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#else </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="macro_8h.html#a7ad5839fd900c6d876931032e8f17c14">   20</a></span>&#160;<span class="preprocessor">#define _EXPRESS_DEBUG_INSTRUCTION(expression) </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

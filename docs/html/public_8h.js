@@ -13,5 +13,6 @@ var public_8h =
       [ "kLogInitFailure", "public_8h.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a24e059d374450b90a1c093eaaf468b2d", null ],
       [ "kLoggedInitFailure", "public_8h.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a1abc580e0bbd0f7974b8275edca614fc", null ],
       [ "kRuntimeFailure", "public_8h.html#a9f3c7fbf9fbe5f5e53c4720de3594c01a5eb7a9c3c8862cc2ad3d40bcdaa7b6e5", null ]
-    ] ]
+    ] ],
+    [ "kTerminateSignal", "public_8h.html#a5af2116c1f7cb72207ea0c0ab14e5ed4", null ]
 ];

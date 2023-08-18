@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['limitation_241',['Limitation',['../classutility_1_1ipc_1_1MessageQueue.html#a203088c63f911f5122d07a3058826df7',1,'utility::ipc::MessageQueue']]],
-  ['listen_242',['Listen',['../classutility_1_1ipc_1_1BasicSocket.html#a992f4a596cd077bd974c982031c795f1',1,'utility::ipc::BasicSocket']]]
+  ['initconfig_310',['InitConfig',['../namespacedaemon.html#a650a9e84990b06c8a959c0830cc4a7b2',1,'daemon']]],
+  ['initdatabase_311',['InitDataBase',['../namespacedaemon.html#a22494b734bb9a3dc9a0f2712abf2b269',1,'daemon']]]
 ];

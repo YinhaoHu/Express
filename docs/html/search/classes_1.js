@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['basicsocket_168',['BasicSocket',['../classutility_1_1ipc_1_1BasicSocket.html',1,'utility::ipc']]]
+  ['basicsocket_215',['BasicSocket',['../classutility_1_1ipc_1_1BasicSocket.html',1,'utility::ipc']]]
 ];

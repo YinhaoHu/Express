@@ -33,7 +33,7 @@ namespace database
         kRuntimeFailure,
     };
 
-    inline constexpr int kTerminateSignal = SIGUSR1;
+    inline constexpr int kTerminateSignal = SIGTERM;
 }
   
 _END_EXPRESS_NAMESPACE_

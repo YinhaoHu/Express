@@ -101,20 +101,24 @@ $(document).ready(function(){initNavTree('tool_8h_source.html',''); initResizabl
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Predicate&gt;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> test(<span class="keyword">const</span> <span class="keywordtype">char</span> *module, <span class="keyword">const</span> <span class="keywordtype">char</span> *part, Predicate predic)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">using namespace </span>misc;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <a class="code" href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">print</a>(FormatString(<span class="stringliteral">&quot;[Test]%s-%s: %s\033[0m\n&quot;</span>, 512,</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                           module, part, predic() ? <span class="stringliteral">&quot;\033[0;33mPASS&quot;</span> : <span class="stringliteral">&quot;\033[0;31mFAIL&quot;</span>));</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    { </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        cout &lt;&lt; format(<span class="stringliteral">&quot;[Test]{}-{}: {}\n&quot;</span>, module, part, </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                        predic() ? <span class="stringliteral">&quot;\033[0;33mPASS&quot;</span> : <span class="stringliteral">&quot;\033[0;31mFAIL&quot;</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> test(<span class="keyword">const</span> <span class="keywordtype">char</span> *module, <span class="keyword">const</span> <span class="keywordtype">char</span> *part, <span class="keywordtype">bool</span> is_correct)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    { </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        cout &lt;&lt; format(<span class="stringliteral">&quot;[Test]{}-{}: {}\n&quot;</span>, module, part, </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                        is_correct ? <span class="stringliteral">&quot;\033[0;33mPASS&quot;</span> : <span class="stringliteral">&quot;\033[0;31mFAIL&quot;</span>); </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:8</div></div>
 <div class="ttc" id="amisc_8h_html"><div class="ttname"><a href="misc_8h.html">misc.h</a></div></div>
-<div class="ttc" id="anamespaceutility_1_1misc_html_ada3d13c4e3046829ef153d10cb914e04"><div class="ttname"><a href="namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04">utility::misc::print</a></div><div class="ttdeci">void print(std::string &amp;&amp;format_str)</div><div class="ttdef"><b>Definition:</b> misc.h:31</div></div>
 <div class="ttc" id="anamespaceutility_1_1test_html"><div class="ttname"><a href="namespaceutility_1_1test.html">utility::test</a></div><div class="ttdef"><b>Definition:</b> tool.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

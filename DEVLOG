@@ -4,19 +4,11 @@
 
 #  Member: Hoo
 
-// TODO 
-
-* Server closes the connection which has no client request for a long time.
+// TODO  
  
-* Script: build_copilot.py
-    - Each target shares the same template, so consider writing a python
-      script to do that chore.
+* [NEXT] Start master-workers. Write necessary notes for future developing like terminate
+        handler in daemon.  Then record the current status and left
+         things. Stop this project for a while like a month.
 
-
-* Finish the deamon and master-workers. Then record the current status and left
-    things. Stop this project for a while like a month.
-
-* [NEXT] Start deamon.
-
-* [NOTICE] It would be better to finish this stage before 8.18 and start the new things
+* [NOTICE] It would be better to finish this stage before 8.20 and start the new things
            gradually.

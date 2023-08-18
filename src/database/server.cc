@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
  * [4] Num of Threads                   : int           
  */
 static void Init(int argc, char *argv[])
-{
+{ 
     if (argc != 5)
     {
         // TODO [LOG]Record error information.

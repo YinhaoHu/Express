@@ -63,7 +63,8 @@ ALL_TARGETS 				+=	$(DAEMON_TARGET)
 DAEMON_DEP_FILES			:=	./src/utility/ipc/unix_domain_socket.cc	\
 								./src/utility/ipc/basic_socket.cc		\
 								./src/utility/ipc/sent_message.cc 		\
-								./src/utility/ipc/socket.cc
+								./src/utility/ipc/socket.cc				\
+								./src/utility/ipc/signal.cc				\
 
 DAEMON_SRC_DIR 				:=	./src/daemon/
 

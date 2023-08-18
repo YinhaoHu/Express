@@ -55,7 +55,7 @@ namespace database
 
             if (!exists(absolute_path_name))
             {
-                create_directory(absolute_path_name);
+                create_directories(absolute_path_name);
                 close(creat(meta_path_name_.c_str(), S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH));
             }
 

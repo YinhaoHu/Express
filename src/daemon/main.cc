@@ -6,12 +6,11 @@ using namespace express::daemon;
 
 int main(int argc, char* argv[])
 {
-    BecomeDaemon();
-    FlagRunning();
+    ParseArgs(argc, argv); 
+    BecomeDaemon(); 
 
-    ParseArgs(argc, argv);
-    InitConfig(); 
-
+    Prepare();
+    InitConfig();  
     InitDataBase();
 
     Run();

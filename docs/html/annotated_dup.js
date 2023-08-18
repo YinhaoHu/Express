@@ -1,5 +1,9 @@
 var annotated_dup =
 [
+    [ "daemon", "namespacedaemon.html", [
+      [ "Config", "classdaemon_1_1Config.html", "classdaemon_1_1Config" ],
+      [ "ComponentPool", "classdaemon_1_1ComponentPool.html", "classdaemon_1_1ComponentPool" ]
+    ] ],
     [ "database", "namespacedatabase.html", [
       [ "Client", "classdatabase_1_1Client.html", "classdatabase_1_1Client" ],
       [ "DataBase", "classdatabase_1_1DataBase.html", "classdatabase_1_1DataBase" ],
@@ -11,6 +15,9 @@ var annotated_dup =
       ] ],
       [ "data", "namespaceutility_1_1data.html", [
         [ "RawData", "classutility_1_1data_1_1RawData.html", "classutility_1_1data_1_1RawData" ]
+      ] ],
+      [ "generic", "namespaceutility_1_1generic.html", [
+        [ "ArgParse", "classutility_1_1generic_1_1ArgParse.html", "classutility_1_1generic_1_1ArgParse" ]
       ] ],
       [ "ipc", "namespaceutility_1_1ipc.html", [
         [ "AbstractMessage", "classutility_1_1ipc_1_1AbstractMessage.html", "classutility_1_1ipc_1_1AbstractMessage" ],

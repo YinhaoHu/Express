@@ -44,8 +44,8 @@ namespace daemon
 
     extern ComponentPool *pComponentPool;
 
-    extern void BecomeDaemon();
-    extern void FlagRunning();
+    extern void BecomeDaemon(); 
+    extern void Prepare();
     extern void Run();
 }
 

@@ -13,7 +13,7 @@ digraph "/home/hoo/project/Express/src/utility/ipc/abstract_message.h"
   Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node5 [label="/home/hoo/project/Express\l/src/utility/ipc/received\l_stream_message.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$received__stream__message_8h.html",tooltip=" "];
   Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="/home/hoo/project/Express\l/src/database/reactor.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$reactor_8h.html",tooltip=" "];
+  Node6 [label="/home/hoo/project/Express\l/src/database/handler.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$handler_8h.html",tooltip=" "];
   Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node7 [label="/home/hoo/project/Express\l/src/utility/ipc/tcp_client.h",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$tcp__client_8h.html",tooltip=" "];
   Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

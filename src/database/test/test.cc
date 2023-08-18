@@ -55,7 +55,7 @@ int main(int argc, char *argv[])
     else
     {
         close(server_sock);
-        // FIXME Connect the server and client with sockaddr instead of pair sockets.
+        
         db = new Client(client_sock);
 
         client_init();

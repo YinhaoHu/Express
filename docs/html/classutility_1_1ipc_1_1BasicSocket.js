@@ -10,6 +10,8 @@ var classutility_1_1ipc_1_1BasicSocket =
     [ "Connect", "classutility_1_1ipc_1_1BasicSocket.html#a03996087c7802e91528d3ae7d1c5365b", null ],
     [ "GetNative", "classutility_1_1ipc_1_1BasicSocket.html#ad31fdc78d9cc0708e427cd53a31c3128", null ],
     [ "GetOption", "classutility_1_1ipc_1_1BasicSocket.html#aa927300d29e05365f019439dba5eabdd", null ],
+    [ "GetReadMutex", "classutility_1_1ipc_1_1BasicSocket.html#a8ceeb9bdeffabe190af1e7969334df68", null ],
+    [ "GetWriteMutex", "classutility_1_1ipc_1_1BasicSocket.html#af4d2d6bfc2676c2cf492f30689c67e40", null ],
     [ "Listen", "classutility_1_1ipc_1_1BasicSocket.html#a992f4a596cd077bd974c982031c795f1", null ],
     [ "Receive", "classutility_1_1ipc_1_1BasicSocket.html#a03ff1532d8476de208bbde954818853d", null ],
     [ "Send", "classutility_1_1ipc_1_1BasicSocket.html#a0faea48af7d7aa0ed93e976db0d0499c", null ],

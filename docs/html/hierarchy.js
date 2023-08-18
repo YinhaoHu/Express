@@ -5,10 +5,13 @@ var hierarchy =
       [ "utility::ipc::ReceivedStreamMessage", "classutility_1_1ipc_1_1ReceivedStreamMessage.html", null ],
       [ "utility::ipc::SentMessage", "classutility_1_1ipc_1_1SentMessage.html", null ]
     ] ],
+    [ "utility::generic::ArgParse", "classutility_1_1generic_1_1ArgParse.html", null ],
     [ "utility::ipc::BasicSocket", "classutility_1_1ipc_1_1BasicSocket.html", [
       [ "utility::ipc::TCPSocket", "classutility_1_1ipc_1_1TCPSocket.html", null ]
     ] ],
     [ "database::Client", "classdatabase_1_1Client.html", null ],
+    [ "daemon::ComponentPool", "classdaemon_1_1ComponentPool.html", null ],
+    [ "daemon::Config", "classdaemon_1_1Config.html", null ],
     [ "database::DataBase", "classdatabase_1_1DataBase.html", null ],
     [ "database::DataList", "classdatabase_1_1DataList.html", null ],
     [ "utility::ipc::AbstractMessage::Field", "structutility_1_1ipc_1_1AbstractMessage_1_1Field.html", null ],

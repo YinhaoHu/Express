@@ -6,7 +6,7 @@
 #include <string>
 #include <cstring>
 
-#include "common.h"
+#include "daemon/common.h"
 #include "daemon/config.h"
 #include "daemon/daemon.h"
 #include "utility/macro.h"
@@ -32,20 +32,24 @@ namespace daemon
             ErrorQuit("fork database process");
         else if (pid == 0)
         {
-            if (execl(common::database_exe_name, "express-database",
+            if (execl(database_exe_name, "express-database",
                       pConfig->GetValue(Config::Key::kDataBaseDirName).c_str(),
                       "log-mq",
                       std::to_string(db_workers_channel.first).c_str(),
                       pConfig->GetValue(Config::Key::kDataBaseNThreads).c_str(),
                       nullptr) < 0)
                 ErrorQuit("execute database");
-            else 
-                syslog(LOG_INFO, "database was loaded sucessfully.");
         }
         else 
         {
             pComponentPool->SetPID(ComponentPool::Component::kDataBase, pid);
+            syslog(LOG_INFO, "database(%d) was started successfully.", pid);
         }
+    }
+
+    void InitMaster()
+    {
+
     }
 
     static void InitDBAndWorkersChannel()

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['maxmsg_301',['maxmsg',['../spec_8h.html#a6b345eaee1ab87f84936d8bec769751c',1,'spec.h']]],
-  ['message_302',['message',['../structutility_1_1ipc_1_1MessageQueue_1_1ReceiveReturnType.html#a8ea2dd709f3cf2ef2065bc4ab6ca153d',1,'utility::ipc::MessageQueue::ReceiveReturnType']]],
-  ['msgsize_303',['msgsize',['../spec_8h.html#af7b2a096fda50e251662a9eab1ae7944',1,'spec.h']]]
+  ['knullpos_379',['kNullPos',['../namespacedatabase.html#a0f83b280535d19dbae7fbbdebbb6c935',1,'database']]],
+  ['kterminatesignal_380',['kTerminateSignal',['../namespacedaemon.html#a91f18cf8e241f0f7d2f3e9fb1ba5580d',1,'daemon::kTerminateSignal()'],['../namespacedatabase.html#a5af2116c1f7cb72207ea0c0ab14e5ed4',1,'database::kTerminateSignal()']]]
 ];
