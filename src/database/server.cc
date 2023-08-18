@@ -41,17 +41,17 @@ int main(int argc, char *argv[])
 /**
  * @note Explaination for `argv`
  * The respective item for each is:
- * [1] Data Base Directory Name: string
- * [2] Log Message Queue name: string
- * [3] Unix Domain Socket Descriptor: int
- * [4] Num of Threads: int
+ * [1] Data Base Directory Name         : string        (like /var/express-server/database/)
+ * [2] Log Message Queue name           : string        
+ * [3] Unix Domain Socket Descriptor    : int           (From socket pair)
+ * [4] Num of Threads                   : int           
  */
 static void Init(int argc, char *argv[])
 {
     if (argc != 5)
     {
         // TODO [LOG]Record error information.
-        fprintf(stderr, "Error in start.\n");
+        cerr << "Init(): incorrect number of argument." << endl;
         exit(static_cast<int>(ExitCode::kInvalidArgument));
     }
     string db_name(argv[1]), log_name(argv[2]);

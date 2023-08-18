@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     int stat;
 
     wait(&stat);
-    cout << format("\033[0;36mchild exit({}) captured!\033[0m", stat) << endl;
+    cout << format("\033[0;36mServer process exits({}).\033[0m", stat) << endl;
     return 0;
 }
 
