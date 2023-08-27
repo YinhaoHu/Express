@@ -12,6 +12,11 @@ namespace utility
 {
     namespace ipc
     {
+        /**
+         * @brief A basic socket class.
+         * 
+         * @note Socket will not be closed automatically. This is reasonable.
+        */
         class BasicSocket
         {
         public:

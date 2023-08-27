@@ -30,8 +30,8 @@ namespace utility
         /**
          * @brief A message class that is used to receive messages from stream IPC channel.
          * 
-         * @note All data in this class has the life time which is same as this class
-         * object.
+         * @note Memory is allocated in this class. Its life time is identical
+         * to this class instance.
          */
         class ReceivedStreamMessage : public AbstractMessage
         {
@@ -61,7 +61,8 @@ namespace utility
             ~ReceivedStreamMessage() = default;
 
             /**
-             * Used to receive data from IPC channel.
+             * @brief Used to receive data from IPC channel.
+             * @note This function is only useful for IPC class developer.
             */
             std::shared_ptr<char[]> GetBodyHandler()
             {
@@ -69,7 +70,8 @@ namespace utility
             }
 
             /**
-             * Validate the body part and object will allow operator[].
+             * @brief Validate the body part and object will allow operator[].
+             * @note This function is only useful for IPC class developer.
             */
             void ValidateBody()
             {
@@ -86,6 +88,11 @@ namespace utility
                 body_validation_ = true;
             }
 
+            /**
+             * @throw
+             * 1. std::runtime_error will be thrown if ValidateBody() was not called before.
+             * 2. std::out_of_range will be thrown if `id` is out of range.
+            */
             const Field operator[](size_t id)
             {
                 if (!body_validation_)

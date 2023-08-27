@@ -20,20 +20,14 @@
 #include <format>
 #include <string>
 
+#include "param.h"
 #include "utility/macro.h"
 
 _START_EXPRESS_NAMESPACE_
 
 namespace daemon
 {
-    Config *pConfig;
-
-    const char *prog_name = "express-server";
-    const char *lock_file_name = "/var/run/express-server.pid";
-
-    void ParseArgs(int argc, char *argv[])
-    {
-    }
+    Config *pConfig; 
 
     void InitConfig()
     {
@@ -44,9 +38,9 @@ namespace daemon
     {
         using namespace std::filesystem;
 
-        if (!exists(file_name))
+        if (!exists(config_file_name))
         {
-            int fd = creat(file_name, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+            int fd = creat(config_file_name.data(), S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
             if (fd < 0)
             {
                 syslog(LOG_ERR, "can not create configuration file");
@@ -55,7 +49,7 @@ namespace daemon
             close(fd);
             GenerateDefaulConfig();
         }
-        else if (file_size(file_name) == 0)
+        else if (file_size(config_file_name) == 0)
         {
             GenerateDefaulConfig();
         }
@@ -67,6 +61,7 @@ namespace daemon
 
     void Config::Reload() noexcept
     {
+        // TODO: To be implemented for signal requesting reload config.
     }
 
     std::string Config::GetValue(Key key) noexcept
@@ -77,6 +72,12 @@ namespace daemon
             return items["DataBaseNThreads"];
         case Key::kDataBaseDirName:
             return items["DataBaseDirName"];
+        case Key::kCoreNWorkers:
+            return items["CoreNWorkers"];
+        case Key::kCorePort:
+            return items["CorePort"];
+        case Key::kCoreWorkerHeartBeatRate:
+            return items["CoreWorkerHeartBeatRate"];
         default:
             break;
         }
@@ -86,7 +87,8 @@ namespace daemon
 
     void Config::Load() noexcept
     {
-        std::fstream file(file_name, std::ios::in);
+        _EXPRESS_DEBUG_INSTRUCTION(RETRY:)
+        std::fstream file(config_file_name.data(), std::ios::in);
         if (file.bad())
         {
             syslog(LOG_ERR, "error in open config file.\n");
@@ -118,6 +120,9 @@ namespace daemon
         if (count != static_cast<uint>(Key::kCount))
         {
             syslog(LOG_ERR, "config file is incorrect");
+            _EXPRESS_DEBUG_INSTRUCTION(file.close();)
+            _EXPRESS_DEBUG_INSTRUCTION(GenerateDefaulConfig();)
+            _EXPRESS_DEBUG_INSTRUCTION(goto RETRY;)
             exit(EXIT_FAILURE);
         }
         file.close();
@@ -125,14 +130,38 @@ namespace daemon
 
     void Config::GenerateDefaulConfig() const noexcept
     {
-        std::fstream file(file_name, std::ios_base::trunc | std::ios_base::out);
+        std::fstream file(config_file_name.data(), std::ios_base::trunc | std::ios_base::out);
 
-        file << std::format(
-            "{:<25}= {}\n\n"
-            "{:<25}= {}\n\n",
-            "DataBaseNThreads", "2", "DataBaseDirName", "/var/expres-server/database");
+        GenerateOneConfigItem(file, "DataBaseNThreads", "2", "Number of threads of data base.");
+        GenerateOneConfigItem(file, "DataBaseDirName", "/var/expres-server/database", "Working directory of data base.");
+        GenerateOneConfigItem(file, "CoreNWorkers", "2", "Number of worker processes");
+        GenerateOneConfigItem(file, "CorePort", "32993", "Server listening port");
+        GenerateOneConfigItem(file, "CoreWorkerHeartBeatRate", "180", "Specify the worker to heart beat every # msec.");
 
         file.close();
+    }
+
+    void Config::GenerateOneConfigItem(std::ostream &out, std::string key,
+                                       std::string value, std::string comment) const noexcept
+    {
+        constexpr const size_t comment_one_line_max = 60;
+        size_t printted_comment_line_num = 0;
+
+        for (unsigned char ch : comment)
+        {
+            if (printted_comment_line_num == 0)
+                out << "# ";
+
+            out << ch;
+            ++printted_comment_line_num;
+
+            if (printted_comment_line_num > comment_one_line_max && (isalpha(ch) || isdigit(ch)))
+            {
+                printted_comment_line_num = 0;
+                out << "\n";
+            }
+        }
+        out << std::format("\n{:<25}= {}\n\n\n", key, value);
     }
 }
 

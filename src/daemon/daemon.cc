@@ -15,8 +15,11 @@
 #include <filesystem>
 #include <cstring>
 
-#include "daemon/common.h"
+#include "lockfile.h"
+#include "daemon/component_pool.h"
+#include "daemon/param.h"
 #include "daemon/config.h"
+#include "core/common.h"
 #include "database/public.h"
 #include "utility/ipc/signal.h"
 
@@ -24,53 +27,11 @@ _START_EXPRESS_NAMESPACE_
 
 namespace daemon
 {
-    // Implement for ComponentPool
-
-    ComponentPool::ComponentPool() : pid_array_(new pid_t[static_cast<size_t>(Component::kCount)]){};
-
-    ComponentPool::~ComponentPool() { delete[] pid_array_; }
-
-    void ComponentPool::SetPID(Component whose, pid_t pid) noexcept
-    {
-        pid_array_[static_cast<uint>(whose)] = pid;
-    }
-
-    pid_t ComponentPool::GetPID(Component whose) const noexcept
-    {
-        return pid_array_[static_cast<uint>(whose)];
-    }
-
-    ComponentPool::Component ComponentPool::GetComponent(pid_t pid) const noexcept
-    {
-        uint i;
-
-        for (i = 0; (pid != pid_array_[i]) && i < static_cast<uint>(Component::kCount); ++i)
-            ;
-
-        return static_cast<Component>(i);
-    }
-
-    static constexpr struct
-    {
-        char state_closed = 0;
-        char state_running = 1;
-        off_t pos = 0;
-        size_t size = sizeof(char);
-    } kLockFileRunningState;
-
-    // Local global variables and functions
-    static void ComponentGuard();
+    // Local global variables and functions 
 
     static void ErrorQuit(const char *info = nullptr, bool log = false);
 
-    static void FlagRunning();
-
-    static void FlagClosed();
-
     static void TerminateHandler(int);
-
-    // Non-local Global variables
-    ComponentPool *pComponentPool;
 
     // Non-local   functions
     void BecomeDaemon()
@@ -80,6 +41,7 @@ namespace daemon
             std::cerr << "Error: Express server should be run as a root\n";
             exit(EXIT_FAILURE);
         }
+
         //  File creation mode mask.
         umask(007);
 
@@ -125,146 +87,103 @@ namespace daemon
         int fd1 = dup(fd0);
         int fd2 = dup(fd0);
 
-        openlog("Express-server", LOG_CONS, LOG_DAEMON);
+        openlog(program_name.data(), LOG_CONS, LOG_DAEMON);
         if (fd0 != 0 || fd1 != 1 || fd2 != 2)
         {
             syslog(LOG_ERR, "unexpected file descriptors: %d %d %d", fd0, fd1, fd2);
             exit(EXIT_FAILURE);
         }
-
-        FlagRunning();
     }
 
     void Prepare()
     {
+        //  Ensure there is only one daemon running.
+        InitLockFile();
+        try
+        {
+            pLockFile->Lock();
+            if (pLockFile->GetRunningState() != LockFile::RunningState::kNotRunning)
+            {
+                syslog(LOG_ERR, "Error: daemon has already been running.\n");
+                exit(EXIT_FAILURE);
+            }
+            pLockFile->SetRunningState(LockFile::RunningState::kRunning);
+            pLockFile->Unlock();
+        }
+        catch (const std::system_error &e)
+        {
+            syslog(LOG_ERR, "%s", e.what());
+            exit(EXIT_FAILURE);
+        }
+
         // Load component pool.
-        pComponentPool = new daemon::ComponentPool{};
+        InitComponentPool();
 
         // Load component guard thread.
-        std::thread component_guard_thread(ComponentGuard);
+        std::thread component_guard_thread([]()
+                                           {
+                int exit_code = 0;
+        auto DoLog = [&](const char *which)
+        {
+            syslog(LOG_EMERG, "%s corrupted(%d) - from component guard", which, exit_code);
+            raise(kTerminateSignal);
+        };
+
+        for (;;)
+        {
+            pid_t exit_pid = wait(&exit_code);
+            auto pComp = pComponentPool->Find(exit_pid);
+
+            if (pComp != nullptr)
+                DoLog(pComp->GetAlias().data());
+        } });
         component_guard_thread.detach();
     }
 
     void Run()
     {
-        // TODO Decrease the priority of daemon when release.
-        if (nice(19) < 0)
-            ErrorQuit("schedule priority decreasement failure", true);
+        using utility::ipc::Signal;
 
-        utility::ipc::Signal(kTerminateSignal, TerminateHandler);
+        if (nice(19) < 0)
+            ErrorQuit("nice value set failure", true);
+
+        Signal(kTerminateSignal, TerminateHandler);
+
+        int pending_sig;
+        sigset_t event_sig_set;
+        sigemptyset(&event_sig_set);
 
         syslog(LOG_INFO, "Daemon(%d) is running now.", getpid());
-        while (1)
-            ;
-    }
-
-    // Local  functions
-
-    static void ComponentGuard()
-    {
-        _EXPRESS_DEBUG_INSTRUCTION(syslog(LOG_DEBUG, "component guard started successfully.");)
-
-        int exit_code = 0;
-        auto DoLog = [&](const char *which)
-        {
-            syslog(LOG_EMERG, "%s corrupted(%d) - from component guard", which, exit_code);
-            exit(EXIT_FAILURE);
-        };
         for (;;)
         {
-            using compo = ComponentPool::Component;
-
-            pid_t exit_pid = wait(&exit_code);
-
-            switch (pComponentPool->GetComponent(exit_pid))
+            sigwait(&event_sig_set, &pending_sig);
+            switch (pending_sig)
             {
-            case compo::kDataBase:
-                DoLog("database");
-                break;
-            case compo::kLog:
-                /* code */
-                break;
-            case compo::kMail:
-                /* code */
-                break;
-            case compo::kMaster:
-                /* code */
-                break;
-            case compo::kMonitor:
-                /* code */
-                break;
+            // TODO: reserved to capture some signals.
             default:
+                syslog(LOG_ERR, "Daemon received an unexpected signal.");
                 break;
             }
         }
     }
+
+    // Local  functions 
 
     static void ErrorQuit(const char *info, bool log)
     {
         if (log)
             syslog(LOG_ERR, "%s: %s", info, strerror(errno));
         else
-            std::cerr << std::format("{}: {} ({})\n", daemon::prog_name, info, strerror(errno));
+            std::cerr << std::format("{}: {} ({})\n", program_name, info, strerror(errno));
 
         exit(EXIT_FAILURE);
     }
 
-    static void FlagRunning()
+    static void TerminateHandler(int)
     {
-        // Flag this daemon is running.
-        int fd = open(lock_file_name, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP); 
-        
-        if (fd < 0)
-            ErrorQuit("open lock file", true);
+        pComponentPool->Stop();
 
-        if (flock(fd, LOCK_EX) < 0)
-            ErrorQuit("lock file", true);
- 
-        if (std::filesystem::file_size(lock_file_name) == 0)
-            ftruncate(fd, sizeof(char));
-        else
-        {
-            char running_state = 0;
-            pread(fd, &running_state, sizeof(running_state), kLockFileRunningState.pos);
-
-            if (running_state == kLockFileRunningState.state_running)
-            {
-                syslog(LOG_ERR, "daemon is already running");
-                exit(EXIT_FAILURE);
-            }
-            else
-            {
-                pwrite(fd, &kLockFileRunningState.state_running, kLockFileRunningState.size,
-                       kLockFileRunningState.pos);
-            }
-        }
-        if (flock(fd, LOCK_UN) < 0)
-            ErrorQuit("unlock file", true);
-
-        close(fd);
-    }
-
-    static void FlagClosed()
-    {
-        int fd = open(daemon::lock_file_name, O_WRONLY);
-        if (fd < 0)
-            ErrorQuit("open lock file", true);
-        if (flock(fd, LOCK_EX) < 0)
-            ErrorQuit("lock file lock", true);
-        pwrite(fd, &kLockFileRunningState.state_closed,
-               kLockFileRunningState.size, kLockFileRunningState.pos);
-        if (flock(fd, LOCK_UN) < 0)
-            ErrorQuit("unlock file", true);
-        close(fd);
-    }
-
-    static void TerminateHandler(int signo)
-    {
-        using compo = ComponentPool::Component;
-
-        kill(pComponentPool->GetPID(compo::kDataBase), database::kTerminateSignal);
-        
-        FlagClosed();
+        pLockFile->SetRunningState(LockFile::RunningState::kNotRunning);
         syslog(LOG_INFO, "Daemon(%d) is closed.", getpid());
         exit(0);
     }

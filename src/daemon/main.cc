@@ -1,17 +1,19 @@
 #include "daemon.h"
 #include "init.h"
 #include "config.h"
+#include "lockfile.h"
 
-using namespace express::daemon;
-
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-    ParseArgs(argc, argv); 
-    BecomeDaemon(); 
+    using namespace express::daemon;
 
+    BecomeDaemon();
     Prepare();
-    InitConfig();  
+
+    InitConfig();
+    
     InitDataBase();
+    InitCore();
 
     Run();
 

@@ -25,11 +25,7 @@ namespace utility::ipc
     {
     }
 
-    BasicSocket::~BasicSocket()
-    {
-        if (!closed_)
-            this->Close();
-    }
+    BasicSocket::~BasicSocket(){}
     void BasicSocket::Close()
     {
         closed_ = true;
@@ -55,7 +51,7 @@ namespace utility::ipc
     void BasicSocket::Receive(void *buf, size_t size, int flag)
     {
         if (size == 0)
-            throw invalid_argument("BasicSocket::Send(): Zero size is prohibited.");
+            throw invalid_argument("BasicSocket::Receive(): Zero size is prohibited.");
 
         ssize_t once_recv_bytes = 0, total_recv_bytes = 0;
 

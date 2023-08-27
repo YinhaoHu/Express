@@ -27,7 +27,7 @@ namespace utility::concurrency
 
     public:
         ThreadPool(size_t nthreads);
-
+        ThreadPool(const ThreadPool&) = delete;
         ~ThreadPool();
 
         template <typename F, typename... Args>

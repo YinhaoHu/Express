@@ -16,6 +16,7 @@
 
 #ifdef _EXPRESS_DEBUG
 #define _EXPRESS_DEBUG_INSTRUCTION(expression) expression
+#include <syslog.h>
 #else 
 #define _EXPRESS_DEBUG_INSTRUCTION(expression) 
 #endif

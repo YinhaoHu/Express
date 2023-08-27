@@ -163,7 +163,7 @@ static void test_tcp()
     if (sm_fd < 0)
     {
         perror("test_tcp, shared memory");
-        exit(EXIT_FAILURE);
+        exit(EXIT_FAILURE); 
     }
     ftruncate(sm_fd, sm_area_size);
 
@@ -211,7 +211,7 @@ static void test_tcp()
         *ptr = 1; // Tell child process to start.
         while (test_count < num_of_test)
         {
-            if (!server.HasPendingConnections())
+            if (!server.WaitForConnection())
                 continue;
             auto client = server.NextPending();
 

@@ -9,28 +9,23 @@ _START_EXPRESS_NAMESPACE_
 
 namespace utility::ipc
 {
-    TCPServer::TCPServer(const char *port, InternetProtocol ip ,
-                         int backlog, int accept_timeout)
-        :socket_(ip), status_(Status::kToBeStarted)
+    TCPServer::TCPServer(const char *port, InternetProtocol ip,
+                         int backlog)
+        : socket_(ip), status_(Status::kToBeStarted)
     {
         using namespace misc;
         int enable_reuseaddr = 1;
-        struct addrinfo hint, *result, *p;
-        timeval timeout;
+        struct addrinfo hint, *result, *p; 
 
         memset(&hint, 0, sizeof(hint));
         hint.ai_family = SystemIPConstant(ip);
         hint.ai_socktype = SOCK_STREAM;
-        hint.ai_flags = AI_PASSIVE ;
+        hint.ai_flags = AI_PASSIVE;
         if (getaddrinfo(nullptr, port, &hint, &result) < 0)
             throw runtime_error(ErrorString("TCPServer::TCPServer"));
 
         for (p = result; p != nullptr; p = p->ai_next)
         {
-            timeout.tv_sec = accept_timeout;
-            timeout.tv_usec = 0;
-
-            socket_.SetOption(SO_RCVTIMEO, &timeout, sizeof(timeout));
             socket_.SetOption(SO_REUSEADDR, &enable_reuseaddr, sizeof(enable_reuseaddr));
 
             socket_.Bind(*(p->ai_addr));
@@ -42,50 +37,6 @@ namespace utility::ipc
         freeaddrinfo(result);
 
         status_ = Status::kRunning;
-
-        auto accept_entry = [this]()
-        {
-            auto &sock = this->socket_;
-
-            auto new_connection = [&]() -> auto
-            {
-                Socket new_sock;
-                new_sock = sock.Accept();
-                TCPSocket *new_conn = new TCPSocket(new_sock);
-                return new_conn;
-            };
-
-            for (;;)
-            { 
-                if(this->status_ != Status::kRunning)
-                    break;
-
-                TCPSocket* new_con;
-                try
-                {  
-                    new_con = new_connection();
-                }
-                catch(const std::runtime_error& e)
-                {
-                    if(errno == EAGAIN)
-                        continue;
-                    else 
-                        throw e;
-                }
-                 
-                if (this->status_ == Status::kRunning)
-                { 
-                    unique_lock lock(this->pending_connections_mutex_);
-                    this->pending_connections_.push(new_con);
-                }
-                else 
-                {
-                    new_con->Close();
-                }
-            }
-        };
-
-        paccept_thread_ = new thread(accept_entry);
     }
 
     TCPServer::~TCPServer()
@@ -105,39 +56,57 @@ namespace utility::ipc
         {
             status_ = Status::kClosed;
             socket_.Close();
-            paccept_thread_->join();
         }
         else
         {
             throw std::runtime_error("TCPServer::Close : Server is not running.");
         }
     }
-
-    bool TCPServer::HasPendingConnections()
-    {
-        if (status_ == Status::kRunning)
-        {
-            std::shared_lock lock(this->pending_connections_mutex_);
-            return !pending_connections_.empty();
-        }
-        else
-            throw runtime_error("Server is not running now.");
-    }
-
+    
     std::unique_ptr<TCPSocket> TCPServer::NextPending()
     {
         if (status_ != Status::kRunning)
             throw runtime_error("Server is not running now.");
         else
         {
-            shared_lock lock(this->pending_connections_mutex_);
-
             auto res = pending_connections_.front();
-
             this->pending_connections_.pop();
 
             return std::unique_ptr<TCPSocket>(res);
         }
+    }
+
+    bool TCPServer::WaitForConnection(int timeout_msec)
+    {
+        struct timeval old_timeout, new_timeout;
+        socklen_t old_timeout_len;
+
+        if (timeout_msec != -1)
+        {
+            new_timeout.tv_sec = 0;
+            new_timeout.tv_usec = 1000 * timeout_msec;
+            socket_.GetOption(SO_RCVTIMEO, &old_timeout, &old_timeout_len);
+            socket_.SetOption(SO_RCVTIMEO, &new_timeout, sizeof(new_timeout));
+        }
+
+        bool has_new_conn = false;
+        try
+        {
+            Socket connfd = socket_.Accept();
+            TCPSocket* new_conn = new TCPSocket(connfd);
+
+            has_new_conn = true;
+            pending_connections_.emplace(new_conn);
+        }
+        catch (const std::system_error &err)
+        {
+            if (err.code().value() != EWOULDBLOCK && err.code().value() != EAGAIN)
+                throw err;
+        }
+        if (timeout_msec != -1)
+            socket_.SetOption(SO_RCVTIMEO, &old_timeout, old_timeout_len);
+
+        return has_new_conn;
     }
 
 }

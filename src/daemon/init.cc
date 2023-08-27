@@ -6,7 +6,7 @@
 #include <string>
 #include <cstring>
 
-#include "daemon/common.h"
+#include "daemon/param.h"
 #include "daemon/config.h"
 #include "daemon/daemon.h"
 #include "utility/macro.h"
@@ -18,38 +18,57 @@ namespace daemon
 {
     /**
      * @note `.first` is used for db and `.second` for workers.
-    */
-    static std::pair<Socket, Socket> db_workers_channel;
-    static void ErrorQuit(const char *info = nullptr);
+     */
+    static std::pair<Socket, Socket> db_workers_channel; 
     static void InitDBAndWorkersChannel();
 
     void InitDataBase()
     {
-        InitDBAndWorkersChannel();
-        pid_t pid = fork();
+        using Compo = ComponentPool::Component;
 
-        if (pid < 0)
-            ErrorQuit("fork database process");
-        else if (pid == 0)
+        InitDBAndWorkersChannel();
+        try
         {
-            if (execl(database_exe_name, "express-database",
-                      pConfig->GetValue(Config::Key::kDataBaseDirName).c_str(),
-                      "log-mq",
-                      std::to_string(db_workers_channel.first).c_str(),
-                      pConfig->GetValue(Config::Key::kDataBaseNThreads).c_str(),
-                      nullptr) < 0)
-                ErrorQuit("execute database");
+            // TODO: Moidfy "log-mq" here after log component is done.
+            pComponentPool->StartOne(Compo::kDataBase, database_exe_name.data(), "express-database",
+                                     pConfig->GetValue(Config::Key::kDataBaseDirName).c_str(),
+                                     "log-mq",
+                                     std::to_string(db_workers_channel.first).c_str(),
+                                     pConfig->GetValue(Config::Key::kDataBaseNThreads).c_str());
+
+            syslog(LOG_INFO, "%s (%d) was started successfully.",
+                       (*pComponentPool)[Compo::kDataBase].GetAlias().data(),
+                       (*pComponentPool)[Compo::kDataBase].GetID());
         }
-        else 
+        catch (const std::exception &e)
         {
-            pComponentPool->SetPID(ComponentPool::Component::kDataBase, pid);
-            syslog(LOG_INFO, "database(%d) was started successfully.", pid);
+            syslog(LOG_ERR, "InitCore(): %s", e.what());
+            exit(EXIT_FAILURE);
         }
     }
 
-    void InitMaster()
+    void InitCore()
     {
+        using Compo = ComponentPool::Component;
+        InitDBAndWorkersChannel();
 
+        try
+        {
+            pComponentPool->StartOne(Compo::kCore, master_exe_name.data(), "express-core",
+                                     std::to_string(db_workers_channel.second).c_str(),
+                                     pConfig->GetValue(Config::Key::kCoreNWorkers).c_str(),
+                                     pConfig->GetValue(Config::Key::kCorePort).c_str(),
+                                     pConfig->GetValue(Config::Key::kCoreWorkerHeartBeatRate).c_str());
+
+            syslog(LOG_INFO, "%s (%d) was started successfully.",
+                   (*pComponentPool)[Compo::kCore].GetAlias().data(),
+                   (*pComponentPool)[Compo::kCore].GetID());
+        }
+        catch (const std::exception &e)
+        {
+            syslog(LOG_ERR, "InitCore(): %s", e.what());
+            exit(EXIT_FAILURE);
+        }
     }
 
     static void InitDBAndWorkersChannel()
@@ -60,17 +79,7 @@ namespace daemon
             db_workers_channel = utility::ipc::UnixDomainSocket::SocketPair();
             inited = true;
         }
-    }
-    
-    static void ErrorQuit(const char *info)
-    {
-        if (errno != 0)
-            syslog(LOG_ERR, "%s: %s", info, strerror(errno));
-        else
-            syslog(LOG_ERR, "%s", info);
-
-        exit(EXIT_FAILURE);
-    }
+    } 
 }
 
 _END_EXPRESS_NAMESPACE_

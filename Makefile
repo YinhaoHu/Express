@@ -1,14 +1,14 @@
  
-CXX := g++
-INC_DIR := ./src
-CFLAGS := -g -std=c++20 -Wall
-CPPFLAGS = $(addprefix -I ,$(INC_DIR)) -D_EXPRESS_DEBUG
+CXX 				:= g++
+INC_DIR 			:= ./src ./include
+CFLAGS 				:= -g -std=c++20 -Wall
+CPPFLAGS 			= $(addprefix -I ,$(INC_DIR)) -D_EXPRESS_DEBUG
 
-BIN_DIR := ./bin
-BUILD_DIR := ./build
+BIN_DIR 			:= ./bin
+BUILD_DIR 			:= ./build
 
-.PHONY: 
-ALL_TARGETS :=  
+.PHONY				: 
+ALL_TARGETS 		:=  
 
 # =========================================================
 #						Ancillary 
@@ -33,7 +33,7 @@ FONT_RESET 		:= \033[0m
 
 
 $(BUILD_DIR)/%.o: %
-	@$(mkdir -p $(dir $@))
+	$(shell mkdir -p $(dir $@))
 	$(CXX) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
  
 # =========================================================
@@ -55,7 +55,7 @@ $(HELP_TARGET):
 # All targets about daemon component.
 # Supported targets: daemon 
 # ==========================================================
-DAEMON_TARGET 				:=	daemon  
+DAEMON_TARGET 				:=	expressd  
 
 ALL_TARGETS 				+=	$(DAEMON_TARGET) 
 .PHONY 						+=  $(DAEMON_TARGET) 
@@ -68,10 +68,12 @@ DAEMON_DEP_FILES			:=	./src/utility/ipc/unix_domain_socket.cc	\
 
 DAEMON_SRC_DIR 				:=	./src/daemon/
 
-DAEMON_SRC_FILES 			:=	daemon.cc		\
-								config.cc		\
-								init.cc			\
-								main.cc			
+DAEMON_SRC_FILES 			:=	daemon.cc			\
+								config.cc			\
+								init.cc				\
+								lockfile.cc			\
+								main.cc				\
+								component_pool.cc	\
 
 DAEMON_SRCS 				:= 	$(addprefix $(DAEMON_SRC_DIR),$(DAEMON_SRC_FILES)) \
 								$(DAEMON_DEP_FILES)
@@ -82,6 +84,15 @@ $(DAEMON_TARGET): $(DAEMON_OBJS)
 	mkdir -p $(BIN_DIR)
 	$(CXX) $^ -o $(BIN_DIR)/$@
 	@echo "$(FONT_WHITE)Generated program $(BIN_DIR)/$@$(FONT_RESET)"
+
+
+CLEAN_ALL_TARGET 			:=	clean-all
+
+ALL_TARGETS					+=  $(CLEAN_ALL_TARGET)
+.PHONY 						+=  $(CLEAN_ALL_TARGET)
+
+$(CLEAN_ALL_TARGET):
+	rm -rf $(BUILD_DIR)
 
 # ==========================================================
 #						Utility-IPC			
@@ -94,13 +105,13 @@ ALL_TARGETS 				+= $(UTIL_IPC_TEST_TARGET)
 
 UTIL_IPC_SRC_DIR 			:= ./src/utility/ipc/
 
-UTIL_IPC_TEST_SRC 			:= 	test/test.cc 			\
-								message_queue.cc 		\
+UTIL_IPC_TEST_SRC 			:= 	message_queue.cc 		\
 								tcp_client.cc  			\
 								basic_socket.cc			\
 								tcp_server.cc 			\
 								socket.cc				\
 								unix_domain_socket.cc	\
+								test/test.cc 			\
 								sent_message.cc
 
 UTIL_IPC_TEST_SRCS 			:= $(addprefix $(UTIL_IPC_SRC_DIR),$(UTIL_IPC_TEST_SRC))
@@ -156,7 +167,7 @@ $(LOG_TEST_CLIENT_TARGET): $(LOG_TEST_CLIENT_OBJS)
 # Note: Any component which calls the interface of database
 # 		client should link the `DB_CLIENT_OBJS`.
 # ==========================================================
-DB_SERVER_TARGET 		:=	db-server  
+DB_SERVER_TARGET 		:=	express-db 
 DB_TEST_TARGET			:=	db-test
 
 ALL_TARGETS 			+=	$(DB_SERVER_TARGET) $(DB_TEST_TARGET)
@@ -221,4 +232,119 @@ $(DB_TEST_TARGET): $(DB_TEST_OBJS)
 		  "program in the Express directory.$(FONT_RESET)"
  
 
+
+
+
+# ==========================================================
+#						CORE
+# All targets about CORE
+# Note:
+# ==========================================================
+CORE_MASTER_TARGET       := express-master 
+CORE_WORKER_TARGET       := express-worker 
+CORE_TEST_TARGET         := core-test
+
+ALL_TARGETS              += $(CORE_MASTER_TARGET) $(CORE_WORKER_TARGET)  $(CORE_TEST_TARGET)
+.PHONY                   += $(CORE_MASTER_TARGET) $(CORE_WORKER_TARGET)  $(CORE_TEST_TARGET)
+CORE_SRC_DIR             := ./src/core/
+
+# About target : CORE_MASTER_TARGET
+
+CORE_MASTER_DEP_FILES    := ./src/utility/ipc/basic_socket.cc 			\
+							./src/utility/ipc/sent_message.cc			\
+							./src/utility/ipc/signal.cc					\
+							./src/utility/ipc/socket.cc					\
+							./src/utility/ipc/unix_domain_socket.cc		\
+							./src/utility/ipc/tcp_server.cc
+
+CORE_MASTER_SRC_FILES    := config.cc				\
+							main.cc 				\
+							master.cc				\
+
+
+CORE_MASTER_SRCS         := $(addprefix $(CORE_SRC_DIR),$(CORE_MASTER_SRC_FILES))	\
+							$(CORE_MASTER_DEP_FILES)
+
+CORE_MASTER_OBJS         := $(CORE_MASTER_SRCS:%=$(BUILD_DIR)/%.o)
+
+$(CORE_MASTER_TARGET): $(CORE_MASTER_OBJS)
+	mkdir -p $(BIN_DIR)
+	$(CXX) $^ -o $(BIN_DIR)/$@
+	@echo "$(FONT_WHITE)Generated program $(BIN_DIR)/$@$(FONT_RESET)"
+
+# About target : CORE_WORKER_TARGET
+
+CORE_WORKER_DEP_FILES    := ./src/utility/ipc/basic_socket.cc 			\
+							./src/utility/ipc/sent_message.cc			\
+							./src/utility/ipc/signal.cc					\
+							./src/utility/ipc/socket.cc					\
+							./src/utility/ipc/unix_domain_socket.cc		\
+							./src/utility/ipc/tcp_server.cc				
+
+CORE_WORKER_SRC_FILES    := worker_entry.cc			\
+							reactor.cc				\
+							handlers/handler.cc 	\
+							handlers/pingpong.cc 	\
+
+
+CORE_WORKER_SRCS         := $(addprefix $(CORE_SRC_DIR),$(CORE_WORKER_SRC_FILES)) \
+							$(CORE_WORKER_DEP_FILES)
+
+CORE_WORKER_OBJS         := $(CORE_WORKER_SRCS:%=$(BUILD_DIR)/%.o)		\
+							$(DB_CLIENT_OBJS)
+
+$(CORE_WORKER_TARGET): $(CORE_WORKER_OBJS)
+	mkdir -p $(BIN_DIR)
+	$(CXX) $^ -o $(BIN_DIR)/$@
+	@echo "$(FONT_WHITE)Generated program $(BIN_DIR)/$@$(FONT_RESET)"
+ 
+
+# About target : CORE_TEST_TARGET
+
+CORE_TEST_DEP_FILES      := ./src/utility/ipc/basic_socket.cc 			\
+							./src/utility/ipc/sent_message.cc			\
+							./src/utility/ipc/tcp_client.cc				\
+							./src/utility/ipc/socket.cc					
+
+
+CORE_TEST_SRC_FILES      := test/test.cc
+
+CORE_TEST_SRCS           := $(addprefix $(CORE_SRC_DIR),$(CORE_TEST_SRC_FILES)) \
+							$(CORE_TEST_DEP_FILES)
+
+CORE_TEST_OBJS           := $(CORE_TEST_SRCS:%=$(BUILD_DIR)/%.o)
+
+$(CORE_TEST_TARGET): $(CORE_TEST_OBJS)
+	mkdir -p $(BIN_DIR)
+	$(CXX) $^ -o $(BIN_DIR)/$@
+	@echo "$(FONT_WHITE)Generated program $(BIN_DIR)/$@$(FONT_RESET)"
+
+
+
+# ==========================================================
+#						CONTROL
+# All targets about CONTROL
+# Note:
+# ==========================================================
+CONTROL_CTL_TARGET       := expressctl
+
+ALL_TARGETS              += $(CONTROL_CTL_TARGET) 
+.PHONY                   += $(CONTROL_CTL_TARGET) 
+CONTROL_SRC_DIR          := ./src/control/
+
+# About target : CONTROL_CTL_TARGET
+
+CONTROL_CTL_DEP_FILES    := 
+
+CONTROL_CTL_SRC_FILES    := main.cc					\
+
+CONTROL_CTL_SRCS         := $(addprefix $(CONTROL_SRC_DIR),$(CONTROL_CTL_SRC_FILES)) \
+                           $(CONTROL_CTL_DEP_FILES)
+
+CONTROL_CTL_OBJS         := $(CONTROL_CTL_SRCS:%=$(BUILD_DIR)/%.o)
+
+$(CONTROL_CTL_TARGET): $(CONTROL_CTL_OBJS)
+	mkdir -p $(BIN_DIR)
+	$(CXX) $^ -o $(BIN_DIR)/$@
+	@echo "$(FONT_WHITE)Generated program $(BIN_DIR)/$@$(FONT_RESET)"
 

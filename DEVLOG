@@ -2,13 +2,29 @@
                             DEVELOPMENT             LOG                      
 ===============================================================================
 
-#  Member: Hoo
+# Member: Hoo
 
-// TODO  
- 
-* [NEXT] Start master-workers. Write necessary notes for future developing like terminate
-        handler in daemon.  Then record the current status and left
-         things. Stop this project for a while like a month.
+// TODO: Development log   
 
-* [NOTICE] It would be better to finish this stage before 8.20 and start the new things
-           gradually.
+[TODO]  
+    DAEMON:
+        component_pool:
+                * Complete stop()
+    MAIL:
+        files should be divided into server.py, mail.py and so on for structure.
+
+    UTILITY:
+        received message should be considered into two parts:
+            One for IPC developer usage and the other one should be used
+            for IPC user.
+            One considerable scheme might be ReceivedMessage for IPC class user
+            and ReceivedStreamMessage and ReceivedBorderMessage for IPC developer. 
+
+    OTHER:
+        These components remain to be implmeneted: 
+            * Mail service
+            * Log
+            * Monitor
+
+    # More TODOs can be seen in the navigator TODOs.    
+    # More structured code needs to be occur in this project.

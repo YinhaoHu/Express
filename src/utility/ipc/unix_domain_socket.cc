@@ -87,7 +87,7 @@ namespace utility::ipc
             msg.msg_control = control_un.control;
             msg.msg_controllen = sizeof(control_un.control);
 
-            if(recvmsg(socket_, &msg, 0) < 0 ) 
+            if(recvmsg(socket_, &msg, MSG_WAITALL) < 0 ) 
                 misc::ThrowSystemError(SYSTEM_ERROR_INFO("UnixDomainSocket::ReceiveDescriptor"));
  
             cmptr = CMSG_FIRSTHDR(&msg);

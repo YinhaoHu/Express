@@ -27,18 +27,20 @@ namespace utility::ipc
          * @throw std::runtime_error will be thrown when system call set errno.
          */
         TCPServer(const char *port, InternetProtocol ip = InternetProtocol::kAny,
-                  int backlog = SOMAXCONN,int accept_timeout = 1);
+                  int backlog = SOMAXCONN);
+        TCPServer(const TCPServer& ) = delete;
         ~TCPServer();
 
         Status GetStatus() const noexcept;
         void Close() ;
 
-        bool HasPendingConnections();
+        /**
+         * @note The returned TCP Socket should be closed automatically.
+        */
         std::unique_ptr<TCPSocket> NextPending();
+        bool WaitForConnection(int timeout_msec = -1);
 
-    private:
-        std::thread* paccept_thread_;
-        std::shared_mutex pending_connections_mutex_;
+    private: 
         std::queue<TCPSocket*> pending_connections_;
         TCPSocket socket_;
         Status status_;

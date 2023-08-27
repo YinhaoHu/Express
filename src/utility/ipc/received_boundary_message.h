@@ -26,9 +26,9 @@ namespace utility
 
         /**
          * @brief A message class that is used to receive messages from bounded IPC channel.
-         * 
-         * @note All data in this class has the life time which is same as this class
-         * object. 
+         *  
+         * @note Memory is allocated in this class. Its life time is identical
+         * to this class instance.
          */
         class ReceivedBoundaryMessage : public AbstractMessage
         {
@@ -69,7 +69,8 @@ namespace utility
             ~ReceivedBoundaryMessage() = default;
 
             /**
-             * Access the specified field.
+             * @brief Access the specified field.
+             * @throw std::out_of_range will be thrown if `id` is out of range.
              * @warning The data has the life time which is same as this class
              * object.
              */

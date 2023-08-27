@@ -23,6 +23,9 @@ namespace daemon
         {
             kDataBaseNThreads,
             kDataBaseDirName,
+            kCoreNWorkers,
+            kCorePort,
+            kCoreWorkerHeartBeatRate,
             kCount
         };
 
@@ -38,18 +41,14 @@ namespace daemon
     private:
         void Load() noexcept;
         void GenerateDefaulConfig() const noexcept;
+        void GenerateOneConfigItem(std::ostream& out, std::string key, 
+            std::string value, std::string comment)const noexcept;
 
         std::unordered_map<std::string, std::string> items;
-        static constexpr const char *file_name = "/etc/express-server.conf";
     };
-
-    extern const char *prog_name;
-    extern const char *lock_file_name;
     extern Config *pConfig;
-
-    extern void ParseArgs(int argc, char *argv[]);
-    extern void InitConfig();
-
+ 
+    extern void InitConfig(); 
 } // End daemon namespace
 
 _END_EXPRESS_NAMESPACE_
