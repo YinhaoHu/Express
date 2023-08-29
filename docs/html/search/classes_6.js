@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['messagequeue_223',['MessageQueue',['../classutility_1_1ipc_1_1MessageQueue.html',1,'utility::ipc']]]
+  ['localprocess_284',['LocalProcess',['../classutility_1_1os_1_1LocalProcess.html',1,'utility::os']]],
+  ['lockfile_285',['LockFile',['../classdaemon_1_1LockFile.html',1,'daemon']]]
 ];

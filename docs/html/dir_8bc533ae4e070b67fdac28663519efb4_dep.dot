@@ -1,4 +1,4 @@
-digraph "/home/hoo/project/Express/src/utility/ipc" {
+digraph "src/utility/ipc" {
   compound=true
   node [ fontsize="10", fontname="Helvetica"];
   edge [ labelfontsize="10", labelfontname="Helvetica"];
@@ -7,5 +7,5 @@ digraph "/home/hoo/project/Express/src/utility/ipc" {
   dir_d360c48aa0a3c3f27257a6424a974ab8 [shape=box label="data" URL="dir_d360c48aa0a3c3f27257a6424a974ab8.html"];
   dir_8bc533ae4e070b67fdac28663519efb4 [shape=box, label="ipc", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_8bc533ae4e070b67fdac28663519efb4.html"];
   }
-  dir_8bc533ae4e070b67fdac28663519efb4->dir_d360c48aa0a3c3f27257a6424a974ab8 [headlabel="1", labeldistance=1.5 headhref="dir_000009_000007.html"];
+  dir_8bc533ae4e070b67fdac28663519efb4->dir_d360c48aa0a3c3f27257a6424a974ab8 [headlabel="1", labeldistance=1.5 headhref="dir_000010_000009.html"];
 }

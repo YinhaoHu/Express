@@ -94,13 +94,13 @@ $(document).ready(function(){initNavTree('classdaemon_1_1ComponentPool.html','')
 <p>A component process controlling class.  
  <a href="classdaemon_1_1ComponentPool.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="daemon_8h_source.html">daemon.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="component__pool_8h_source.html">component_pool.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a3d8c8e235683da1410eafe504d8b7418"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> : unsigned int { <br />
 &#160;&#160;<a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418ab256fb40a10c338dc278eeccda6f5791">kDataBase</a>
-, <a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418ad4720c3695455d7cf5bce1b2c7bcecdf">kMaster</a>
+, <a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418ade8900e4c323b0c667bfd5ca5ecf9e5c">kCore</a>
 , <a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418a371b131e5e8ab58eefe1bd1b5df26c55">kMonitor</a>
 , <a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418af7971cffe1eeab35748c8d08e50703ec">kLog</a>
 , <br />
@@ -118,12 +118,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ade94a9891a0045d73ace813bf58dc83e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3646a4c7d80274eecaccf82900724efd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#a3646a4c7d80274eecaccf82900724efd">~ComponentPool</a> ()</td></tr>
 <tr class="separator:a3646a4c7d80274eecaccf82900724efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9c309c2ce9dffe8e75bae7ef1ac320d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#aa9c309c2ce9dffe8e75bae7ef1ac320d">SetPID</a> (<a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> whose, pid_t pid) noexcept</td></tr>
-<tr class="separator:aa9c309c2ce9dffe8e75bae7ef1ac320d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5fe52142e8ad310e81c26c00bdc5839"><td class="memItemLeft" align="right" valign="top">pid_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#ab5fe52142e8ad310e81c26c00bdc5839">GetPID</a> (<a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> whose) const noexcept</td></tr>
-<tr class="separator:ab5fe52142e8ad310e81c26c00bdc5839"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a088dcf69e856f26dbb0ba531a2c09cb3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#a088dcf69e856f26dbb0ba531a2c09cb3">GetComponent</a> (pid_t pid) const noexcept</td></tr>
-<tr class="separator:a088dcf69e856f26dbb0ba531a2c09cb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368b0eceea4717bda373804fb6ea3e05"><td class="memTemplParams" colspan="2">template&lt;typename... ArgsType&gt; </td></tr>
+<tr class="memitem:a368b0eceea4717bda373804fb6ea3e05"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#a368b0eceea4717bda373804fb6ea3e05">StartOne</a> (<a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> component, const char *program, ArgsType... args)</td></tr>
+<tr class="memdesc:a368b0eceea4717bda373804fb6ea3e05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start the specified component.  <a href="classdaemon_1_1ComponentPool.html#a368b0eceea4717bda373804fb6ea3e05">More...</a><br /></td></tr>
+<tr class="separator:a368b0eceea4717bda373804fb6ea3e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f468ced9913dfdc61390085b3a51478"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1os_1_1LocalProcess.html">utility::os::LocalProcess</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#a2f468ced9913dfdc61390085b3a51478">operator[]</a> (<a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> component)</td></tr>
+<tr class="separator:a2f468ced9913dfdc61390085b3a51478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a561c5a15cc2492ac296b08681cf8f9ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classutility_1_1os_1_1LocalProcess.html">utility::os::LocalProcess</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#a561c5a15cc2492ac296b08681cf8f9ce">Find</a> (pid_t pid)</td></tr>
+<tr class="separator:a561c5a15cc2492ac296b08681cf8f9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f7107e151d59f48018feb4c8c35a7b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html#a9f7107e151d59f48018feb4c8c35a7b4">Stop</a> ()</td></tr>
+<tr class="memdesc:a9f7107e151d59f48018feb4c8c35a7b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell all components to exits.  <a href="classdaemon_1_1ComponentPool.html#a9f7107e151d59f48018feb4c8c35a7b4">More...</a><br /></td></tr>
+<tr class="separator:a9f7107e151d59f48018feb4c8c35a7b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A component process controlling class. </p>
@@ -147,10 +152,10 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section note"><dt>Note</dt><dd><code>kCount</code> is used to get the size of Key. It MUST be in the last position and DON'T set the value manually. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd><code>kCount</code> is used to get the size of this enumeration. It MUST be in the last position and DON'T set the value manually. </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a3d8c8e235683da1410eafe504d8b7418ab256fb40a10c338dc278eeccda6f5791"></a>kDataBase&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a3d8c8e235683da1410eafe504d8b7418ad4720c3695455d7cf5bce1b2c7bcecdf"></a>kMaster&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a3d8c8e235683da1410eafe504d8b7418ade8900e4c323b0c667bfd5ca5ecf9e5c"></a>kCore&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3d8c8e235683da1410eafe504d8b7418a371b131e5e8ab58eefe1bd1b5df26c55"></a>kMonitor&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3d8c8e235683da1410eafe504d8b7418af7971cffe1eeab35748c8d08e50703ec"></a>kLog&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a3d8c8e235683da1410eafe504d8b7418a82c926c0897d446af12b0346c68faa59"></a>kMail&#160;</td><td class="fielddoc"></td></tr>
@@ -221,78 +226,67 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a088dcf69e856f26dbb0ba531a2c09cb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a088dcf69e856f26dbb0ba531a2c09cb3">&#9670;&nbsp;</a></span>GetComponent()</h2>
+<a id="a561c5a15cc2492ac296b08681cf8f9ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a561c5a15cc2492ac296b08681cf8f9ce">&#9670;&nbsp;</a></span>Find()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> daemon::ComponentPool::GetComponent </td>
+          <td class="memname"><a class="el" href="classutility_1_1os_1_1LocalProcess.html">utility::os::LocalProcess</a>* daemon::ComponentPool::Find </td>
           <td>(</td>
           <td class="paramtype">pid_t&#160;</td>
           <td class="paramname"><em>pid</em></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ab5fe52142e8ad310e81c26c00bdc5839"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5fe52142e8ad310e81c26c00bdc5839">&#9670;&nbsp;</a></span>GetPID()</h2>
+<a id="a2f468ced9913dfdc61390085b3a51478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f468ced9913dfdc61390085b3a51478">&#9670;&nbsp;</a></span>operator[]()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">pid_t daemon::ComponentPool::GetPID </td>
+          <td class="memname"><a class="el" href="classutility_1_1os_1_1LocalProcess.html">utility::os::LocalProcess</a>&amp; daemon::ComponentPool::operator[] </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a>&#160;</td>
-          <td class="paramname"><em>whose</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramname"><em>component</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aa9c309c2ce9dffe8e75bae7ef1ac320d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9c309c2ce9dffe8e75bae7ef1ac320d">&#9670;&nbsp;</a></span>SetPID()</h2>
+<a id="a368b0eceea4717bda373804fb6ea3e05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a368b0eceea4717bda373804fb6ea3e05">&#9670;&nbsp;</a></span>StartOne()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+<div class="memtemplate">
+template&lt;typename... ArgsType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void daemon::ComponentPool::SetPID </td>
+          <td class="memname">void daemon::ComponentPool::StartOne </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a>&#160;</td>
-          <td class="paramname"><em>whose</em>, </td>
+          <td class="paramname"><em>component</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">pid_t&#160;</td>
-          <td class="paramname"><em>pid</em>&#160;</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>program</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ArgsType...&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -300,17 +294,39 @@ Public Member Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
+
+<p>Start the specified component. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">system_error</td><td>will be thrown if system call set errno. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9f7107e151d59f48018feb4c8c35a7b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f7107e151d59f48018feb4c8c35a7b4">&#9670;&nbsp;</a></span>Stop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void daemon::ComponentPool::Stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tell all components to exits. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/hoo/project/Express/src/daemon/<a class="el" href="daemon_8h_source.html">daemon.h</a></li>
+<li>src/daemon/<a class="el" href="component__pool_8h_source.html">component_pool.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

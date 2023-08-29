@@ -1,8 +1,17 @@
 var annotated_dup =
 [
+    [ "core", "namespacecore.html", [
+      [ "Config", "classcore_1_1Config.html", "classcore_1_1Config" ],
+      [ "HandlerInfrastructure", "structcore_1_1HandlerInfrastructure.html", "structcore_1_1HandlerInfrastructure" ],
+      [ "Master", "classcore_1_1Master.html", "classcore_1_1Master" ],
+      [ "Reactor", "classcore_1_1Reactor.html", "classcore_1_1Reactor" ],
+      [ "Worker", "classcore_1_1Worker.html", "classcore_1_1Worker" ],
+      [ "WorkerPool", "classcore_1_1WorkerPool.html", "classcore_1_1WorkerPool" ]
+    ] ],
     [ "daemon", "namespacedaemon.html", [
+      [ "ComponentPool", "classdaemon_1_1ComponentPool.html", "classdaemon_1_1ComponentPool" ],
       [ "Config", "classdaemon_1_1Config.html", "classdaemon_1_1Config" ],
-      [ "ComponentPool", "classdaemon_1_1ComponentPool.html", "classdaemon_1_1ComponentPool" ]
+      [ "LockFile", "classdaemon_1_1LockFile.html", "classdaemon_1_1LockFile" ]
     ] ],
     [ "database", "namespacedatabase.html", [
       [ "Client", "classdatabase_1_1Client.html", "classdatabase_1_1Client" ],
@@ -16,9 +25,6 @@ var annotated_dup =
       [ "data", "namespaceutility_1_1data.html", [
         [ "RawData", "classutility_1_1data_1_1RawData.html", "classutility_1_1data_1_1RawData" ]
       ] ],
-      [ "generic", "namespaceutility_1_1generic.html", [
-        [ "ArgParse", "classutility_1_1generic_1_1ArgParse.html", "classutility_1_1generic_1_1ArgParse" ]
-      ] ],
       [ "ipc", "namespaceutility_1_1ipc.html", [
         [ "AbstractMessage", "classutility_1_1ipc_1_1AbstractMessage.html", "classutility_1_1ipc_1_1AbstractMessage" ],
         [ "BasicSocket", "classutility_1_1ipc_1_1BasicSocket.html", "classutility_1_1ipc_1_1BasicSocket" ],
@@ -29,6 +35,9 @@ var annotated_dup =
         [ "TCPClient", "classutility_1_1ipc_1_1TCPClient.html", "classutility_1_1ipc_1_1TCPClient" ],
         [ "TCPServer", "classutility_1_1ipc_1_1TCPServer.html", "classutility_1_1ipc_1_1TCPServer" ],
         [ "TCPSocket", "classutility_1_1ipc_1_1TCPSocket.html", "classutility_1_1ipc_1_1TCPSocket" ]
+      ] ],
+      [ "os", "namespaceutility_1_1os.html", [
+        [ "LocalProcess", "classutility_1_1os_1_1LocalProcess.html", "classutility_1_1os_1_1LocalProcess" ]
       ] ]
     ] ]
 ];

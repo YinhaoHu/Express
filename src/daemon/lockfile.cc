@@ -14,27 +14,14 @@
 _START_EXPRESS_NAMESPACE_
 
 namespace daemon
-{
-    LockFile* pLockFile;
+{ 
 
-    void InitLockFile()
-    {
-        try
-        {
-            pLockFile = new LockFile(daemon::lockfile_name.data());
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-        } 
-    }
-
-    LockFile::LockFile(const char *filename)
+    LockFile::LockFile(std::string_view filename)
     {
         if (!std::filesystem::exists(filename))
-            fd_ = open(filename, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+            fd_ = open(filename.data(), O_CREAT | O_RDWR, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
         else
-            fd_ = open(filename, O_RDWR);
+            fd_ = open(filename.data(), O_RDWR);
 
         if (fd_ < 0)
             utility::misc::ThrowSystemError(SYSTEM_ERROR_INFO("LockFile::LockFile()"));
@@ -72,6 +59,14 @@ namespace daemon
 
         return static_cast<RunningState>(buf);
     }
+
+
+    LockFile* LockFile::Instance()
+    {
+        return (instance_ == nullptr) ? (instance_ = new LockFile(kLockFileName)):(instance_);
+    }
+
+    LockFile* LockFile::instance_=nullptr;
 }
 
 _END_EXPRESS_NAMESPACE_

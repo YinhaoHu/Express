@@ -1,7 +1,9 @@
 var dir_2d094300ae4f2c55dd459b9ec7dd0ad3 =
 [
-    [ "common.h", "common_8h.html", "common_8h" ],
-    [ "config.h", "config_8h.html", "config_8h" ],
+    [ "component_pool.h", "component__pool_8h.html", "component__pool_8h" ],
+    [ "config.h", "daemon_2config_8h.html", "daemon_2config_8h" ],
     [ "daemon.h", "daemon_8h.html", "daemon_8h" ],
-    [ "init.h", "init_8h.html", "init_8h" ]
+    [ "init.h", "init_8h.html", "init_8h" ],
+    [ "lockfile.h", "lockfile_8h.html", "lockfile_8h" ],
+    [ "param.h", "param_8h.html", "param_8h" ]
 ];

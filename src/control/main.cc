@@ -45,18 +45,21 @@ static void Init(int argc, char *argv[])
 {
     pProgram = new argparse::ArgumentParser("expressctl", "1.0");
 
+    pProgram->add_description("Express server control program.");
+
     pProgram->add_argument(shutdown_opt.data())
-        .help("Shutdown express server and exits.")
+        .help("shutown express server and exits.")
         .default_value(false)
         .implicit_value(true);
 
     pProgram->add_argument(syslog_opt.data())
-        .help("Print the system log and exits. Usage : --syslog <num of pages>, like --syslog 15")
+        .help("prints NUM pages of the relevant system log and exits.")
         .scan<'i', int>()
-        .default_value(10);
+        .default_value(10)
+        .metavar("NUM");
 
     pProgram->add_argument(proc_opt.data())
-        .help("Print the running processes related to express and exists.")
+        .help("prints the running processes related to express and exists.")
         .default_value(false)
         .implicit_value(true);
 

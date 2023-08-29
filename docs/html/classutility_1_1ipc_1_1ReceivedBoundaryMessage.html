@@ -114,6 +114,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae3ab5e51a981d3247efb353859e6909d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#ae3ab5e51a981d3247efb353859e6909d">~ReceivedBoundaryMessage</a> ()=default</td></tr>
 <tr class="separator:ae3ab5e51a981d3247efb353859e6909d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf273a68bfb721b00b3276b91613deb3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structutility_1_1ipc_1_1AbstractMessage_1_1Field.html">Field</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#adf273a68bfb721b00b3276b91613deb3">operator[]</a> (size_t id)</td></tr>
+<tr class="memdesc:adf273a68bfb721b00b3276b91613deb3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the specified field.  <a href="classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#adf273a68bfb721b00b3276b91613deb3">More...</a><br /></td></tr>
 <tr class="separator:adf273a68bfb721b00b3276b91613deb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classutility_1_1ipc_1_1AbstractMessage"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classutility_1_1ipc_1_1AbstractMessage')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classutility_1_1ipc_1_1AbstractMessage.html">utility::ipc::AbstractMessage</a></td></tr>
 <tr class="memitem:acf1255aab5e0354f07394bcfb9e0ce66 inherit pub_methods_classutility_1_1ipc_1_1AbstractMessage"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1AbstractMessage.html#acf1255aab5e0354f07394bcfb9e0ce66">AbstractMessage</a> (std::shared_ptr&lt; <a class="el" href="structutility_1_1ipc_1_1AbstractMessage_1_1Header.html">Header</a> &gt; pheader=std::make_shared&lt; <a class="el" href="structutility_1_1ipc_1_1AbstractMessage_1_1Header.html">Header</a> &gt;())</td></tr>
@@ -139,7 +140,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A message class that is used to receive messages from bounded IPC channel. </p>
-<dl class="section note"><dt>Note</dt><dd>All data in this class has the life time which is same as this class object. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Memory is allocated in this class. Its life time is identical to this class instance. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0babf9ceab1f782221b5e32abb13be10"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0babf9ceab1f782221b5e32abb13be10">&#9670;&nbsp;</a></span>ReceivedBoundaryMessage() <span class="overload">[1/2]</span></h2>
@@ -243,12 +244,20 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Access the specified field. </p><dl class="section warning"><dt>Warning</dt><dd>The data has the life time which is same as this class object. </dd></dl>
+
+<p>Access the specified field. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>will be thrown if <code>id</code> is out of range. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Warning</dt><dd>The data has the life time which is same as this class object. </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/hoo/project/Express/src/utility/ipc/<a class="el" href="received__boundary__message_8h_source.html">received_boundary_message.h</a></li>
+<li>src/utility/ipc/<a class="el" href="received__boundary__message_8h_source.html">received_boundary_message.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

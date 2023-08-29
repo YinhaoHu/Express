@@ -4,5 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="utility::generic::ArgParse",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classutility_1_1generic_1_1ArgParse.html",tooltip=" "];
+  Node0 [label="daemon::LockFile",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdaemon_1_1LockFile.html",tooltip=" "];
 }

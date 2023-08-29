@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Express Development Documentation: /home/hoo/project/Express/src/database/reactor.h Source File</title>
+<title>Express Development Documentation: src/core/reactor.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,38 +86,56 @@ $(document).ready(function(){initNavTree('reactor_8h_source.html',''); initResiz
 <div class="title">reactor.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="reactor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _EXPRESS_DATABASE_REACTOR_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _EXPRESS_DATABASE_REACTOR_H</span></div>
+<a href="reactor_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _EXPRESS_CORE_REACTOR_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _EXPRESS_CORE_REACTOR_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="socket_8h.html">utility/ipc/socket.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="received__stream__message_8h.html">utility/ipc/received_stream_message.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedatabase.html">database</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{ </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="namespacedatabase.html#af1ed639feaacc16dc80f4c952c819a0a">   13</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedatabase.html#af1ed639feaacc16dc80f4c952c819a0a">react</a>(std::unique_ptr&lt;utility::ipc::ReceivedStreamMessage&gt; msg); </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;queue&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;atomic&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacecore.html">core</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classcore_1_1Reactor.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classcore_1_1Reactor.html">Reactor</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keyword">public</span>: </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classcore_1_1Reactor.html#a81d1648037b092b62585c43096c5b559">   18</a></span>&#160;            <a class="code" href="classcore_1_1Reactor.html#a81d1648037b092b62585c43096c5b559">Reactor</a>(<span class="keywordtype">int</span> db_channel);</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classcore_1_1Reactor.html#a86d01a1679eb345c8870bd2b09a772ff">   19</a></span>&#160;            <a class="code" href="classcore_1_1Reactor.html#a86d01a1679eb345c8870bd2b09a772ff">Reactor</a>(<span class="keyword">const</span> <a class="code" href="classcore_1_1Reactor.html">Reactor</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classcore_1_1Reactor.html#aaff6c3b3cce496556bd797d711f0a37c">   20</a></span>&#160;            <a class="code" href="classcore_1_1Reactor.html#aaff6c3b3cce496556bd797d711f0a37c">~Reactor</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classcore_1_1Reactor.html#aab499c62183174fd568f9c827ad8dd06">   22</a></span>&#160;            <span class="keywordtype">void</span> <a class="code" href="classcore_1_1Reactor.html#aab499c62183174fd568f9c827ad8dd06">Add</a>(<span class="keywordtype">int</span> connfd); </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">// TODO : This field should be set in the config file.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> autoCloseSec_ = 180;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordtype">int</span> dbChannel_, epfd_;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            std::atomic_bool isRunning_; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    };</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;} <span class="comment">// namespace core</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html"><div class="ttname"><a href="classcore_1_1Reactor.html">core::Reactor</a></div><div class="ttdef"><b>Definition:</b> reactor.h:16</div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a81d1648037b092b62585c43096c5b559"><div class="ttname"><a href="classcore_1_1Reactor.html#a81d1648037b092b62585c43096c5b559">core::Reactor::Reactor</a></div><div class="ttdeci">Reactor(int db_channel)</div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_a86d01a1679eb345c8870bd2b09a772ff"><div class="ttname"><a href="classcore_1_1Reactor.html#a86d01a1679eb345c8870bd2b09a772ff">core::Reactor::Reactor</a></div><div class="ttdeci">Reactor(const Reactor &amp;)=delete</div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_aab499c62183174fd568f9c827ad8dd06"><div class="ttname"><a href="classcore_1_1Reactor.html#aab499c62183174fd568f9c827ad8dd06">core::Reactor::Add</a></div><div class="ttdeci">void Add(int connfd)</div></div>
+<div class="ttc" id="aclasscore_1_1Reactor_html_aaff6c3b3cce496556bd797d711f0a37c"><div class="ttname"><a href="classcore_1_1Reactor.html#aaff6c3b3cce496556bd797d711f0a37c">core::Reactor::~Reactor</a></div><div class="ttdeci">~Reactor()</div></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:8</div></div>
-<div class="ttc" id="anamespacedatabase_html"><div class="ttname"><a href="namespacedatabase.html">database</a></div><div class="ttdef"><b>Definition:</b> client.h:12</div></div>
-<div class="ttc" id="anamespacedatabase_html_af1ed639feaacc16dc80f4c952c819a0a"><div class="ttname"><a href="namespacedatabase.html#af1ed639feaacc16dc80f4c952c819a0a">database::react</a></div><div class="ttdeci">void react(std::unique_ptr&lt; utility::ipc::ReceivedStreamMessage &gt; msg)</div></div>
-<div class="ttc" id="areceived__stream__message_8h_html"><div class="ttname"><a href="received__stream__message_8h.html">received_stream_message.h</a></div></div>
-<div class="ttc" id="asocket_8h_html"><div class="ttname"><a href="socket_8h.html">socket.h</a></div></div>
+<div class="ttc" id="anamespacecore_html"><div class="ttname"><a href="namespacecore.html">core</a></div><div class="ttdef"><b>Definition:</b> common.h:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_803ee67260c130b45d29089798491ab2.html">database</a></li><li class="navelem"><a class="el" href="reactor_8h.html">reactor.h</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="reactor_8h.html">reactor.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

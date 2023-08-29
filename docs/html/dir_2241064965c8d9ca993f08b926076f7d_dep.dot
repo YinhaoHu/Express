@@ -1,4 +1,4 @@
-digraph "/home/hoo/project/Express/src/log" {
+digraph "src/log" {
   compound=true
   node [ fontsize="10", fontname="Helvetica"];
   edge [ labelfontsize="10", labelfontname="Helvetica"];
@@ -11,5 +11,5 @@ digraph "/home/hoo/project/Express/src/log" {
   dir_9056f6cc715f0eb19cd79ce9687c167a [shape=box label="test" fillcolor="white" style="filled" URL="dir_9056f6cc715f0eb19cd79ce9687c167a.html"];
   }
   }
-  dir_9056f6cc715f0eb19cd79ce9687c167a->dir_0619a8f54b4fad7043a6de45be8fde0b [headlabel="3", labeldistance=1.5 headhref="dir_000004_000005.html"];
+  dir_9056f6cc715f0eb19cd79ce9687c167a->dir_0619a8f54b4fad7043a6de45be8fde0b [headlabel="3", labeldistance=1.5 headhref="dir_000006_000007.html"];
 }

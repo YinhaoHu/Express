@@ -109,10 +109,18 @@ Collaboration diagram for utility::ipc::TCPSocket:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2bad2ead2e498661a826ae91c307aa71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPSocket.html#a2bad2ead2e498661a826ae91c307aa71">TCPSocket</a> (<a class="el" href="namespaceutility_1_1ipc.html#a71055c292606124d4a4aa79db069d9f5">InternetProtocol</a> ip_version)</td></tr>
 <tr class="separator:a2bad2ead2e498661a826ae91c307aa71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cdff40917db3cfef356943228f76eec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPSocket.html#a9cdff40917db3cfef356943228f76eec">TCPSocket</a> (const <a class="el" href="classutility_1_1ipc_1_1TCPSocket.html">TCPSocket</a> &amp;)=delete</td></tr>
+<tr class="separator:a9cdff40917db3cfef356943228f76eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeef683480cfb491430923625e00153e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPSocket.html#aeef683480cfb491430923625e00153e7">TCPSocket</a> (<a class="el" href="socket_8h.html#af267afc664829a34f50c78fb2a48e250">Socket</a> sockfd)</td></tr>
 <tr class="separator:aeef683480cfb491430923625e00153e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ad78d7afb7a496977e2ab1881bb5d40"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPSocket.html#a0ad78d7afb7a496977e2ab1881bb5d40">~TCPSocket</a> ()=default</td></tr>
 <tr class="separator:a0ad78d7afb7a496977e2ab1881bb5d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1996805079ee65f7888f7dbd525aa3cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPSocket.html#a1996805079ee65f7888f7dbd525aa3cd">SendMessage</a> (const <a class="el" href="classutility_1_1ipc_1_1SentMessage.html">SentMessage</a> &amp;msg)</td></tr>
+<tr class="separator:a1996805079ee65f7888f7dbd525aa3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc86dd3defbe805f602bff6e59ff4be3"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPSocket.html#acc86dd3defbe805f602bff6e59ff4be3">ReceiveMessage</a> ()</td></tr>
+<tr class="separator:acc86dd3defbe805f602bff6e59ff4be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaf66e690f2161e943906ddd3f97f27d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1TCPSocket.html#acaf66e690f2161e943906ddd3f97f27d">IsPeerShutdown</a> ()</td></tr>
+<tr class="separator:acaf66e690f2161e943906ddd3f97f27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classutility_1_1ipc_1_1BasicSocket"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classutility_1_1ipc_1_1BasicSocket')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classutility_1_1ipc_1_1BasicSocket.html">utility::ipc::BasicSocket</a></td></tr>
 <tr class="memitem:a082662b2e4e9f748fa7a9de0debe004b inherit pub_methods_classutility_1_1ipc_1_1BasicSocket"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1BasicSocket.html#a082662b2e4e9f748fa7a9de0debe004b">BasicSocket</a> (int domain, int type)</td></tr>
 <tr class="separator:a082662b2e4e9f748fa7a9de0debe004b inherit pub_methods_classutility_1_1ipc_1_1BasicSocket"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,7 +171,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>A tcp socket wrapper class. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2bad2ead2e498661a826ae91c307aa71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bad2ead2e498661a826ae91c307aa71">&#9670;&nbsp;</a></span>TCPSocket() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bad2ead2e498661a826ae91c307aa71">&#9670;&nbsp;</a></span>TCPSocket() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,8 +202,34 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a9cdff40917db3cfef356943228f76eec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cdff40917db3cfef356943228f76eec">&#9670;&nbsp;</a></span>TCPSocket() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">utility::ipc::TCPSocket::TCPSocket </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classutility_1_1ipc_1_1TCPSocket.html">TCPSocket</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">delete</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aeef683480cfb491430923625e00153e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeef683480cfb491430923625e00153e7">&#9670;&nbsp;</a></span>TCPSocket() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef683480cfb491430923625e00153e7">&#9670;&nbsp;</a></span>TCPSocket() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -245,8 +279,87 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="acaf66e690f2161e943906ddd3f97f27d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaf66e690f2161e943906ddd3f97f27d">&#9670;&nbsp;</a></span>IsPeerShutdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool utility::ipc::TCPSocket::IsPeerShutdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>This function assumes that recv will not set errno. </dd></dl>
+
+</div>
+</div>
+<a id="acc86dd3defbe805f602bff6e59ff4be3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc86dd3defbe805f602bff6e59ff4be3">&#9670;&nbsp;</a></span>ReceiveMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html">ReceivedStreamMessage</a>&gt; utility::ipc::TCPSocket::ReceiveMessage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section note"><dt>Note</dt><dd>If peer shutdown this socket stream, this function call will block. Use IsPeerShutdown to detect whether the peer is alive or not. </dd></dl>
+
+</div>
+</div>
+<a id="a1996805079ee65f7888f7dbd525aa3cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1996805079ee65f7888f7dbd525aa3cd">&#9670;&nbsp;</a></span>SendMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void utility::ipc::TCPSocket::SendMessage </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classutility_1_1ipc_1_1SentMessage.html">SentMessage</a> &amp;&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/hoo/project/Express/src/utility/ipc/<a class="el" href="tcp__socket_8h_source.html">tcp_socket.h</a></li>
+<li>src/utility/ipc/<a class="el" href="tcp__socket_8h_source.html">tcp_socket.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

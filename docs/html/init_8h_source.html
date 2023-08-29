@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Express Development Documentation: /home/hoo/project/Express/src/daemon/init.h Source File</title>
+<title>Express Development Documentation: src/daemon/init.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,27 +86,29 @@ $(document).ready(function(){initNavTree('init_8h_source.html',''); initResizabl
 <div class="title">init.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="init_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _EXPRESS_DAEMON_INIT_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _EXPRESS_DAEMON_INIT_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaemon.html">daemon</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespacedaemon.html#a22494b734bb9a3dc9a0f2712abf2b269">   10</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#a22494b734bb9a3dc9a0f2712abf2b269">InitDataBase</a>( );   </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
+<a href="init_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef _EXPRESS_DAEMON_INIT_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define _EXPRESS_DAEMON_INIT_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaemon.html">daemon</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">// TODO: Use Local Process to update daemon init_xxx is also a consideration.</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespacedaemon.html#a22494b734bb9a3dc9a0f2712abf2b269">   16</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#a22494b734bb9a3dc9a0f2712abf2b269">InitDataBase</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacedaemon.html#a0425cf08b035e7eadb488c0f778c63e2">   17</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#a0425cf08b035e7eadb488c0f778c63e2">InitCore</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:8</div></div>
-<div class="ttc" id="anamespacedaemon_html"><div class="ttname"><a href="namespacedaemon.html">daemon</a></div><div class="ttdef"><b>Definition:</b> common.h:11</div></div>
+<div class="ttc" id="anamespacedaemon_html"><div class="ttname"><a href="namespacedaemon.html">daemon</a></div><div class="ttdef"><b>Definition:</b> component_pool.h:17</div></div>
+<div class="ttc" id="anamespacedaemon_html_a0425cf08b035e7eadb488c0f778c63e2"><div class="ttname"><a href="namespacedaemon.html#a0425cf08b035e7eadb488c0f778c63e2">daemon::InitCore</a></div><div class="ttdeci">void InitCore()</div></div>
 <div class="ttc" id="anamespacedaemon_html_a22494b734bb9a3dc9a0f2712abf2b269"><div class="ttname"><a href="namespacedaemon.html#a22494b734bb9a3dc9a0f2712abf2b269">daemon::InitDataBase</a></div><div class="ttdeci">void InitDataBase()</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

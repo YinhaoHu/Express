@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['reserved_391',['reserved',['../structutility_1_1ipc_1_1AbstractMessage_1_1Header.html#a93de2c594a95ca716b6cc9ad21490ce9',1,'utility::ipc::AbstractMessage::Header']]]
+  ['size_507',['size',['../classdaemon_1_1LockFile.html#a3ea33f750ff0f0245b78a1d75b605684',1,'daemon::LockFile::size()'],['../structutility_1_1ipc_1_1AbstractMessage_1_1Field.html#a4c1d95ce4a0f106f847c27878c7b334e',1,'utility::ipc::AbstractMessage::Field::size()']]],
+  ['socket_5f_508',['socket_',['../classutility_1_1ipc_1_1BasicSocket.html#a50200f60685da8bd3ce6e43504863f86',1,'utility::ipc::BasicSocket']]],
+  ['spheader_5f_509',['spHeader_',['../classutility_1_1ipc_1_1AbstractMessage.html#a15d39d8cf8ad11220c42d874d8498e33',1,'utility::ipc::AbstractMessage']]]
 ];

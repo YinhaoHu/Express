@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Express Development Documentation: /home/hoo/project/Express/src/daemon/daemon.h Source File</title>
+<title>Express Development Documentation: src/daemon/daemon.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -86,73 +86,35 @@ $(document).ready(function(){initNavTree('daemon_8h_source.html',''); initResiza
 <div class="title">daemon.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="daemon_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _EXPRESS_DAEMON_DAEMON_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _EXPRESS_DAEMON_DAEMON_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;sys/types.h&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaemon.html">daemon</a></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html">   15</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classdaemon_1_1ComponentPool.html">ComponentPool</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">   22</a></span>&#160;        <span class="keyword">enum class</span> <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> : unsigned int</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418ab256fb40a10c338dc278eeccda6f5791">kDataBase</a>,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418ad4720c3695455d7cf5bce1b2c7bcecdf">kMaster</a>,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418a371b131e5e8ab58eefe1bd1b5df26c55">kMonitor</a>,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418af7971cffe1eeab35748c8d08e50703ec">kLog</a>,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418a82c926c0897d446af12b0346c68faa59">kMail</a>,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418a5a162d352f3b3603e03fc9b2f043fb40">kCount</a></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        };</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html#a06468555ec865bce184974e8cfca2217">   33</a></span>&#160;        <a class="code" href="classdaemon_1_1ComponentPool.html#a06468555ec865bce184974e8cfca2217">ComponentPool</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html#ade94a9891a0045d73ace813bf58dc83e">   34</a></span>&#160;        <a class="code" href="classdaemon_1_1ComponentPool.html#ade94a9891a0045d73ace813bf58dc83e">ComponentPool</a>(<span class="keyword">const</span> <a class="code" href="classdaemon_1_1ComponentPool.html">ComponentPool</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html#a3646a4c7d80274eecaccf82900724efd">   35</a></span>&#160;        <a class="code" href="classdaemon_1_1ComponentPool.html#a3646a4c7d80274eecaccf82900724efd">~ComponentPool</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html#aa9c309c2ce9dffe8e75bae7ef1ac320d">   37</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classdaemon_1_1ComponentPool.html#aa9c309c2ce9dffe8e75bae7ef1ac320d">SetPID</a>(<a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> whose, pid_t pid) noexcept;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html#ab5fe52142e8ad310e81c26c00bdc5839">   38</a></span>&#160;        pid_t <a class="code" href="classdaemon_1_1ComponentPool.html#ab5fe52142e8ad310e81c26c00bdc5839">GetPID</a>(<a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> whose) <span class="keyword">const</span> noexcept;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classdaemon_1_1ComponentPool.html#a088dcf69e856f26dbb0ba531a2c09cb3">   39</a></span>&#160;        <a class="code" href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">Component</a> <a class="code" href="classdaemon_1_1ComponentPool.html#a088dcf69e856f26dbb0ba531a2c09cb3">GetComponent</a>(pid_t pid) <span class="keyword">const</span> noexcept;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        pid_t *pid_array_;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">extern</span> <a class="code" href="classdaemon_1_1ComponentPool.html">ComponentPool</a> *<a class="code" href="namespacedaemon.html#a136b350f41bbe3a041c8b7fdef5713a2">pComponentPool</a>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="namespacedaemon.html#acbb4c9ac732587a460dfad7b3a5a320c">   47</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#acbb4c9ac732587a460dfad7b3a5a320c">BecomeDaemon</a>(); </div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">   48</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">Prepare</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="namespacedaemon.html#a70bbb68e1b30a0e511ddb707af6cca5b">   49</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#a70bbb68e1b30a0e511ddb707af6cca5b">Run</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html">daemon::ComponentPool</a></div><div class="ttdoc">A component process controlling class.</div><div class="ttdef"><b>Definition:</b> daemon.h:16</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a06468555ec865bce184974e8cfca2217"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a06468555ec865bce184974e8cfca2217">daemon::ComponentPool::ComponentPool</a></div><div class="ttdeci">ComponentPool()</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a088dcf69e856f26dbb0ba531a2c09cb3"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a088dcf69e856f26dbb0ba531a2c09cb3">daemon::ComponentPool::GetComponent</a></div><div class="ttdeci">Component GetComponent(pid_t pid) const noexcept</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3646a4c7d80274eecaccf82900724efd"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3646a4c7d80274eecaccf82900724efd">daemon::ComponentPool::~ComponentPool</a></div><div class="ttdeci">~ComponentPool()</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3d8c8e235683da1410eafe504d8b7418"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418">daemon::ComponentPool::Component</a></div><div class="ttdeci">Component</div><div class="ttdef"><b>Definition:</b> daemon.h:23</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3d8c8e235683da1410eafe504d8b7418a371b131e5e8ab58eefe1bd1b5df26c55"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418a371b131e5e8ab58eefe1bd1b5df26c55">daemon::ComponentPool::Component::kMonitor</a></div><div class="ttdeci">@ kMonitor</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3d8c8e235683da1410eafe504d8b7418a5a162d352f3b3603e03fc9b2f043fb40"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418a5a162d352f3b3603e03fc9b2f043fb40">daemon::ComponentPool::Component::kCount</a></div><div class="ttdeci">@ kCount</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3d8c8e235683da1410eafe504d8b7418a82c926c0897d446af12b0346c68faa59"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418a82c926c0897d446af12b0346c68faa59">daemon::ComponentPool::Component::kMail</a></div><div class="ttdeci">@ kMail</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3d8c8e235683da1410eafe504d8b7418ab256fb40a10c338dc278eeccda6f5791"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418ab256fb40a10c338dc278eeccda6f5791">daemon::ComponentPool::Component::kDataBase</a></div><div class="ttdeci">@ kDataBase</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3d8c8e235683da1410eafe504d8b7418ad4720c3695455d7cf5bce1b2c7bcecdf"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418ad4720c3695455d7cf5bce1b2c7bcecdf">daemon::ComponentPool::Component::kMaster</a></div><div class="ttdeci">@ kMaster</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_a3d8c8e235683da1410eafe504d8b7418af7971cffe1eeab35748c8d08e50703ec"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#a3d8c8e235683da1410eafe504d8b7418af7971cffe1eeab35748c8d08e50703ec">daemon::ComponentPool::Component::kLog</a></div><div class="ttdeci">@ kLog</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_aa9c309c2ce9dffe8e75bae7ef1ac320d"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#aa9c309c2ce9dffe8e75bae7ef1ac320d">daemon::ComponentPool::SetPID</a></div><div class="ttdeci">void SetPID(Component whose, pid_t pid) noexcept</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_ab5fe52142e8ad310e81c26c00bdc5839"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#ab5fe52142e8ad310e81c26c00bdc5839">daemon::ComponentPool::GetPID</a></div><div class="ttdeci">pid_t GetPID(Component whose) const noexcept</div></div>
-<div class="ttc" id="aclassdaemon_1_1ComponentPool_html_ade94a9891a0045d73ace813bf58dc83e"><div class="ttname"><a href="classdaemon_1_1ComponentPool.html#ade94a9891a0045d73ace813bf58dc83e">daemon::ComponentPool::ComponentPool</a></div><div class="ttdeci">ComponentPool(const ComponentPool &amp;)=delete</div></div>
+<a href="daemon_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef _EXPRESS_DAEMON_DAEMON_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define _EXPRESS_DAEMON_DAEMON_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sys/types.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="component__pool_8h.html">daemon/component_pool.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="macro_8h.html">utility/macro.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="local__process_8h.html">utility/os/local_process.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<a class="code" href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedaemon.html">daemon</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{  </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacedaemon.html#acbb4c9ac732587a460dfad7b3a5a320c">   19</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#acbb4c9ac732587a460dfad7b3a5a320c">BecomeDaemon</a>();  </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">   23</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">Prepare</a>();</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespacedaemon.html#a70bbb68e1b30a0e511ddb707af6cca5b">   24</a></span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="namespacedaemon.html#a70bbb68e1b30a0e511ddb707af6cca5b">Run</a>();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<a class="code" href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acomponent__pool_8h_html"><div class="ttname"><a href="component__pool_8h.html">component_pool.h</a></div><div class="ttdoc">Define the ComponentPool class.</div></div>
+<div class="ttc" id="alocal__process_8h_html"><div class="ttname"><a href="local__process_8h.html">local_process.h</a></div></div>
 <div class="ttc" id="amacro_8h_html"><div class="ttname"><a href="macro_8h.html">macro.h</a></div></div>
 <div class="ttc" id="amacro_8h_html_a1bed5ac67acd4ef10e5c596f50a23cf6"><div class="ttname"><a href="macro_8h.html#a1bed5ac67acd4ef10e5c596f50a23cf6">_END_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _END_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:9</div></div>
 <div class="ttc" id="amacro_8h_html_ad57a8824cf0ca3efbc4822134b1193f6"><div class="ttname"><a href="macro_8h.html#ad57a8824cf0ca3efbc4822134b1193f6">_START_EXPRESS_NAMESPACE_</a></div><div class="ttdeci">#define _START_EXPRESS_NAMESPACE_</div><div class="ttdef"><b>Definition:</b> macro.h:8</div></div>
-<div class="ttc" id="anamespacedaemon_html"><div class="ttname"><a href="namespacedaemon.html">daemon</a></div><div class="ttdef"><b>Definition:</b> common.h:11</div></div>
-<div class="ttc" id="anamespacedaemon_html_a03cf67cb17ccd150ad690183441cf0b6"><div class="ttname"><a href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">daemon::Prepare</a></div><div class="ttdeci">void Prepare()</div></div>
-<div class="ttc" id="anamespacedaemon_html_a136b350f41bbe3a041c8b7fdef5713a2"><div class="ttname"><a href="namespacedaemon.html#a136b350f41bbe3a041c8b7fdef5713a2">daemon::pComponentPool</a></div><div class="ttdeci">ComponentPool * pComponentPool</div></div>
+<div class="ttc" id="anamespacedaemon_html"><div class="ttname"><a href="namespacedaemon.html">daemon</a></div><div class="ttdef"><b>Definition:</b> component_pool.h:17</div></div>
+<div class="ttc" id="anamespacedaemon_html_a03cf67cb17ccd150ad690183441cf0b6"><div class="ttname"><a href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">daemon::Prepare</a></div><div class="ttdeci">void Prepare()</div><div class="ttdoc">Initialize the local variables of daemon.</div></div>
 <div class="ttc" id="anamespacedaemon_html_a70bbb68e1b30a0e511ddb707af6cca5b"><div class="ttname"><a href="namespacedaemon.html#a70bbb68e1b30a0e511ddb707af6cca5b">daemon::Run</a></div><div class="ttdeci">void Run()</div></div>
 <div class="ttc" id="anamespacedaemon_html_acbb4c9ac732587a460dfad7b3a5a320c"><div class="ttname"><a href="namespacedaemon.html#acbb4c9ac732587a460dfad7b3a5a320c">daemon::BecomeDaemon</a></div><div class="ttdeci">void BecomeDaemon()</div></div>
 </div><!-- fragment --></div><!-- contents -->

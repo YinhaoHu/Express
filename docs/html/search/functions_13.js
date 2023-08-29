@@ -1,21 +1,8 @@
 var searchData=
 [
-  ['_7eabstractmessage_357',['~AbstractMessage',['../classutility_1_1ipc_1_1AbstractMessage.html#a814a57cb0f81f60ed910bf29edf968c3',1,'utility::ipc::AbstractMessage']]],
-  ['_7eargparse_358',['~ArgParse',['../classutility_1_1generic_1_1ArgParse.html#a83a4f161eee38c0c2a93fd4b33e6af54',1,'utility::generic::ArgParse']]],
-  ['_7ebasicsocket_359',['~BasicSocket',['../classutility_1_1ipc_1_1BasicSocket.html#ad41b3488a69bda656dd8e617cce3a4f4',1,'utility::ipc::BasicSocket']]],
-  ['_7eclient_360',['~Client',['../classdatabase_1_1Client.html#adfc780bf0058f172842439d2cc3f075a',1,'database::Client']]],
-  ['_7ecomponentpool_361',['~ComponentPool',['../classdaemon_1_1ComponentPool.html#a3646a4c7d80274eecaccf82900724efd',1,'daemon::ComponentPool']]],
-  ['_7econfig_362',['~Config',['../classdaemon_1_1Config.html#ac94482496a0afe9eb8df2f67035a3056',1,'daemon::Config']]],
-  ['_7edatabase_363',['~DataBase',['../classdatabase_1_1DataBase.html#a48ec6ca949bf50543673b5786dead9e4',1,'database::DataBase']]],
-  ['_7edatalist_364',['~DataList',['../classdatabase_1_1DataList.html#a0dde847891df5a32a69f810d863b7c54',1,'database::DataList']]],
-  ['_7efield_365',['~Field',['../structutility_1_1ipc_1_1AbstractMessage_1_1Field.html#a6917f4e1361d235aeb5a5b2d72db3e72',1,'utility::ipc::AbstractMessage::Field']]],
-  ['_7emessagequeue_366',['~MessageQueue',['../classutility_1_1ipc_1_1MessageQueue.html#ae7ad5a00142aaf85405fc3a62995a0a0',1,'utility::ipc::MessageQueue']]],
-  ['_7erawdata_367',['~RawData',['../classutility_1_1data_1_1RawData.html#a0e437e570365ec5e5c6c588bdd9f0349',1,'utility::data::RawData']]],
-  ['_7ereceivedboundarymessage_368',['~ReceivedBoundaryMessage',['../classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#ae3ab5e51a981d3247efb353859e6909d',1,'utility::ipc::ReceivedBoundaryMessage']]],
-  ['_7ereceivedstreammessage_369',['~ReceivedStreamMessage',['../classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000',1,'utility::ipc::ReceivedStreamMessage']]],
-  ['_7esentmessage_370',['~SentMessage',['../classutility_1_1ipc_1_1SentMessage.html#a097828e67a16c533465f2d7891d8be93',1,'utility::ipc::SentMessage']]],
-  ['_7etcpclient_371',['~TCPClient',['../classutility_1_1ipc_1_1TCPClient.html#a174ceeb85044ef8450edaa02cd0a3278',1,'utility::ipc::TCPClient']]],
-  ['_7etcpserver_372',['~TCPServer',['../classutility_1_1ipc_1_1TCPServer.html#a19738bf31de2e8f3b3cc17fba82124d7',1,'utility::ipc::TCPServer']]],
-  ['_7etcpsocket_373',['~TCPSocket',['../classutility_1_1ipc_1_1TCPSocket.html#a0ad78d7afb7a496977e2ab1881bb5d40',1,'utility::ipc::TCPSocket']]],
-  ['_7ethreadpool_374',['~ThreadPool',['../classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975',1,'utility::concurrency::ThreadPool']]]
+  ['waitforconnection_457',['WaitForConnection',['../classutility_1_1ipc_1_1TCPServer.html#a0cb9955035099792a16cae9d0a54969b',1,'utility::ipc::TCPServer']]],
+  ['worker_458',['Worker',['../classcore_1_1Worker.html#a0e70d53cb29ca10f440ccbc7f23b9d67',1,'core::Worker::Worker(int hear_beat_rate, int db_channel)'],['../classcore_1_1Worker.html#a3734a4fe0eb3b003c7335b9199eed531',1,'core::Worker::Worker(const Worker &amp;)=delete']]],
+  ['worker_5fexe_5fname_459',['worker_exe_name',['../namespacecore.html#ab350e9f0a8f78c5c2e83f57634136a99',1,'core']]],
+  ['workerpool_460',['WorkerPool',['../classcore_1_1WorkerPool.html#a78e462cda1d302fee40cb1a2691fed07',1,'core::WorkerPool::WorkerPool(int nworkers, int heart_beat, int db_channel)'],['../classcore_1_1WorkerPool.html#a5941d0bf5b873d095909d6e6b2258e3a',1,'core::WorkerPool::WorkerPool(const WorkerPool &amp;)=delete']]],
+  ['working_5fdir_461',['working_dir',['../namespacedaemon.html#a8522f736922673cbf7293237790c622b',1,'daemon']]]
 ];

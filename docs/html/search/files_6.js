@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['macro_2eh_253',['macro.h',['../macro_8h.html',1,'']]],
-  ['message_5fqueue_2eh_254',['message_queue.h',['../message__queue_8h.html',1,'']]],
-  ['misc_2eh_255',['misc.h',['../misc_8h.html',1,'']]]
+  ['local_5fprocess_2eh_321',['local_process.h',['../local__process_8h.html',1,'']]],
+  ['lockfile_2eh_322',['lockfile.h',['../lockfile_8h.html',1,'']]]
 ];

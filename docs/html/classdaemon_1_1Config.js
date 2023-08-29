@@ -3,6 +3,9 @@ var classdaemon_1_1Config =
     [ "Key", "classdaemon_1_1Config.html#a08b7199de0a30221be8cd173ab247f2c", [
       [ "kDataBaseNThreads", "classdaemon_1_1Config.html#a08b7199de0a30221be8cd173ab247f2ca642dc1b1dd86ae1e7f70d3e8144d1309", null ],
       [ "kDataBaseDirName", "classdaemon_1_1Config.html#a08b7199de0a30221be8cd173ab247f2ca66cb0fc329a926c9ef7c1d86a9ffb679", null ],
+      [ "kCoreNWorkers", "classdaemon_1_1Config.html#a08b7199de0a30221be8cd173ab247f2ca8eaeb51c98b7e20a2d4c532d01d5590a", null ],
+      [ "kCorePort", "classdaemon_1_1Config.html#a08b7199de0a30221be8cd173ab247f2cae3a607d74e5064edda09115345075d06", null ],
+      [ "kCoreWorkerHeartBeatRate", "classdaemon_1_1Config.html#a08b7199de0a30221be8cd173ab247f2ca15ec3a30e12e3b10f52291fe354267e0", null ],
       [ "kCount", "classdaemon_1_1Config.html#a08b7199de0a30221be8cd173ab247f2ca5a162d352f3b3603e03fc9b2f043fb40", null ]
     ] ],
     [ "Config", "classdaemon_1_1Config.html#abb353857454db4e23d0d5ab8fb14fd5a", null ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['socket_397',['Socket',['../socket_8h.html#af267afc664829a34f50c78fb2a48e250',1,'socket.h']]]
+  ['listtype_512',['ListType',['../classcore_1_1WorkerPool.html#ae10f9fc83777965a60c97d5cca4c4cb5',1,'core::WorkerPool']]]
 ];

@@ -4,5 +4,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="utility::ipc::TCPClient",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classutility_1_1ipc_1_1TCPClient.html",tooltip=" "];
+  Node0 [label="utility::ipc::AbstractMessage\l::Field",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structutility_1_1ipc_1_1AbstractMessage_1_1Field.html",tooltip=" "];
 }

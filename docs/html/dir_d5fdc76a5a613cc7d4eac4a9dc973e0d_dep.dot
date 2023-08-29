@@ -1,4 +1,4 @@
-digraph "/home/hoo/project/Express/src/utility/test" {
+digraph "src/utility/test" {
   compound=true
   node [ fontsize="10", fontname="Helvetica"];
   edge [ labelfontsize="10", labelfontname="Helvetica"];

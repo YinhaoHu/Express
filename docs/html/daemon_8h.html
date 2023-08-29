@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Express Development Documentation: /home/hoo/project/Express/src/daemon/daemon.h File Reference</title>
+<title>Express Development Documentation: src/daemon/daemon.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -83,30 +83,27 @@ $(document).ready(function(){initNavTree('daemon_8h.html',''); initResizable(); 
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">daemon.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provide the functions that daemon needs for itself.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;sys/types.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="component__pool_8h_source.html">daemon/component_pool.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="macro_8h_source.html">utility/macro.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="local__process_8h_source.html">utility/os/local_process.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for daemon.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="daemon_8h__incl.png" border="0" usemap="#a_2home_2hoo_2project_2Express_2src_2daemon_2daemon_8h" alt=""/></div>
+<div class="center"><img src="daemon_8h__incl.png" border="0" usemap="#asrc_2daemon_2daemon_8h" alt=""/></div>
 </div>
 </div>
 <p><a href="daemon_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1ComponentPool.html">daemon::ComponentPool</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A component process controlling class.  <a href="classdaemon_1_1ComponentPool.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacedaemon"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html">daemon</a></td></tr>
@@ -117,16 +114,15 @@ Functions</h2></td></tr>
 <tr class="memitem:acbb4c9ac732587a460dfad7b3a5a320c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#acbb4c9ac732587a460dfad7b3a5a320c">daemon::BecomeDaemon</a> ()</td></tr>
 <tr class="separator:acbb4c9ac732587a460dfad7b3a5a320c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03cf67cb17ccd150ad690183441cf0b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">daemon::Prepare</a> ()</td></tr>
+<tr class="memdesc:a03cf67cb17ccd150ad690183441cf0b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the local variables of daemon.  <a href="namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6">More...</a><br /></td></tr>
 <tr class="separator:a03cf67cb17ccd150ad690183441cf0b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70bbb68e1b30a0e511ddb707af6cca5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a70bbb68e1b30a0e511ddb707af6cca5b">daemon::Run</a> ()</td></tr>
 <tr class="separator:a70bbb68e1b30a0e511ddb707af6cca5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a136b350f41bbe3a041c8b7fdef5713a2"><td class="memItemLeft" align="right" valign="top">ComponentPool *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a136b350f41bbe3a041c8b7fdef5713a2">daemon::pComponentPool</a></td></tr>
-<tr class="separator:a136b350f41bbe3a041c8b7fdef5713a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Provide the functions that daemon needs for itself. </p>
+<dl class="section author"><dt>Author</dt><dd>Hoo </dd></dl>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

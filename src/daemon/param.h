@@ -17,7 +17,7 @@ _START_EXPRESS_NAMESPACE_
 namespace daemon
 {
         inline constexpr const int kTerminateSignal = SIGTERM;
-        constexpr const std::string_view lockfile_name("/var/run/express-server.pid");
+        constexpr const std::string_view kLockFileName("/var/run/express-server.pid");
         constexpr const std::string_view config_file_name("/etc/express-server.conf");
         constexpr const std::string_view program_name("expressd");
 

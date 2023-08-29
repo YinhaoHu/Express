@@ -114,8 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a46657a5ca319fde28bd34e54a598c000"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000">~ReceivedStreamMessage</a> ()=default</td></tr>
 <tr class="separator:a46657a5ca319fde28bd34e54a598c000"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a04b6542d8f13af3cd9b0225df7c29c0d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; char[]&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a04b6542d8f13af3cd9b0225df7c29c0d">GetBodyHandler</a> ()</td></tr>
+<tr class="memdesc:a04b6542d8f13af3cd9b0225df7c29c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to receive data from IPC channel.  <a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a04b6542d8f13af3cd9b0225df7c29c0d">More...</a><br /></td></tr>
 <tr class="separator:a04b6542d8f13af3cd9b0225df7c29c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9223c94e8b7b21b37894138bf91ba66a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">ValidateBody</a> ()</td></tr>
+<tr class="memdesc:a9223c94e8b7b21b37894138bf91ba66a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validate the body part and object will allow operator[].  <a href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#a9223c94e8b7b21b37894138bf91ba66a">More...</a><br /></td></tr>
 <tr class="separator:a9223c94e8b7b21b37894138bf91ba66a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac40e47b6d8dd65016527b8402408fd66"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structutility_1_1ipc_1_1AbstractMessage_1_1Field.html">Field</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classutility_1_1ipc_1_1ReceivedStreamMessage.html#ac40e47b6d8dd65016527b8402408fd66">operator[]</a> (size_t id)</td></tr>
 <tr class="separator:ac40e47b6d8dd65016527b8402408fd66"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -143,7 +145,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A message class that is used to receive messages from stream IPC channel. </p>
-<dl class="section note"><dt>Note</dt><dd>All data in this class has the life time which is same as this class object. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Memory is allocated in this class. Its life time is identical to this class instance. </dd></dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2638fbe96dc8649ccfe8a153bebf893f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2638fbe96dc8649ccfe8a153bebf893f">&#9670;&nbsp;</a></span>ReceivedStreamMessage() <span class="overload">[1/2]</span></h2>
@@ -246,7 +248,9 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Used to receive data from IPC channel. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is only useful for IPC class developer. </dd></dl>
 
 </div>
 </div>
@@ -273,6 +277,12 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -298,12 +308,14 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Validate the body part and object will allow operator[]. </p>
+<dl class="section note"><dt>Note</dt><dd>This function is only useful for IPC class developer. </dd></dl>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/hoo/project/Express/src/utility/ipc/<a class="el" href="received__stream__message_8h_source.html">received_stream_message.h</a></li>
+<li>src/utility/ipc/<a class="el" href="received__stream__message_8h_source.html">received_stream_message.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

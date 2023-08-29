@@ -3,7 +3,7 @@
  * @author Hoo
  * @brief Lock file is used for daemon to record some information like
  * running state and prevent from concurrent issues.
-*/
+ */
 
 #ifndef _EXPRESS_DAEMON_LOCKFILE_H
 #define _EXPRESS_DAEMON_LOCKFILE_H
@@ -28,10 +28,12 @@ namespace daemon
             kRunning
         };
 
+    protected:
+        LockFile(std::string_view file_name);
+
     public:
-        LockFile(const char *filename);
         LockFile(const LockFile &) = delete;
-        ~LockFile() ;
+        ~LockFile();
 
         void Lock();
         void Unlock();
@@ -39,7 +41,11 @@ namespace daemon
         void SetRunningState(RunningState state);
         RunningState GetRunningState();
 
+        static LockFile* Instance();
+
     private:
+        static LockFile* instance_;
+
         int fd_;
 
         const struct
@@ -48,10 +54,7 @@ namespace daemon
             size_t size = 1;
         } kRunningStateInfo;
     };
-
-    extern LockFile* pLockFile;
-
-    extern void InitLockFile();
+ 
 }
 
 _END_EXPRESS_NAMESPACE_

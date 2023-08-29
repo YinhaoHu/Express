@@ -96,9 +96,8 @@ namespace daemon
     }
 
     void Prepare()
-    {
-        //  Ensure there is only one daemon running.
-        InitLockFile();
+    { 
+        auto pLockFile = LockFile::Instance();
         try
         {
             pLockFile->Lock();
@@ -181,6 +180,8 @@ namespace daemon
 
     static void TerminateHandler(int)
     {
+        auto pLockFile = LockFile::Instance();
+
         pComponentPool->Stop();
 
         pLockFile->SetRunningState(LockFile::RunningState::kNotRunning);
