@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['unlink_452',['Unlink',['../classutility_1_1ipc_1_1MessageQueue.html#aa871d4dba8b093f9e5d855fd6c48c322',1,'utility::ipc::MessageQueue']]],
-  ['unlock_453',['Unlock',['../classdaemon_1_1LockFile.html#acdbc4de37544a4685d92b392ea06a7bd',1,'daemon::LockFile']]],
-  ['update_454',['Update',['../classdatabase_1_1Client.html#a18d4d7213984f39a52c39f68c40d017e',1,'database::Client::Update()'],['../classdatabase_1_1DataBase.html#a4ec37c264663b7a80f1db7452641a920',1,'database::DataBase::Update()'],['../classdatabase_1_1DataList.html#a41ad71e0bd80d5f479970ada1597e5a9',1,'database::DataList::Update()']]]
+  ['tcpclient_445',['TCPClient',['../classutility_1_1ipc_1_1TCPClient.html#ad73684772dd324f763f1286c54b4ce9b',1,'utility::ipc::TCPClient']]],
+  ['tcpserver_446',['TCPServer',['../classutility_1_1ipc_1_1TCPServer.html#a1cb8f300b5a2dba8625bf72d329596b4',1,'utility::ipc::TCPServer::TCPServer(const char *port, InternetProtocol ip=InternetProtocol::kAny, int backlog=SOMAXCONN)'],['../classutility_1_1ipc_1_1TCPServer.html#a6d9713ebfb59a361323d0f1759b4fc7f',1,'utility::ipc::TCPServer::TCPServer(const TCPServer &amp;)=delete']]],
+  ['tcpsocket_447',['TCPSocket',['../classutility_1_1ipc_1_1TCPSocket.html#a2bad2ead2e498661a826ae91c307aa71',1,'utility::ipc::TCPSocket::TCPSocket(InternetProtocol ip_version)'],['../classutility_1_1ipc_1_1TCPSocket.html#a9cdff40917db3cfef356943228f76eec',1,'utility::ipc::TCPSocket::TCPSocket(const TCPSocket &amp;)=delete'],['../classutility_1_1ipc_1_1TCPSocket.html#aeef683480cfb491430923625e00153e7',1,'utility::ipc::TCPSocket::TCPSocket(Socket sockfd)']]],
+  ['test_448',['test',['../namespaceutility_1_1test.html#a3cbc67a68460df41bf4cb626b959819e',1,'utility::test']]],
+  ['threadpool_449',['ThreadPool',['../classutility_1_1concurrency_1_1ThreadPool.html#a305f731b5d351581e2d395561402ca61',1,'utility::concurrency::ThreadPool::ThreadPool(size_t nthreads)'],['../classutility_1_1concurrency_1_1ThreadPool.html#a425791b16a29d8c5d53464ddc7f58564',1,'utility::concurrency::ThreadPool::ThreadPool(const ThreadPool &amp;)=delete']]],
+  ['throwsystemerror_450',['ThrowSystemError',['../namespaceutility_1_1misc.html#a25891b06435f0977e137eef47f341ff4',1,'utility::misc']]]
 ];

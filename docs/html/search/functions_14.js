@@ -1,27 +1,8 @@
 var searchData=
 [
-  ['_7eabstractmessage_462',['~AbstractMessage',['../classutility_1_1ipc_1_1AbstractMessage.html#a814a57cb0f81f60ed910bf29edf968c3',1,'utility::ipc::AbstractMessage']]],
-  ['_7ebasicsocket_463',['~BasicSocket',['../classutility_1_1ipc_1_1BasicSocket.html#ad41b3488a69bda656dd8e617cce3a4f4',1,'utility::ipc::BasicSocket']]],
-  ['_7eclient_464',['~Client',['../classdatabase_1_1Client.html#adfc780bf0058f172842439d2cc3f075a',1,'database::Client']]],
-  ['_7ecomponentpool_465',['~ComponentPool',['../classdaemon_1_1ComponentPool.html#a3646a4c7d80274eecaccf82900724efd',1,'daemon::ComponentPool']]],
-  ['_7econfig_466',['~Config',['../classcore_1_1Config.html#abaaca1f0b4e86015c7370a834e043cbe',1,'core::Config::~Config()'],['../classdaemon_1_1Config.html#ac94482496a0afe9eb8df2f67035a3056',1,'daemon::Config::~Config()']]],
-  ['_7edatabase_467',['~DataBase',['../classdatabase_1_1DataBase.html#a48ec6ca949bf50543673b5786dead9e4',1,'database::DataBase']]],
-  ['_7edatalist_468',['~DataList',['../classdatabase_1_1DataList.html#a0dde847891df5a32a69f810d863b7c54',1,'database::DataList']]],
-  ['_7efield_469',['~Field',['../structutility_1_1ipc_1_1AbstractMessage_1_1Field.html#a6917f4e1361d235aeb5a5b2d72db3e72',1,'utility::ipc::AbstractMessage::Field']]],
-  ['_7ehandlerinfrastructure_470',['~HandlerInfrastructure',['../structcore_1_1HandlerInfrastructure.html#a3929cd740b14c7fe892a05b70b7767f9',1,'core::HandlerInfrastructure']]],
-  ['_7elocalprocess_471',['~LocalProcess',['../classutility_1_1os_1_1LocalProcess.html#a0e8bb28fa0ab845cdef68f98ebfd958d',1,'utility::os::LocalProcess']]],
-  ['_7elockfile_472',['~LockFile',['../classdaemon_1_1LockFile.html#aff24bead1b0c243b20212cf28a3fa486',1,'daemon::LockFile']]],
-  ['_7emaster_473',['~Master',['../classcore_1_1Master.html#a92fde6235f546fd89ddf79743cca893a',1,'core::Master']]],
-  ['_7emessagequeue_474',['~MessageQueue',['../classutility_1_1ipc_1_1MessageQueue.html#ae7ad5a00142aaf85405fc3a62995a0a0',1,'utility::ipc::MessageQueue']]],
-  ['_7erawdata_475',['~RawData',['../classutility_1_1data_1_1RawData.html#a0e437e570365ec5e5c6c588bdd9f0349',1,'utility::data::RawData']]],
-  ['_7ereactor_476',['~Reactor',['../classcore_1_1Reactor.html#aaff6c3b3cce496556bd797d711f0a37c',1,'core::Reactor']]],
-  ['_7ereceivedboundarymessage_477',['~ReceivedBoundaryMessage',['../classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#ae3ab5e51a981d3247efb353859e6909d',1,'utility::ipc::ReceivedBoundaryMessage']]],
-  ['_7ereceivedstreammessage_478',['~ReceivedStreamMessage',['../classutility_1_1ipc_1_1ReceivedStreamMessage.html#a46657a5ca319fde28bd34e54a598c000',1,'utility::ipc::ReceivedStreamMessage']]],
-  ['_7esentmessage_479',['~SentMessage',['../classutility_1_1ipc_1_1SentMessage.html#a097828e67a16c533465f2d7891d8be93',1,'utility::ipc::SentMessage']]],
-  ['_7etcpclient_480',['~TCPClient',['../classutility_1_1ipc_1_1TCPClient.html#a174ceeb85044ef8450edaa02cd0a3278',1,'utility::ipc::TCPClient']]],
-  ['_7etcpserver_481',['~TCPServer',['../classutility_1_1ipc_1_1TCPServer.html#a19738bf31de2e8f3b3cc17fba82124d7',1,'utility::ipc::TCPServer']]],
-  ['_7etcpsocket_482',['~TCPSocket',['../classutility_1_1ipc_1_1TCPSocket.html#a0ad78d7afb7a496977e2ab1881bb5d40',1,'utility::ipc::TCPSocket']]],
-  ['_7ethreadpool_483',['~ThreadPool',['../classutility_1_1concurrency_1_1ThreadPool.html#a42af4c764566f1d3c6e02cab1aee0975',1,'utility::concurrency::ThreadPool']]],
-  ['_7eworker_484',['~Worker',['../classcore_1_1Worker.html#a9812374a8f177194b8642218b9e8a36e',1,'core::Worker']]],
-  ['_7eworkerpool_485',['~WorkerPool',['../classcore_1_1WorkerPool.html#a49fc5b076a20bbcef6cf715e2a3d94fd',1,'core::WorkerPool']]]
+  ['waitforconnection_456',['WaitForConnection',['../classutility_1_1ipc_1_1TCPServer.html#a0cb9955035099792a16cae9d0a54969b',1,'utility::ipc::TCPServer']]],
+  ['worker_457',['Worker',['../classcore_1_1Worker.html#a0e70d53cb29ca10f440ccbc7f23b9d67',1,'core::Worker::Worker(int hear_beat_rate, int db_channel)'],['../classcore_1_1Worker.html#a3734a4fe0eb3b003c7335b9199eed531',1,'core::Worker::Worker(const Worker &amp;)=delete']]],
+  ['worker_5fexe_5fname_458',['worker_exe_name',['../namespacecore.html#ab350e9f0a8f78c5c2e83f57634136a99',1,'core']]],
+  ['workerpool_459',['WorkerPool',['../classcore_1_1WorkerPool.html#a78e462cda1d302fee40cb1a2691fed07',1,'core::WorkerPool::WorkerPool(int nworkers, int heart_beat, int db_channel)'],['../classcore_1_1WorkerPool.html#a5941d0bf5b873d095909d6e6b2258e3a',1,'core::WorkerPool::WorkerPool(const WorkerPool &amp;)=delete']]],
+  ['working_5fdir_460',['working_dir',['../namespacedaemon.html#a8522f736922673cbf7293237790c622b',1,'daemon']]]
 ];

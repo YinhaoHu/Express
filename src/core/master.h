@@ -13,6 +13,9 @@ _START_EXPRESS_NAMESPACE_
 
 namespace core
 {
+    /**
+     * @brief A master entity class which generates and maintains a worker pool.
+    */
     class Master
     {
         public:

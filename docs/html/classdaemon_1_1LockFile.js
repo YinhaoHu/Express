@@ -4,7 +4,7 @@ var classdaemon_1_1LockFile =
       [ "kNotRunning", "classdaemon_1_1LockFile.html#a353e35d0a8c832b321d04d6522138c42adb4c08534448ba44bbdf2932a162ccd8", null ],
       [ "kRunning", "classdaemon_1_1LockFile.html#a353e35d0a8c832b321d04d6522138c42a2fc7fbf0d19294f85dd3880460dd3c0a", null ]
     ] ],
-    [ "LockFile", "classdaemon_1_1LockFile.html#a8bc8dd1ef75d744108a8f2d2ebb2e240", null ],
+    [ "LockFile", "classdaemon_1_1LockFile.html#ac1192eba97bfb40c4f689d8008899a3c", null ],
     [ "LockFile", "classdaemon_1_1LockFile.html#abe569a06e43961986c65b23e8196dbbf", null ],
     [ "~LockFile", "classdaemon_1_1LockFile.html#aff24bead1b0c243b20212cf28a3fa486", null ],
     [ "GetRunningState", "classdaemon_1_1LockFile.html#a68149b47f22603a72eb96c1d97e15490", null ],

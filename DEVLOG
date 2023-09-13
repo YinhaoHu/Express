@@ -7,26 +7,33 @@
 // TODO: Development log   
 
 [TODO]  
-    DAEMON:
-        - component_pool:
-                * Complete stop()
-    MAIL:
-        - files should be divided into server.py, mail.py and so on for structure.
+    # Components:
+        @ DAEMON:
+            - component_pool:
+                    * Complete stop()
+        @ MAIL:
+            - files should be divided into server.py, mail.py and so on for structure.
 
-    UTILITY:
-        - received message should be considered into two parts:
-            * One for IPC developer usage and the other one should be used
-            for IPC user.
-            * One considerable scheme might be ReceivedMessage for IPC class user
-            and ReceivedStreamMessage and ReceivedBorderMessage for IPC developer. 
+        @ UTILITY:
+            - received message should be considered into two parts:
+                * One for IPC developer usage and the other one should be used
+                for IPC user.
+                * One considerable scheme might be ReceivedMessage for IPC class user
+                and ReceivedStreamMessage and ReceivedBorderMessage for IPC developer. 
 
-    OTHER:
-        - These components remain to be implmeneted: 
-            * Mail service
-            * Log
-            * Monitor
-        - Deprecate the naming convention for pointer data member like pData.
-        - Take Singleton pattern to replace the out-dated code. like: extern __, init__.
+        @ OTHER:
+            - These components remain to be implmeneted: 
+                * Mail service
+                * Log
+                * Monitor
+            - Deprecate the naming convention for pointer data member like pData.
+            - Take Singleton pattern to replace the out-dated code. like: extern __, init__.
 
     # More TODOs can be seen in the navigator TODOs.    
+
     # More structured code needs to be occur in this project.
+
+    # Replace the manual-test-unit with auto-test-unit.
+
+[NOTE]
+    # Review IO multiplexation: Understand the epoll more deeply.

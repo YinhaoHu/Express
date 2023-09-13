@@ -1,3 +1,7 @@
+/**
+ * @file main.cc
+ * @brief Start the one/several master(s).
+*/
 #include <sys/resource.h>
 #include <syslog.h>
 
@@ -79,5 +83,5 @@ static void TerminateHandler(int)
 {
     delete pMaster;
 
-    exit(0);
+    exit(EXIT_SUCCESS);
 }

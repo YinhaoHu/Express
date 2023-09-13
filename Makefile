@@ -48,7 +48,8 @@ $(HELP_TARGET):
 	@echo "To build any available target, type :make <target>"
 	@echo "All available targets until now are listed below:"
 	@echo $(foreach target,$(ALL_TARGETS),"\r* $(target)\n")
- 
+	@echo "$(FONT_YELLOW)Note: script $(FONT_UNDERLINE)./scripts/make-all.sh$(FONT_RESET)"\
+		  "$(FONT_YELLOW)can be used for make all targets which are needed to build a complete server.$(FONT_RESET)"
 
 # ==========================================================
 #						Daemon

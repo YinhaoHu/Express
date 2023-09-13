@@ -33,6 +33,8 @@ namespace core
 
     void Handle(TCPSocket &client,ReceivedStreamMessage &request)
     { 
+        // TODO : Consider log the time for one service information here
+        // including the time.
         using HdrField = ReceivedStreamMessage::Header::Field; 
         uint32_t comm_code = request.GetHeaderField(HdrField::kCommunicationCode); 
         pHandlers->at(comm_code)(client, request, *pInfra);

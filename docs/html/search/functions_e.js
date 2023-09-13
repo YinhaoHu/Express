@@ -1,14 +1,6 @@
 var searchData=
 [
-  ['rawdata_415',['RawData',['../classutility_1_1data_1_1RawData.html#a8f66a1efe8398e72bdc0dfc767fd1466',1,'utility::data::RawData::RawData(const RawData &amp;other)'],['../classutility_1_1data_1_1RawData.html#aeca356624714394cc6b10db8fad17a98',1,'utility::data::RawData::RawData(RawData &amp;&amp;other)'],['../classutility_1_1data_1_1RawData.html#a006f4e9093b6047ec8c2ab7151f24fea',1,'utility::data::RawData::RawData(size_t nbytes)']]],
-  ['reactor_416',['Reactor',['../classcore_1_1Reactor.html#a81d1648037b092b62585c43096c5b559',1,'core::Reactor::Reactor(int db_channel)'],['../classcore_1_1Reactor.html#a86d01a1679eb345c8870bd2b09a772ff',1,'core::Reactor::Reactor(const Reactor &amp;)=delete']]],
-  ['receive_417',['Receive',['../classutility_1_1ipc_1_1BasicSocket.html#a03ff1532d8476de208bbde954818853d',1,'utility::ipc::BasicSocket::Receive()'],['../classutility_1_1ipc_1_1MessageQueue.html#a0590b8ce31a89351c18d261f61991ffb',1,'utility::ipc::MessageQueue::Receive()'],['../classutility_1_1ipc_1_1TCPClient.html#a386a1c6c426461fa983980e77ac5c517',1,'utility::ipc::TCPClient::Receive()']]],
-  ['receivedboundarymessage_418',['ReceivedBoundaryMessage',['../classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#a0babf9ceab1f782221b5e32abb13be10',1,'utility::ipc::ReceivedBoundaryMessage::ReceivedBoundaryMessage(std::unique_ptr&lt; char[]&gt; spFullMessage)'],['../classutility_1_1ipc_1_1ReceivedBoundaryMessage.html#abaf2bf9794fa512b88331244639d1673',1,'utility::ipc::ReceivedBoundaryMessage::ReceivedBoundaryMessage(const ReceivedBoundaryMessage &amp;other)']]],
-  ['receivedstreammessage_419',['ReceivedStreamMessage',['../classutility_1_1ipc_1_1ReceivedStreamMessage.html#a2638fbe96dc8649ccfe8a153bebf893f',1,'utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage(std::shared_ptr&lt; Header &gt; spheader)'],['../classutility_1_1ipc_1_1ReceivedStreamMessage.html#a71f8d25954c454283b11ed46e305df82',1,'utility::ipc::ReceivedStreamMessage::ReceivedStreamMessage(const ReceivedStreamMessage &amp;other)']]],
-  ['receivemessage_420',['ReceiveMessage',['../classutility_1_1ipc_1_1TCPSocket.html#acc86dd3defbe805f602bff6e59ff4be3',1,'utility::ipc::TCPSocket']]],
-  ['reconnect_421',['Reconnect',['../classutility_1_1ipc_1_1TCPClient.html#a64b10b7deb57fae1476f0e0368915577',1,'utility::ipc::TCPClient']]],
-  ['reload_422',['Reload',['../classdaemon_1_1Config.html#a243a69f639bf6ed4f12795aa8c464771',1,'daemon::Config']]],
-  ['remove_423',['Remove',['../classcore_1_1WorkerPool.html#a02e0f47ef0df31fef3afccd794ff244f',1,'core::WorkerPool']]],
-  ['retrieve_424',['Retrieve',['../classdatabase_1_1Client.html#a118355f9cf71e63d1b8d750e7047ccfa',1,'database::Client::Retrieve()'],['../classdatabase_1_1DataBase.html#a5649eeda490ff929c962ced718ffd277',1,'database::DataBase::Retrieve()'],['../classdatabase_1_1DataList.html#aaa916ea2498bc399aa90fbda74a02135',1,'database::DataList::Retrieve()']]],
-  ['run_425',['Run',['../classcore_1_1Master.html#a8bd3d8c1ffee1ea58cd63d9588a525d4',1,'core::Master::Run()'],['../namespacedaemon.html#a70bbb68e1b30a0e511ddb707af6cca5b',1,'daemon::Run()']]]
+  ['prepare_411',['Prepare',['../namespacedaemon.html#a03cf67cb17ccd150ad690183441cf0b6',1,'daemon']]],
+  ['print_412',['print',['../namespaceutility_1_1misc.html#ada3d13c4e3046829ef153d10cb914e04',1,'utility::misc']]],
+  ['program_5fname_413',['program_name',['../namespacedaemon.html#a23b6574476df48abee60ea9536b99b94',1,'daemon']]]
 ];

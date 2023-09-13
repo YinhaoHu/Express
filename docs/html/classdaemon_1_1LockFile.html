@@ -85,6 +85,8 @@ $(document).ready(function(){initNavTree('classdaemon_1_1LockFile.html',''); ini
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="classdaemon_1_1LockFile-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">daemon::LockFile Class Reference</div>  </div>
@@ -102,8 +104,6 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8bc8dd1ef75d744108a8f2d2ebb2e240"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1LockFile.html#a8bc8dd1ef75d744108a8f2d2ebb2e240">LockFile</a> (const char *filename)</td></tr>
-<tr class="separator:a8bc8dd1ef75d744108a8f2d2ebb2e240"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe569a06e43961986c65b23e8196dbbf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1LockFile.html#abe569a06e43961986c65b23e8196dbbf">LockFile</a> (const <a class="el" href="classdaemon_1_1LockFile.html">LockFile</a> &amp;)=delete</td></tr>
 <tr class="separator:abe569a06e43961986c65b23e8196dbbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff24bead1b0c243b20212cf28a3fa486"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1LockFile.html#aff24bead1b0c243b20212cf28a3fa486">~LockFile</a> ()</td></tr>
@@ -116,6 +116,16 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af21d29b706834014a4fb600c8f4e0bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68149b47f22603a72eb96c1d97e15490"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdaemon_1_1LockFile.html#a353e35d0a8c832b321d04d6522138c42">RunningState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1LockFile.html#a68149b47f22603a72eb96c1d97e15490">GetRunningState</a> ()</td></tr>
 <tr class="separator:a68149b47f22603a72eb96c1d97e15490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a489de319f936749459645d2d8ee5bba5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classdaemon_1_1LockFile.html">LockFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1LockFile.html#a489de319f936749459645d2d8ee5bba5">Instance</a> ()</td></tr>
+<tr class="separator:a489de319f936749459645d2d8ee5bba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ac1192eba97bfb40c4f689d8008899a3c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdaemon_1_1LockFile.html#ac1192eba97bfb40c4f689d8008899a3c">LockFile</a> (std::string_view file_name)</td></tr>
+<tr class="separator:ac1192eba97bfb40c4f689d8008899a3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a353e35d0a8c832b321d04d6522138c42"></a>
@@ -145,20 +155,28 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a8bc8dd1ef75d744108a8f2d2ebb2e240"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bc8dd1ef75d744108a8f2d2ebb2e240">&#9670;&nbsp;</a></span>LockFile() <span class="overload">[1/2]</span></h2>
+<a id="ac1192eba97bfb40c4f689d8008899a3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1192eba97bfb40c4f689d8008899a3c">&#9670;&nbsp;</a></span>LockFile() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">daemon::LockFile::LockFile </td>
           <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>file_name</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -220,6 +238,31 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a489de319f936749459645d2d8ee5bba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a489de319f936749459645d2d8ee5bba5">&#9670;&nbsp;</a></span>Instance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classdaemon_1_1LockFile.html">LockFile</a>* daemon::LockFile::Instance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

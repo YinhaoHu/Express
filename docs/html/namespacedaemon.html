@@ -118,10 +118,8 @@ Functions</h2></td></tr>
 <tr class="separator:a22494b734bb9a3dc9a0f2712abf2b269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0425cf08b035e7eadb488c0f778c63e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a0425cf08b035e7eadb488c0f778c63e2">InitCore</a> ()</td></tr>
 <tr class="separator:a0425cf08b035e7eadb488c0f778c63e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aede6898ad2e37e847cb6e34e51d0a499"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#aede6898ad2e37e847cb6e34e51d0a499">InitLockFile</a> ()</td></tr>
-<tr class="separator:aede6898ad2e37e847cb6e34e51d0a499"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a612d729c8b6d15565fec181401912690"><td class="memItemLeft" align="right" valign="top">constexpr const std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a612d729c8b6d15565fec181401912690">lockfile_name</a> (&quot;/var/run/express-server.pid&quot;)</td></tr>
-<tr class="separator:a612d729c8b6d15565fec181401912690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42efa8324b0e6d9d38c0eace3778ce4b"><td class="memItemLeft" align="right" valign="top">constexpr const std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a42efa8324b0e6d9d38c0eace3778ce4b">kLockFileName</a> (&quot;/var/run/express-server.pid&quot;)</td></tr>
+<tr class="separator:a42efa8324b0e6d9d38c0eace3778ce4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc3cbe2225ed5a04ff2bbbeadd6e19b9"><td class="memItemLeft" align="right" valign="top">constexpr const std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#abc3cbe2225ed5a04ff2bbbeadd6e19b9">config_file_name</a> (&quot;/etc/express-server.conf&quot;)</td></tr>
 <tr class="separator:abc3cbe2225ed5a04ff2bbbeadd6e19b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23b6574476df48abee60ea9536b99b94"><td class="memItemLeft" align="right" valign="top">constexpr const std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a23b6574476df48abee60ea9536b99b94">program_name</a> (&quot;expressd&quot;)</td></tr>
@@ -139,8 +137,6 @@ Variables</h2></td></tr>
 <tr class="separator:a136b350f41bbe3a041c8b7fdef5713a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abac82d1066bcfc95183e810c36bff6f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdaemon_1_1Config.html">Config</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#abac82d1066bcfc95183e810c36bff6f5">pConfig</a></td></tr>
 <tr class="separator:abac82d1066bcfc95183e810c36bff6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1bfeaa2e01571b0fecfdf503ece25c59"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdaemon_1_1LockFile.html">LockFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a1bfeaa2e01571b0fecfdf503ece25c59">pLockFile</a></td></tr>
-<tr class="separator:a1bfeaa2e01571b0fecfdf503ece25c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91f18cf8e241f0f7d2f3e9fb1ba5580d"><td class="memItemLeft" align="right" valign="top">constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedaemon.html#a91f18cf8e241f0f7d2f3e9fb1ba5580d">kTerminateSignal</a> = SIGTERM</td></tr>
 <tr class="separator:a91f18cf8e241f0f7d2f3e9fb1ba5580d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -282,25 +278,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aede6898ad2e37e847cb6e34e51d0a499"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aede6898ad2e37e847cb6e34e51d0a499">&#9670;&nbsp;</a></span>InitLockFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void daemon::InitLockFile </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a612d729c8b6d15565fec181401912690"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a612d729c8b6d15565fec181401912690">&#9670;&nbsp;</a></span>lockfile_name()</h2>
+<a id="a42efa8324b0e6d9d38c0eace3778ce4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42efa8324b0e6d9d38c0eace3778ce4b">&#9670;&nbsp;</a></span>kLockFileName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -309,7 +288,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr const std::string_view daemon::lockfile_name </td>
+          <td class="memname">constexpr const std::string_view daemon::kLockFileName </td>
           <td>(</td>
           <td class="paramtype">&quot;/var/run/express-server.pid&quot;&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -495,28 +474,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classdaemon_1_1Config.html">Config</a>* daemon::pConfig</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1bfeaa2e01571b0fecfdf503ece25c59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1bfeaa2e01571b0fecfdf503ece25c59">&#9670;&nbsp;</a></span>pLockFile</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classdaemon_1_1LockFile.html">LockFile</a>* daemon::pLockFile</td>
         </tr>
       </table>
   </td>

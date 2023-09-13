@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['core_300',['core',['../namespacecore.html',1,'']]]
+  ['core_299',['core',['../namespacecore.html',1,'']]]
 ];

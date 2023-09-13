@@ -12,6 +12,10 @@ _START_EXPRESS_NAMESPACE_
 
 namespace core
 {
+    /**
+     * @brief A reactor class used for worker to response to a service and 
+     * serve.
+    */
     class Reactor
     {
         public: 

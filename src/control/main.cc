@@ -1,6 +1,3 @@
-#include "argparse/argparse.h"
-#include "daemon/param.h"
-
 #include <unistd.h>
 
 #include <iostream>
@@ -11,6 +8,10 @@
 #include <vector>
 #include <format>
 #include <filesystem>
+
+#include "argparse/argparse.h"
+#include "daemon/param.h"
+
 
 static argparse::ArgumentParser *pProgram;
 
@@ -129,7 +130,7 @@ static void Shutdown()
 
         if (kill(pid, express::daemon::kTerminateSignal) < 0)
         {
-            std::cout << "error." << strerror(errno) << std::endl;
+            std::cerr << "error: " << strerror(errno) << std::endl;
             exit(EXIT_FAILURE);
         }
         else
@@ -142,7 +143,8 @@ static void Shutdown()
 
 static void Syslog()
 {
-    system(std::format("cat /var/log/syslog | grep express | tail -{}", pProgram->get<int>("--syslog")).c_str());
+    std::string commond{std::format("cat /var/log/syslog | grep express | tail -{}", pProgram->get<int>("--syslog"))};
+    system(commond.c_str());
     exit(EXIT_SUCCESS);
 }
 

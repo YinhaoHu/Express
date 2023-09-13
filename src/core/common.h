@@ -1,3 +1,8 @@
+/**
+ * @file common.h
+ * @brief Define a series of variables that can be used between multi 
+ * components.
+*/
 #ifndef _EXPRESS_CORE_COMMON_H
 #define _EXPRESS_CORE_COMMON_H
 

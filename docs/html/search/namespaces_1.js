@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['daemon_301',['daemon',['../namespacedaemon.html',1,'']]],
-  ['database_302',['database',['../namespacedatabase.html',1,'']]]
+  ['daemon_300',['daemon',['../namespacedaemon.html',1,'']]],
+  ['database_301',['database',['../namespacedatabase.html',1,'']]]
 ];
